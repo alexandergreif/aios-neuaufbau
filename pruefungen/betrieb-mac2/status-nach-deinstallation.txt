@@ -1,0 +1,2 @@
+Dateieinbindung: deinstalliert. Fachfunktion, Modelle und Dienste ungeprüft.
+claude-code: deinstalliert, 0 Skillverknüpfungen, Integrität fehlend, Modell und Dienste ungeprüft

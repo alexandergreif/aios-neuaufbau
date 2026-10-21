@@ -1,0 +1,40 @@
+AIOS: lokale Ersteinrichtung
+Client (claude, codex, beide) [beide]: Quellcode [~/aios-abnahme-betrieb/quelle]: Runtime [~/aios-runtime]: Profil [~/aios-profile]: Ausgabe [~/aios-output]: Coding-Wurzeln (optional): Pfade einzeln eingeben, leere Eingabe beendet die Liste.
+Pfad: Kunden-Wurzeln (optional): Pfade einzeln eingeben, leere Eingabe beendet die Liste.
+Pfad: Name und Anrede: Rolle: Sprache: Zeitzone: Arbeitszeiten und freie Tage: Arbeitsweise: Prioritäten: 
+Vorschau der lokalen Konfiguration:
+{
+  "schema_version": 1,
+  "confirmed": false,
+  "clients": [
+    "claude-code"
+  ],
+  "paths": {
+    "source": "~/aios-abnahme-betrieb/quelle",
+    "runtime": "~/aios-runtime",
+    "profile": "~/aios-profile",
+    "output": "~/aios-output",
+    "coding_roots": [],
+    "customer_roots": []
+  }
+}
+
+Profilangaben:
+Name und Anrede: Testperson Abnahme
+Rolle: Testrolle
+Sprache: Deutsch
+Zeitzone: Europe/Berlin
+Arbeitszeiten und freie Tage: Mo bis Fr 09:00 bis 17:00
+Arbeitsweise: Testarbeitsweise
+Prioritäten: Testpriorität
+Es entstehen pfade.json, profil.md, projekte.md, wissen/INDEX.md und .env im Profilordner.
+Diese Einrichtung speichern? (ja/nein) [nein]: Blockbrain-Schlüssel eingeben? (ja/nein) [nein]: Profil eingerichtet: ~/aios-abnahme-betrieb/aios-profile
+Runtime neu: ~/aios-abnahme-betrieb/aios-runtime
+Ausgabe: ~/aios-abnahme-betrieb/aios-output (vorhandene Inhalte bleiben erhalten)
+Profil bleibt erhalten: ~/aios-abnahme-betrieb/aios-profile
+Regeldateien: 1, Skillverknüpfungen: 21
+Entwicklungsstand mit derzeit vorhandenen Skills. Client- und Dienstfunktion ungeprüft.
+Ersteinrichtung ausführen? Genau 'ja' eingeben: Entwicklungsstand mit derzeit vorhandenen Skills eingerichtet, Client-/Dienstfunktion ungeprüft.
+Rein lesender Statuscheck der Dateieinbindung:
+Dateieinbindung: vorhanden. Fachfunktion, Modelle und Dienste ungeprüft.
+claude-code: vorhanden, 21 Skillverknüpfungen, Integrität geprüft, Modell und Dienste ungeprüft

@@ -1,0 +1,2 @@
+Dateieinbindung: vorhanden. Fachfunktion, Modelle und Dienste ungeprüft.
+claude-code: vorhanden, 21 Skillverknüpfungen, Integrität geprüft, Modell und Dienste ungeprüft

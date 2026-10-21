@@ -1,0 +1,9 @@
+Paketoperation angehalten: Eigene Datei verändert: ~/aios-abnahme-betrieb/aios-runtime/allgemein/vorlagen/profil.md. Keine automatische Wiederholung oder Wiederherstellung.
+exit=1
+Dateieinbindung: eingeschränkt. Fachfunktion, Modelle und Dienste ungeprüft.
+claude-code: eingeschränkt, 0 Skillverknüpfungen, Integrität eingeschränkt, Modell und Dienste ungeprüft
+Abgeschlossener Paketbestand oder Runtime ungültig, verändert oder fehlend.
+status-exit=1
+-- nach Wiederherstellung:
+Dateieinbindung: vorhanden. Fachfunktion, Modelle und Dienste ungeprüft.
+claude-code: vorhanden, 21 Skillverknüpfungen, Integrität geprüft, Modell und Dienste ungeprüft

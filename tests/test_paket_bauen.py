@@ -58,7 +58,7 @@ class PackageBuildTests(unittest.TestCase):
         self.assertEqual(actual, expected)
         manifest = json.loads((self.destination / "paket.json").read_text(encoding="utf-8"))
         self.assertEqual(manifest["schema_version"], 1)
-        self.assertEqual(manifest["version"], "0.1.0-dev")
+        self.assertEqual(manifest["version"], "0.1.3-dev")
         self.assertEqual({entry["path"] for entry in manifest["files"]}, actual - {"paket.json"})
         for entry in manifest["files"]:
             self.assertEqual(entry["sha256"], hashlib.sha256((self.destination / entry["path"]).read_bytes()).hexdigest())
