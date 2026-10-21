@@ -1,7 +1,7 @@
 #!/bin/sh
 # Führt die AIOS-Modellfälle in der isolierten Codex-Testumgebung aus.
 set -u
-OUT="$1"; FAELLE="$2"; T=/Users/alexandergreif/aios-test-codex
+OUT="$1"; FAELLE="$2"; T="$HOME/aios-test-codex"
 run_case() {
   id="$1"; prompt="$2"; dir="$T/arbeitsordner/$id"; mkdir -p "$dir"
   ( HOME="$T" CODEX_HOME="$T/.codex" codex exec --skip-git-repo-check -s read-only -C "$dir" --json "$prompt" < /dev/null > "$OUT/$id.jsonl" 2> "$OUT/$id.err"; echo $? > "$OUT/$id.exit" ) &

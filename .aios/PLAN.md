@@ -1,6 +1,6 @@
 # Plan: AIOS-Neuaufbau
 
-Stand: 21.10.2026. Lokales Git-Repository. Privates Veröffentlichungsziel: `alexandergreif/aios-neuaufbau`.
+Stand: 22.10.2026. Lokales Git-Repository. Privates Veröffentlichungsziel: `alexandergreif/aios-neuaufbau`.
 
 ## Ziel
 
@@ -28,12 +28,10 @@ Privates portables AIOS für Claude Code und Codex mit allen bestätigten Fähig
 
 ## Nächster Schritt
 
-Auf dem zweiten Mac eine neue Claude-Code-Sitzung für die gemeinsame Abnahme beginnen. Mit der Kurzanleitung zunächst nur Claude im eigenen Test-Home einrichten. Den normalen Benutzerbetrieb erst nach erfolgreicher Testabnahme vorbereiten. Der vorgeschlagene verwaltete AIOS-Abschnitt für bereits vorhandene Regeldateien ist noch nicht umgesetzt.
+Umstieg auf dem Haupt-MacBook nach [docs/umstieg-haupt-macbook.md](../docs/umstieg-haupt-macbook.md): Quelle klonen, altes AIOS rein lesend inventarisieren, AIOS-eigene Teile sichern und beiseitelegen (nicht löschen), neu mit `beide` und echtem Profil installieren, prüfen, danach Dienstanbindungen einzeln einrichten und testen. MCP-Server, Plugins und Anmeldungen bleiben erhalten.
 
-Den späteren Umbau mit sichtbaren Bereichen `allgemein/`, `claude-code/` und `codex/` separat zuordnen und prüfen. Die Veröffentlichung nutzt den vorhandenen Quellaufbau. Entscheidung 119 zur manuellen Regelprüfung bleibt bestehen.
-
-Gemeinsam auf dem zweiten Mac anhand der vorbereiteten Anleitung Paketstand übertragen, Pfade bestätigen und Installation, Update, Deinstallation sowie angemeldete Modellfälle prüfen. Update und Deinstallation zunächst nur im eigenen Test-Home. Entscheidung 118: echte Betriebs- und Modelltests nur dort. Weitere ausgewählte Fähigkeiten und technische Abhängigkeiten fehlen noch, ebenso Dienstanbindungen und die visuelle Rendererabnahme. Keine aktive Installation auf dem ersten Mac umstellen.
+Auf dem zweiten Mac (privater Laptop) keine Dienstanbindungen. Dort ist die normale Einrichtung mit `beide` noch offen und kann jederzeit interaktiv nachgeholt werden.
 
 ## Grenzen
 
-Keine Kundendaten, Archive, Profile oder Zugangsdaten lesen oder migrieren. Keine aktive Installation oder globale Regeln ändern. Kein Browser, kein Atrio-Ausbau. Commit, Repositoryanlage und Push sind ausschließlich für den geprüften neuen Paketstand nach `alexandergreif/aios-neuaufbau` beauftragt. Keine hiesigen Testanmeldungen, Anbieteraufrufe oder weiteren nativen Clienttests. Synthetische Tests bearbeiten ausschließlich eigene Testdateien in isolierten Ordnern. Alte Installationsnachweise gelten nicht als Abnahme des Neuaufbaus.
+Alexander hat am 22.10.2026 entschieden, das AIOS auf dem Haupt-MacBook neu zu installieren und den Altbestand zu sichern. Inventur dort ist rein lesend. Verschieben, Installieren und Anmeldungen erst nach gezeigter Liste und Freigabe im jeweiligen Schritt. Nichts löschen, Backup bleibt lokal. MCP-Server, Plugins, Anmeldungen und fremde Clientkonfiguration nicht verändern. Keine Kundendaten lesen oder migrieren. Profilinhalte nur mit Alexanders Bestätigung übernehmen. Zugangsdaten nie in Chat, Repository oder Prüfberichte. Externe Schreibaktionen in Diensten nur mit konkretem Testauftrag. Push nur nach `alexandergreif/aios-neuaufbau` und nur auf Auftrag. Auf dem zweiten Mac keine Dienstanbindungen.
