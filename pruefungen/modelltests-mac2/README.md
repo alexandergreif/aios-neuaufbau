@@ -71,6 +71,14 @@ Dieselben drei Fälle: [runde4](runde4/). Unabhängig bewertet, alle zwölf Erwa
 - Restbefund mittel: In allen drei Fällen wurde nach der letzten Prüfung noch umformuliert. Tagesstart und Nachbereitung melden trotzdem „nichts beanstandet“, die Prozessanalyse nennt die Änderungen nur teilweise.
 - Gering: Die Prüfer erhalten die Skillregeln als selbst verfasste Zusammenfassung statt der Skilldatei.
 
+## Runde 5 mit Paket 0.1.4-dev, beide Clients
+
+Regelkern ergänzt: „Gib die zuletzt geprüfte Fassung unverändert aus. Willst du danach noch etwas ändern, lass die Änderung erneut prüfen.“ Drei Fälle in beiden Clients: [Claude](runde5/), [Codex](codex/runde2/). Unabhängig bewertet, alle 24 Erwartungen erfüllt.
+
+- Claude: In allen drei Fällen nach der Prüfung umformuliert. Wörtlich geprüft waren 10 von 14, 14 von 29 und 10 von 14 Zeilen der Endantwort. In der Prozessanalyse verschiebt das zweimal den Beleggrad: „nicht belegt“ wird zu einer festen Aussage, und ein Hypothesenast wird als Tatsache formuliert (mittel). Ungeprüfte Stellen werden nicht genannt.
+- Codex: Prüfer gestartet und abgewartet, keine Befunde. Einhaltung nicht prüfbar, da Prüfaufträge verschlüsselt sind.
+- Einschätzung des Prüfers: Durch weiteren Regeltext kaum durchsetzbar. Empfohlen werden Inhaltstreue statt Wortgleichheit als Kriterium, ein vorab festgelegter Prüfvermerk und optional eine mechanische Kontrolle per Hook.
+
 ## Offen
 
 - Umformulierungen nach der letzten Prüfung. Vorschlag: Die zuletzt geprüfte Fassung wird unverändert ausgegeben. Diagnose noch nicht bestätigt
