@@ -19,6 +19,17 @@ Lokale Testordner, Release-Arbeitsdateien, Python-Caches, persönliche Profile, 
 - Kurzanleitung gegen den Profildialog und den Installervertrag geprüft. Sie wählt ausschließlich Claude und ein neues Test-Home. Änderungen dieses Veröffentlichungsschritts betreffen Dokumentation, Git-Ausschlüsse und Formatierung. Kein ausführbarer Paketcode geändert.
 - Pre-commit-Review für diesen Transfer: Sicherheit der Dateiauswahl, Dokumentationskorrektheit, CLI-Vertrag, Linkziele und Portabilität geprüft. Performance und Typverhalten der unveränderten Implementierung sind durch diesen Dokumentationsschritt nicht verändert. Die vorhandenen Implementierungsreviews und der neue Gesamttest bleiben die begrenzten technischen Nachweise.
 
+## GitHub und frischer Checkout
+
+- Repository: [alexandergreif/aios-neuaufbau](https://github.com/alexandergreif/aios-neuaufbau). GitHub meldet `isPrivate: true`.
+- Quellcommit: `275599be0664b95fa07f0f8df92ab1af48c6d396`. Lokaler Commit, Remote-`main` und frischer HTTPS-Checkout stimmen überein.
+- Erstcommit umfasst 164 Dateien. Nachträgliche Änderungen dieses Abschlusses dokumentieren ausschließlich den Transfer und seine Nachweise.
+- Frischer Checkout unter dem von Git ausgeschlossenen lokalen Release-Arbeitsordner. Dessen Git-Status ist sauber.
+- Aus genau diesem Checkout den geführten Installer mit `--home`, eigenem `--claude-config-dir`, Dialogauswahl `claude` und den Standardpfaden unter dem Test-Home ausgeführt. Beide Vorschauen bestätigt, optionale Schlüsseleingabe übersprungen.
+- Ergebnis: Exitcode 0, `Dateieinbindung: vorhanden`, 21 gültige Skillverknüpfungen zur Test-Runtime, globale Test-Regeldatei vorhanden. Keine Codex-Ordner angelegt.
+- Fehlerfall: Wiederholung mit demselben Testprofil liefert Exitcode 1 und `Profilziel existiert bereits`. Die gespeicherte Konfiguration bleibt bytegleich.
+- Der Ablauf lief unter derselben Netzwerk- und Dateisperre wie die Tests. Eigene temporäre Installationsdateien wurden nach der Probe entfernt. Keine nativen Clients gestartet.
+
 ## Offen
 
-Push, Privatsichtbarkeit und frischer GitHub-Checkout werden nach dem Commit überprüft und hier nachgetragen. Die echte Betriebsabnahme, Anmeldung, Modellantworten und Dienstanbindungen auf Mac 2 stehen weiterhin aus. Hier wurden keine nativen Clients gestartet und keine aktiven Installationen verändert.
+Die echte Betriebsabnahme, Anmeldung, Modellantworten und Dienstanbindungen auf Mac 2 stehen weiterhin aus. Hier wurden keine aktiven Installationen verändert. Die Dateiprobe aus dem GitHub-Checkout ersetzt diese Abnahme nicht.

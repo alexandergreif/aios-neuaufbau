@@ -8,7 +8,7 @@ Privates portables AIOS für Claude Code und Codex mit allen bestätigten Fähig
 
 ## Aktueller Stand
 
-- Veröffentlichung am 21.10.2026 ausdrücklich beauftragt. Nutzer hat `alexandergreif/aios-neuaufbau` als neues privates Repository gewählt. Kurzanleitung für den isolierten Claude-Test ergänzt. 145 Tests erneut unter OS-Sperre erfolgreich, staged Geheimnisscan ohne Treffer. Upload und frischer Checkout werden geprüft.
+- Veröffentlichung am 21.10.2026 abgeschlossen: [alexandergreif/aios-neuaufbau](https://github.com/alexandergreif/aios-neuaufbau), Privatsichtbarkeit bestätigt. Quellcommit `275599b` hochgeladen und frisch von GitHub geklont. 145 Tests erneut unter OS-Sperre erfolgreich, staged Geheimnisscan ohne Treffer. Isolierte Claude-Dateiinstallation aus dem Checkout: 21 Skilllinks, Status vorhanden. Wiederholung stoppt erwartungsgemäß am vorhandenen Profil. [Kurzanleitung](../docs/installation-kurz.md), [Transfernachweis](../pruefungen/github-transfer.md). Echte Mac- und Modellabnahme bleibt offen.
 
 - Architekturvisualisierung fertig: vier Excalidraw-Ansichten für System, heutige und vorgeschlagene Quellstruktur, Installation und Test auf dem zweiten Mac. Gesamtdatei, PNGs und umschaltbare Vorschau vorhanden. Alle 21 Skillquellen dargestellt, JSON und Links geprüft, Einzelansichten gerendert und visuell geprüft. [Ergebnis und Quellen](../docs/architektur-bilder/README.md). Keine Strukturmigration oder GitHub-Veröffentlichung. Ziel-Repository und echte Mac-Abnahme bleiben offen.
 
@@ -26,7 +26,9 @@ Privates portables AIOS für Claude Code und Codex mit allen bestätigten Fähig
 
 ## Nächster Schritt
 
-Zunächst die vorgeschlagene GitHub-Struktur mit sichtbaren Bereichen `allgemein/`, `claude-code/` und `codex/` konkret zuordnen. Noch keine Strukturänderung oder Verschiebung. Entscheidung 119 zur manuellen Regelprüfung ist festgehalten. Die Einrichtungsanleitung und der vorgeschlagene verwaltete AIOS-Abschnitt benötigen später ihre gesonderte Umsetzung.
+Auf dem zweiten Mac eine neue Claude-Code-Sitzung für die gemeinsame Abnahme beginnen. Mit der Kurzanleitung zunächst nur Claude im eigenen Test-Home einrichten. Den normalen Benutzerbetrieb erst nach erfolgreicher Testabnahme vorbereiten. Der vorgeschlagene verwaltete AIOS-Abschnitt für bereits vorhandene Regeldateien ist noch nicht umgesetzt.
+
+Den späteren Umbau mit sichtbaren Bereichen `allgemein/`, `claude-code/` und `codex/` separat zuordnen und prüfen. Die Veröffentlichung nutzt den vorhandenen Quellaufbau. Entscheidung 119 zur manuellen Regelprüfung bleibt bestehen.
 
 Gemeinsam auf dem zweiten Mac anhand der vorbereiteten Anleitung Paketstand übertragen, Pfade bestätigen und Installation, Update, Deinstallation sowie angemeldete Modellfälle prüfen. Update und Deinstallation zunächst nur im eigenen Test-Home. Entscheidung 118: echte Betriebs- und Modelltests nur dort. Weitere ausgewählte Fähigkeiten und technische Abhängigkeiten fehlen noch, ebenso Dienstanbindungen und die visuelle Rendererabnahme. Keine aktive Installation auf dem ersten Mac umstellen.
 
