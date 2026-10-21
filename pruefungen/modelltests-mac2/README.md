@@ -79,6 +79,10 @@ Regelkern ergänzt: „Gib die zuletzt geprüfte Fassung unverändert aus. Wills
 - Codex: Prüfer gestartet und abgewartet, keine Befunde. Einhaltung nicht prüfbar, da Prüfaufträge verschlüsselt sind.
 - Einschätzung des Prüfers: Durch weiteren Regeltext kaum durchsetzbar. Empfohlen werden Inhaltstreue statt Wortgleichheit als Kriterium, ein vorab festgelegter Prüfvermerk und optional eine mechanische Kontrolle per Hook.
 
+## Paket 0.1.5-dev
+
+Nach Runde 5 auf Inhaltstreue statt Wortgleichheit umgestellt: Der Entwurf enthält schon den Hinweis auf die Prüfung, die geprüfte Fassung wird inhaltlich unverändert ausgegeben, Änderungen an Aussagen, Zahlen, Zuständigkeiten oder Belegstand werden erneut geprüft. Bekannte Grenze: Wortgleichheit ist nicht garantiert und bei Codex wegen verschlüsselter Prüfaufträge nicht prüfbar. Diese Fassung ist noch nicht mit Modellfällen erprobt.
+
 ## Offen
 
 - Umformulierungen nach der letzten Prüfung. Vorschlag: Die zuletzt geprüfte Fassung wird unverändert ausgegeben. Diagnose noch nicht bestätigt

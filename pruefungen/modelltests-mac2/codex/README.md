@@ -47,4 +47,4 @@ Gering:
 
 - Gemeinsame Regel für beide Clients: Die zuletzt geprüfte Fassung wird unverändert ausgegeben (Vorschlag aus Claude Runde 4)
 - Interaktive Gegenprobe des Installer-Dialogs
-- Update und Deinstallation für Codex nur synthetisch getestet. Die reale Probe lief mit Claude, der Codex-Pfad (`.agents/skills`, `AGENTS.md`) ist dabei nicht abgedeckt.
+- Update und Deinstallation für Codex: inzwischen real geprüft, siehe [Codex-Betrieb](../../betrieb-mac2/codex/README.md)

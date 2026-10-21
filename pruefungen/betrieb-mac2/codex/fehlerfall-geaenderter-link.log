@@ -1,0 +1,7 @@
+## Fehlerfall: Skilllink tagesstart auf fremdes Ziel umgebogen, Deinstallationsvorschau
+Paketoperation angehalten: Verknüpfung verändert: ~/aios-abnahme-codex-2/.agents/skills/tagesstart. Keine automatische Wiederholung oder Wiederherstellung.
+exit=1
+## Nach Wiederherstellung
+Dateieinbindung: vorhanden. Fachfunktion, Modelle und Dienste ungeprüft.
+codex: vorhanden, 21 Skillverknüpfungen, Integrität geprüft, Modell und Dienste ungeprüft
+exit=0

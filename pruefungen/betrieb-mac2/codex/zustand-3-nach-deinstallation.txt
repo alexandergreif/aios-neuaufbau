@@ -1,0 +1,14 @@
+## Marker und geschützte Dateien (SHA256)
+e8df36d7e8c26303  .agents/skills/fremder-testskill/SKILL.md
+d7ce796b9e24cc79  .codex/fremde-config.toml
+f0884da18925f43a  aios-profile/marker.txt
+e274fd1a9f4ca4bb  aios-output/marker.txt
+9ccec232dd08f3c7  aios-runtime/fremd-marker.txt
+d5668d16ab88eb4b  aios-profile/profil.md
+08878d8c2f262106  aios-profile/pfade.json
+4e1985d843cb8b5a  aios-profile/projekte.md
+ac34fc3706a78658  aios-profile/.env
+9d301ca7f9b2c07a  aios-profile/wissen/INDEX.md
+## Skillverknüpfungen in .agents/skills: 0
+## Regeldatei .codex/AGENTS.md: fehlt
+## Runtime-Dateien: 1, Version: keine
