@@ -1,0 +1,11 @@
+# Geführter Einstieg
+
+`sh install.sh` führt die vorhandene Profileinrichtung und den Erstinstaller nacheinander aus. Die Profileinrichtung gibt den bestätigten Pfad zu `pfade.json` direkt an den Einstieg zurück. Der Schlüssel bleibt in der verdeckten Eingabe und wird weder als Argument noch in der Konsolenausgabe weitergegeben. Die beiden Vorschauen haben getrennte Bestätigungen. Der Installationsplan prüft vor der zweiten Bestätigung vorhandene Ziele, Überschneidungen und Clientordner. Konflikte stoppen die Installation.
+
+`sh install.sh --config /pfad/profil/pfade.json` bleibt eine reine Installationsvorschau. `--apply` fordert dort nach der Vorschau `ja`. Ohne `--config` beginnt der geführte Dialog. `--home`, `--codex-home` und `--claude-config-dir` werden an Installation und Statuscheck weitergereicht. Bricht die zweite Stufe ab, bleibt das gespeicherte Profil bestehen. Der angezeigte Fortsetzungsaufruf enthält alle gesetzten Orte in Shell-Zitierung.
+
+Nach einer erfolgreichen Installation prüft der bestehende Statuscheck Dateien, Hashes und Skillverknüpfungen rein lesend. Ein grüner Status belegt weder Modellantworten noch Anmeldung, Dienste oder fachliche Funktion. Fehlende `claude`- oder `codex`-Programme werden nur über `shutil.which` festgestellt und gemeldet. Es erfolgen keine Programminstallation, Anmeldung, Anbieteranfrage oder Netzverbindung.
+
+Die Tests `tests/test_setup.py`, `tests/test_einrichten.py` und `tests/test_installieren.py` verwenden synthetische Benutzerordner. Der Shell-Test deckt den vollständigen Ablauf, beide Abbrüche, einen Installationskonflikt, fehlende Clientprogramme und die Vorschau mit `--config` ab. Er liest und verändert weder aktive Profile noch globale Clientordner. Bestehende Installergrenzen gelten weiter: Es gibt keine automatische Wiederherstellung nach Teilfehlern und keinen Nachweis der Clientfunktion.
+
+Die unabhängige Prüfung hat außerdem einen echten Abbruch per Strg+C an der zweiten Bestätigung und die anschließende Ausführung des angezeigten Fortsetzungsbefehls nachgewiesen. Dabei bleiben individuell gewählte Clientorte erhalten. Kein offener Befund im geprüften Umfang. [Prüfbericht](../pruefungen/setup-review.md). Die gezielte Suite aus Setup, Profileinrichtung und Installer umfasst 29 bestandene Tests.

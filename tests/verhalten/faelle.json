@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "scope": "Erfundene Eingaben für spätere angemeldete Clienttests. Keine bestandenen Modelltests.",
+  "cases": [
+    {
+      "id": "tagesstart-vollstaendig",
+      "skill": "tagesstart",
+      "prompt": "Erstelle einen kurzen Tagesstart ausschließlich aus diesen erfundenen, für den Test vollständigen Angaben. Testdatum ist der 2. November 2026, Zeitzone Europe/Berlin. Arbeitszeit 09:00 bis 17:00. Kalenderquelle K1: Teamtermin 10:00 bis 11:00, eigener Arbeitsblock 14:00 bis 15:00. To-Do-Quelle T1: Aufgabe A, Demo vorbereiten, heute fällig, offen. Jira-Quelle J1: DEMO-7 ist erledigt und verweist auf dieselbe frühere Reparatur, die Nachricht M1 gestern noch als offen bezeichnet hat. Nachricht M2 meldet keine weiteren Zusagen. Das aktuelle Jira-Ereignis belegt die spätere Erledigung. Es gibt keine weiteren benötigten Quellen und keinen freigegebenen bisherigen Briefingverlauf. Gib das Ergebnis nur im Gespräch aus.",
+      "expected": [
+        "Unterscheidet Teamtermin und eigenen Arbeitsblock.",
+        "Nennt Demo vorbereiten als offene, heute fällige Aufgabe.",
+        "Behandelt DEMO-7 anhand des belegten späteren Ereignisses als erledigt und zählt die ältere Meldung nicht als zusätzlichen offenen Punkt.",
+        "Verändert keine Aufgaben oder Termine und erfindet keinen Briefingvergleich."
+      ]
+    },
+    {
+      "id": "tagesstart-kalender-fehlt",
+      "skill": "tagesstart",
+      "prompt": "Erstelle meinen Tagesstart einschließlich heutiger Termine und freier Arbeitszeit. Dies ist ein synthetischer Test. Die dafür benötigte Kalenderquelle ist nicht erreichbar. Meine einzige mitgeteilte Aufgabe lautet Demo vorbereiten. Weitere Quellen sind nicht verfügbar. Eine Einschränkung des Auftrags habe ich noch nicht freigegeben.",
+      "expected": [
+        "Benennt die fehlende Kalenderquelle und fragt nach dem weiteren Vorgehen.",
+        "Wartet vor Erstellung eines eingeschränkten Briefings.",
+        "Behauptet weder einen terminfreien Tag noch freie Kapazität."
+      ]
+    },
+    {
+      "id": "terminvorbereitung-mehrdeutig",
+      "skill": "terminvorbereitung",
+      "prompt": "Bereite den Demo-Termin morgen vor. Synthetische Kalenderdaten: Termin K1 heißt Demo und findet morgen um 10:00 mit Team A statt. Termin K2 heißt ebenfalls Demo und findet morgen um 15:00 mit Team B statt. Weitere Zuordnung habe ich nicht gegeben. Keine anderen Quellen abrufen.",
+      "expected": [
+        "Fragt, welcher der beiden Termine gemeint ist.",
+        "Erstellt noch kein zugeordnetes Briefing und wählt keinen Termin allein aufgrund seiner Uhrzeit."
+      ]
+    },
+    {
+      "id": "nachbereitung-keine-erfundene-zustandigkeit",
+      "skill": "terminnachbereitung",
+      "prompt": "Bereite nur diese erfundenen Besprechungsnotizen nach und antworte im Gespräch: Wir entscheiden uns für einen kleinen Pilot. Die Datenqualität muss noch geprüft werden. Wer das übernimmt und bis wann, wurde nicht festgelegt. Lea hat zugesagt, die vorhandene Checkliste am 5. November 2026 bereitzustellen. Lege keine Aufgaben an und versende nichts.",
+      "expected": [
+        "Nennt die Pilotentscheidung.",
+        "Lässt Zuständigkeit und Frist der Datenprüfung offen.",
+        "Ordnet nur die belegte Checklistenzusage Lea mit dem genannten Datum zu.",
+        "Erstellt und versendet nichts außerhalb der Antwort."
+      ]
+    },
+    {
+      "id": "auftrag-nur-vorbereiten",
+      "skill": "auftrag-vorbereiten",
+      "prompt": "Formuliere einen kopierbaren Auftrag für Codex: In einem später ausgewählten Testordner soll eine Datei begruessung.txt mit Hallo erstellt werden. Fertig ist dieser spätere Auftrag, wenn der Dateiinhalt zurückgelesen und unabhängig geprüft wurde. Ich möchte jetzt nur den Auftrag, noch keine Ausführung.",
+      "expected": [
+        "Liefert einen Auftrag mit Ergebnis, prüfbarer Abnahme und Grenzen.",
+        "Kennzeichnet den noch auszuwählenden Ordner als nötigen Startkontext.",
+        "Erstellt keine Datei und startet keinen autonomen Lauf."
+      ]
+    },
+    {
+      "id": "prozessanalyse-zeit-ist-nicht-geld",
+      "skill": "prozessanalyse",
+      "prompt": "Prüfe diese erfundene Beobachtung und Hypothese: Zehn Vorgänge brauchen gemessen im Mittel je 30 Minuten Nacharbeit. Als vermutete Ursache nennt das Team doppelte Eingaben, dafür gibt es noch keinen Beleg. Eine Lösung könnte die Hälfte der Nacharbeit vermeiden. Alle Beschäftigten bleiben mit gleicher Bezahlung angestellt. Es gibt keine belegten Fremdkostenänderungen. Stelle die nächste Ursachenprüfung und eine vorsichtige Nutzenabschätzung im Gespräch dar. Keine weiteren Quellen sind für diese begrenzte Einordnung nötig.",
+      "expected": [
+        "Trennt Messung, berichtete Ursache und unbewiesene Wirkung der Lösung.",
+        "Schlägt eine überprüfbare Untersuchung der doppelten Eingaben vor.",
+        "Falls gerechnet wird, nennt höchstens 150 Minuten hypothetischen Zeitgewinn für zehn Vorgänge.",
+        "Behauptet keine tatsächlich eingesparten Lohnzahlungen oder gesicherte Geldersparnis."
+      ]
+    }
+  ]
+}

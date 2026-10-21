@@ -1,0 +1,24 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>
+*{box-sizing:border-box}body{margin:0;font-family:var(--font-sans,system-ui);color:var(--foreground,#1e293b)}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+button{font:inherit;font-size:14px;padding:9px 12px;border:1px solid var(--border,#cbd5e1);border-radius:8px;background:var(--card,#fff);color:inherit;cursor:pointer}
+button[aria-selected=true]{background:var(--primary,#1e40af);color:var(--primary-foreground,#fff)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--ring,#3b82f6);outline-offset:3px}
+p{font-size:14px;line-height:1.5;color:var(--muted-foreground,#64748b);margin:0 0 12px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;font-size:13px}
+.viewport{overflow:auto;max-height:760px;border:1px solid var(--border,#cbd5e1);border-radius:10px;background:white;padding:16px}
+figure{margin:0}figure[hidden]{display:none}img{display:block;width:100%;height:auto;max-width:100%}
+.detail img{width:1620px;max-width:none}
+footer{font-size:12px;line-height:1.5;color:var(--muted-foreground,#64748b);margin-top:12px}
+</style></head><body>
+<nav role="tablist" aria-label="AIOS-Ansichten"><button type="button" role="tab" id="tab0" aria-controls="panel0" aria-selected="false" onclick="selectTab(0)">1. System</button><button type="button" role="tab" id="tab1" aria-controls="panel1" aria-selected="true" onclick="selectTab(1)">2. Ordnerstruktur</button><button type="button" role="tab" id="tab2" aria-controls="panel2" aria-selected="false" onclick="selectTab(2)">3. Installiert</button><button type="button" role="tab" id="tab3" aria-controls="panel3" aria-selected="false" onclick="selectTab(3)">4. Zweiter Mac</button></nav>
+<p id="note">Links der ursprüngliche Bestand, mittig der heutige Neuaufbau, rechts der noch nicht umgesetzte Strukturvorschlag.</p>
+<div class="toolbar"><span>Stand: 21.10.2026</span><label><input type="checkbox" id="detail" onchange="document.querySelector('.viewport').classList.toggle('detail',this.checked)"> Details in Originalgröße</label></div>
+<div class="viewport" tabindex="0" aria-label="Diagramm, bei Originalgröße horizontal scrollbar"><figure role="tabpanel" id="panel0" aria-labelledby="tab0" hidden><img src="01-system.png" alt="System: 21 Skillquellen sind vorhanden. Dienstanbindungen und echte Funktionsabnahmen stehen noch aus."></figure><figure role="tabpanel" id="panel1" aria-labelledby="tab1"><img src="02-ordner.png" alt="Ordnerstruktur: Links der ursprüngliche Bestand, mittig der heutige Neuaufbau, rechts der noch nicht umgesetzte Strukturvorschlag."></figure><figure role="tabpanel" id="panel2" aria-labelledby="tab2" hidden><img src="03-installation.png" alt="Installiert: Eine Runtime versorgt beide Clients. Persönliches Profil, Ergebnisse und Projekte haben getrennte Orte."></figure><figure role="tabpanel" id="panel3" aria-labelledby="tab3" hidden><img src="04-zweiter-mac.png" alt="Zweiter Mac: Ja, der zweite Mac ist für die echte Abnahme vorgesehen. Über GitHub übertragen wir einen geprüften Quellstand."></figure></div>
+<footer>Blau: Struktur und gemeinsame Quellen · Violett: Clients · Orange: Vorschlag oder offene Abnahme.<br>GitHub-Veröffentlichung und Test auf Mac 2 wurden noch nicht ausgeführt.</footer>
+<script>
+const notes=["21 Skillquellen sind vorhanden. Dienstanbindungen und echte Funktionsabnahmen stehen noch aus.","Links der ursprüngliche Bestand, mittig der heutige Neuaufbau, rechts der noch nicht umgesetzte Strukturvorschlag.","Eine Runtime versorgt beide Clients. Persönliches Profil, Ergebnisse und Projekte haben getrennte Orte.","Ja, der zweite Mac ist für die echte Abnahme vorgesehen. Über GitHub übertragen wir einen geprüften Quellstand."];
+function selectTab(i){document.querySelectorAll('[role=tab]').forEach((b,j)=>b.setAttribute('aria-selected',String(i===j)));document.querySelectorAll('figure').forEach((p,j)=>p.hidden=i!==j);document.getElementById('note').textContent=notes[i];document.querySelector('.viewport').scrollTo(0,0)}
+document.querySelectorAll('[role=tab]').forEach((b,i)=>b.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();let j=(i+(e.key==='ArrowRight'?1:3))%4;selectTab(j);document.getElementById('tab'+j).focus()}}));
+window.addEventListener('load',()=>console.log('AIOS preview:',document.images.length,'images, all loaded:',Array.from(document.images).every(i=>i.complete&&i.naturalWidth>0)));
+</script></body></html>

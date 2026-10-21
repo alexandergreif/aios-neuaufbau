@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "confirmed": false,
+  "clients": [],
+  "paths": {
+    "source": null,
+    "runtime": "~/aios-runtime",
+    "profile": "~/aios-profile",
+    "output": "~/aios-output",
+    "coding_roots": [],
+    "customer_roots": []
+  }
+}

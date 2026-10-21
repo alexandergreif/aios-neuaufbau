@@ -1,0 +1,21 @@
+# Private Daten gehören außerhalb des Quellpakets. Diese Muster sind nur Zusatzschutz.
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+.aios-test/
+.aios-test-*/
+.aios-release/
+.venv/
+node_modules/
+
+# Lokale Installationen und Nutzerdaten niemals als Paketquellen einchecken.
+/aios-runtime/
+/aios-profile/
+/aios-output/
+/profil/
+/zustand/
+/archives/
