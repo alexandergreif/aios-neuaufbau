@@ -63,8 +63,16 @@ Regelkern ergänzt: Nachprüfung als neuer Prüfauftrag mit vollständiger über
 
 Daraufhin für 0.1.3-dev geschärft: Die Nachprüfung übernimmt ein neu gestarteter Prüfagent statt der Fortsetzung eines beendeten. Jeder Prüfer erhält die nötigen Quellen im Auftrag. Änderungen nach der letzten Prüfung werden konkret genannt. Für die Auswertung gilt immer das letzte `result`.
 
+## Runde 4 mit Paket 0.1.3-dev
+
+Dieselben drei Fälle: [runde4](runde4/). Unabhängig bewertet, alle zwölf Erwartungen erfüllt, keine Blocker.
+
+- Behoben: Jeder Lauf hat genau ein `result`. Nachprüfungen laufen über neu gestartete, wartende Prüfagenten mit vollständiger Fassung. Keine Fortsetzung per Nachricht, keine Berechtigungsabweisungen.
+- Restbefund mittel: In allen drei Fällen wurde nach der letzten Prüfung noch umformuliert. Tagesstart und Nachbereitung melden trotzdem „nichts beanstandet“, die Prozessanalyse nennt die Änderungen nur teilweise.
+- Gering: Die Prüfer erhalten die Skillregeln als selbst verfasste Zusammenfassung statt der Skilldatei.
+
 ## Offen
 
-- Wirkung der Präzisierung in 0.1.3-dev mit Runde 4 belegen
+- Umformulierungen nach der letzten Prüfung. Vorschlag: Die zuletzt geprüfte Fassung wird unverändert ausgegeben. Diagnose noch nicht bestätigt
 - Dieselben Fälle in Codex
 - Interaktive Gegenprobe im Terminal, da `-p` nicht nachfragen kann
