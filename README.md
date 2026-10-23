@@ -7,6 +7,10 @@ A personal assistant setup for Claude Code and Codex: shared core rules, 21 skil
 | `en/` | English | `<runtime>/general/` |
 | `de/` | German, the authoritative source | `<runtime>/allgemein/` |
 
+![AIOS overview: source, setup, installed files, how a task runs, the 21 skills, operation and test status](docs/praesentation/aios-overview.png)
+
+The editable diagram is [docs/praesentation/aios-overview.excalidraw](docs/praesentation/aios-overview.excalidraw), the German version is [aios-uebersicht.excalidraw](docs/praesentation/aios-uebersicht.excalidraw).
+
 The scripts in `scripts/` are shared and speak English. Personal data and credentials never go into this repository. Installed files, synthetic tests and loader checks do not prove that services, models or skills work in practice.
 
 ## Requirements
@@ -61,8 +65,15 @@ An update keeps the language of the installation. Switching languages means unin
 python3 -B -m unittest discover -s tests
 ```
 
+### Test Status
+
+Evidenced: 179 automated tests, setup, update and uninstall on a real Mac with 0.1.x, the English 0.2.0-dev in an isolated test home, the update of a real installation to 0.2.0-dev, native loading of the core rules and all 21 skills in Claude Code and Codex, and the content of seven English model cases in Codex.
+
+Open: acceptance of the independent review agent in Codex, English model cases in Claude Code, connected services such as calendar, Microsoft To Do and Jira, and a visual acceptance of the presentation renderer. For a full test of the English version, follow the [English test guide](docs/english-full-test.md).
+
 ## Further Reading
 
+- [English test guide](docs/english-full-test.md)
 - [Name tables and glossary for the English version](docs/englische-fassung.md) (German)
 - [Decision log and history](README.de.md) (German)
 - [Current project state](.aios/PLAN.md) (German)

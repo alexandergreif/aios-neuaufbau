@@ -1,6 +1,6 @@
 # AIOS als Excalidraw
 
-Stand: 21.10.2026. Die Übersicht beschreibt den lokalen Neuaufbau und trennt vorhandene Quellen, vorgeschlagene Struktur und offene Abnahme.
+Stand: 21.10.2026. Die aktuelle Übersicht für 0.2.0-dev mit `de/` und `en/` steht unter [docs/praesentation](../praesentation/README.md). Die Zeichnungen hier beschreiben den lokalen Neuaufbau und trennt vorhandene Quellen, vorgeschlagene Struktur und offene Abnahme.
 
 Die Zeichnungen halten den Stand vor dem Veröffentlichungsauftrag fest. Anschließend wurde das private GitHub-Ziel `alexandergreif/aios-neuaufbau` bestätigt. Für die Übertragung gilt jetzt die [kurze Installationsanleitung](../installation-kurz.md). Die gezeichnete neue Quellstruktur bleibt ein Vorschlag.
 

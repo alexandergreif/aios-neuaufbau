@@ -4,7 +4,8 @@ Ein gemeinsames persönliches Assistenzsystem für Claude Code und Codex. Enthal
 
 **Start auf Mac 2: [Kurze Installationsanleitung](docs/installation-kurz.md).** Für den ersten Durchlauf nur Claude Code wählen und die isolierte Testinstallation nutzen.
 
-- [Aufbau als Excalidraw und Bild](docs/architektur-bilder/README.md)
+- [Übersicht als Excalidraw und Bild](docs/praesentation/README.md), Stand 0.2.0-dev auf Deutsch und Englisch
+- [Frühere Architekturbilder](docs/architektur-bilder/README.md), Stand 21.10.2026
 - [Vollständige Abnahme](docs/abnahme-zweiter-mac.md)
 - [Aktueller Arbeitsstand](.aios/PLAN.md)
 
