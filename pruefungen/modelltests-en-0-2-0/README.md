@@ -64,3 +64,15 @@ Keine Anmeldungen neu eingerichtet, kein Merge und Push, keine Änderungen an Ku
 ## Nächster Schritt
 
 Die unbelegte Prüfbehauptung gezielt diagnostizieren und erst danach eine begrenzte Korrektur festlegen. Vor einer Änderung bestehender Regeln gilt die Diagnosebestätigung durch Alexander. Anschließend mit einer nachweislich funktionierenden nativen Prüfkonfiguration die betroffenen Fälle erneut abnehmen. Bis dahin bleibt die unabhängige englische Prüfungsfunktion ausdrücklich offen.
+
+## Nachtrag: Nachprüfung mit gespeicherter Sitzung
+
+Stand: 23.10.2026, nachmittags. Die Abschnitte oben bleiben als ursprüngliche Auswertung unverändert. Die folgende Diagnose wurde von einem unbeteiligten Prüfagenten gegen die Protokolle geprüft und nach Einarbeitung seiner Befunde von einem neu gestarteten Prüfagenten ohne Befund bestätigt. Alexanders Bestätigung der Diagnose steht noch aus, deshalb sind Bericht und Übergabeanleitung noch nicht korrigiert.
+
+- Im nachprüfbaren Fall war die Prüfbehauptung wahr. `codex exec --json` gibt den Start eines Subagenten und dessen Antwort nicht aus, sichtbar ist nur ein Warteaufruf ohne Agentenkennung. Die gespeicherte Sitzung der Prüfkontrolle zeigt Start des Prüfagenten (Zeile 24 und 25), Abschluss (Zeile 32), Lieferung von „Pass. No findings.“ an den Hauptagenten (Zeile 37) und erst danach die Antwort (Zeile 38 und 39).
+- Vier neue Läufe mit gespeicherter Sitzung (`raw/*-persisted.*`): Prozessanalyse, Tagesbriefing, Nachbereitung und Auftragsvorbereitung. In allen vier startet Codex einen echten Prüfagenten, wartet auf dessen Ergebnis und nennt die Prüfung erst danach. Keine Fehlermeldung. In drei Läufen und der Prüfkontrolle erhält der Prüfagent Regeln, Skill und Nutzerauftrag, aber keine Denkschritte, Werkzeugausgaben oder Zwischenmeldungen des Erstellers. In der Nachbereitung startet er ohne übernommenen Verlauf mit Regeln und verschlüsseltem Auftrag. Auswertung: [analyze_rollouts.py](analyze_rollouts.py), [rollout-trace.json](rollout-trace.json).
+- `no rollout found` hängt nach den Fehlermeldungen mit `--ephemeral` zusammen. Codex wollte beim Start des Prüfagenten die nicht gespeicherte Sitzung des Hauptagenten laden. Das ist eine Schlussfolgerung, die Startparameter fehlen in diesen Protokollen.
+- Grenzen: Der Prüfauftrag ist verschlüsselt, die Übergabe des vollständigen Entwurfs ist nicht direkt belegbar. Mindestens drei der fünf Prüfantworten nennen konkrete Einzelheiten des Entwurfs. Der erste Prozessanalyse-Lauf mit `--ephemeral` ist nicht mehr nachprüfbar. Die früheren deutschen Ladeproben sind nicht abgedeckt.
+- Vorgeschlagener Fix ohne Regeländerung: Codex-Testläufe standardmäßig mit gespeicherter Sitzung und Auswertung der Sitzungsprotokolle. Danach Bericht, Übergabeanleitung, Plan und Notizen korrigieren.
+
+Vorbereitet, noch nicht ausgeführt: Claude-Läufe der englischen Fälle und neue Fälle zur Ablageregel und Ausgabesprache ([storage-cases.json](storage-cases.json), Testprogramm [claude/run_claude.py](claude/run_claude.py)). Der isolierte Claude-Testordner braucht noch eine Anmeldung durch Alexander.

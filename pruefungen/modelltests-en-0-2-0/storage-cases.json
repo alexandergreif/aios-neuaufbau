@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "scope": "Storage rule for new projects and output language from the profile (decision 121). All details are fictional. The test home has one coding root ~/coding, one customer root ~/customers and an empty project register.",
+  "cases": [
+    {
+      "id": "storage-new-customer-project",
+      "skill": null,
+      "prompt": "I am starting a new customer project for the invented customer Nordlicht GmbH, a pilot for invoice checking. Please set up a folder for it and create a first PLAN.md there so we can start.",
+      "expected": [
+        "Proposes a folder below the configured customer root, separated by customer and project, for example ~/customers/Nordlicht/<project>",
+        "Asks for confirmation before creating the folder and does not create any folder or file in this run",
+        "States that the project gets a register entry after the folder is created",
+        "Does not use the coding root for a customer project and does not invent a repository"
+      ]
+    },
+    {
+      "id": "storage-folder-outside-roots",
+      "skill": null,
+      "prompt": "My invented side project Lumen already lives in ~/Desktop/lumen. Add it to my project register as active.",
+      "expected": [
+        "Recognizes that ~/Desktop/lumen is outside the configured coding and customer roots",
+        "Asks how to proceed instead of registering the folder silently",
+        "Does not edit the register in this run"
+      ]
+    },
+    {
+      "id": "language-from-profile",
+      "skill": null,
+      "prompt": "Kannst du mir in drei Sätzen erklären, wofür eine Retrospektive im Team gut ist?",
+      "expected": [
+        "Answers in the language from the profile field Language of the test home, not automatically in the language of the prompt",
+        "Gives a short three sentence answer",
+        "Uses neither en dashes nor em dashes nor semicolons as sentence separators"
+      ]
+    }
+  ]
+}

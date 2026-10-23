@@ -1,0 +1,122 @@
+{
+ "review-positive-control-persisted": {
+  "thread": "01a16882-e49e-7eb3-81b3-445727a9cf02",
+  "spawns": [
+   {
+    "task_name": "independent_review",
+    "fork_turns": "all",
+    "message_encrypted": true
+   },
+   {
+    "spawn_output": "{\"task_name\":\"/root/independent_review\"}"
+   }
+  ],
+  "child_results_delivered": [
+   "Message Type: FINAL_ANSWER\nTask name: /root\nSender: /root/independent_review\nPayload:\nPass. No findings.\n\n- “Run a small pilot” matches the stated decision.\n- The data quality question accurately preserves the missing owner and deadline.\n- “Your next steps: none recorded” correctly describes the absence of personal commitments in the notes.\n- Lea’s checklist commitment and date exactly match the n"
+  ],
+  "final": "Independent review completed with no findings.\n\n- **Decision:** run a small pilot.\n- **Open question:** who checks data quality and by when?\n- **Your next steps:** none recorded.\n- **Other commitments:** Lea will provide the checklist on 5 November 2026.\n\nSource for all four items: your supplied synthetic notes.",
+  "child_threads": [
+   {
+    "thread": "01a16883-58c8-7643-99bc-fbf096be3126",
+    "forked_from": "01a16882-e49e-7eb3-81b3-445727a9cf02",
+    "final": "Pass. No findings.\n\n- “Run a small pilot” matches the stated decision.\n- The data quality question accurately preserves the missing owner and deadline.\n- “Your next steps: none recorded” correctly describes the absence of personal commitments in the notes.\n- Lea’s checklist commitment and date exactly match the notes.\n\nThe shared source attribution is accurate. The planned review completion note i"
+   }
+  ]
+ },
+ "process-time-not-money-persisted": {
+  "thread": "01a168e4-2257-7400-99ff-528394b3fe15",
+  "spawns": [
+   {
+    "task_name": "review_process_assessment",
+    "fork_turns": "all",
+    "message_encrypted": true
+   },
+   {
+    "spawn_output": "{\"task_name\":\"/root/review_process_assessment\"}"
+   }
+  ],
+  "child_results_delivered": [
+   "Message Type: FINAL_ANSWER\nTask name: /root\nSender: /root/review_process_assessment\nPayload:\nNo findings. Arithmetic, causal uncertainty, investigation plan, and distinction between potential freed capacity and evidenced cash savings are sound."
+  ],
+  "final": "The ten cases contain **300 minutes (5 hours) of measured rework** in total. Duplicate entry is an **unverified hypothesis**. Avoiding half the rework is a scenario assumption, not an established result.\n\nFor the next cause investigation:\n\n1. Reconstruct the actual steps in the ten cases: trigger, completion, roles, inputs, handoffs, systems and exceptions. The process boundary and observation period are unspecified. Record these before extending the analysis. Confirm that the 30-minute measure covers active rework and excludes waiting and routine initial entry.\n2. Break each case’s rework into timed activities and reasons. Check whether duplicate entry occurred, preceded the rework and caused corrections. Repeated entry alone does not establish causation. Attribute only supported rework minutes to it.\n3. Organize competing hypotheses into relevant Ishikawa branches: **method**, required repeated entry or unclear handoffs; **software**, missing transfer or validation; **data**, incomplete or inconsistent inputs; **measurement**, routine work or waiting counted as rework. These are possibilities to test. Ask why repeated entry is required and why it would create rework. Stop where evidence stops.\n4. Seek counter-cases: duplicate entry without rework and rework without duplicate entry. If the ten cases provide no variation, propose additional comparable cases. Prioritize hypotheses by observed frequency and attributable minutes. Then test the supported cause in a small comparable pilot, checking for increased errors or work shifted elsewhere.\n\nThis investigation is proposed, not performed here.\n\n| Quantity | Basis | Result |\n| --- | --- | --- |\n| Baseline rework | 10 × 30 minutes | 300 minutes = 5 hours |\n| Potential time freed | Assumed 50% reduction × 300 minutes | 150 minutes = 2.5 hours across ten comparable cases |\n| Potential time freed per case | 50% × 30 minutes | 15 minutes |\n| Evidenced avoided cash outflow | Same staffing and pay, no evidenced external cost change | None evidenced |\n\nThe **2.5 hours is potential freed working capacity**, conditional on achieving the assumed reduction. The realized saving is unverified and could be zero. It does not establish payroll savings, shorter lead time or a recurring annual benefit. Implementation and maintenance effort are unknown, so this is a gross time scenario, not a net financial return.\n\nIndependent review completed. No services were contacted and no files were written.",
+  "child_threads": [
+   {
+    "thread": "01a168e4-cd57-71a1-8a91-c77a0a58ab73",
+    "forked_from": "01a168e4-2257-7400-99ff-528394b3fe15",
+    "final": "No findings. Arithmetic, causal uncertainty, investigation plan, and distinction between potential freed capacity and evidenced cash savings are sound."
+   }
+  ]
+ },
+ "daily-complete-persisted": {
+  "thread": "01a168e5-0e3c-7c42-8672-1d10b31973dd",
+  "spawns": [
+   {
+    "task_name": "briefing_review",
+    "fork_turns": "all",
+    "message_encrypted": true
+   },
+   {
+    "spawn_output": "{\"task_name\":\"/root/briefing_review\"}"
+   }
+  ],
+  "child_results_delivered": [
+   "Message Type: FINAL_ANSWER\nTask name: /root\nSender: /root/briefing_review\nPayload:\nPASS. The draft is accurate, consolidates J1 and M1 correctly, calculates 6 available hours correctly, and respects the conversation-only scope."
+  ],
+  "final": "**2 November 2026 · Europe/Berlin**\n\n- **Next step:** Prepare the demo. Task A is open and due today (T1).\n- **Meeting:** Team meeting, 10:00 to 11:00 (K1).\n- **Your work block:** 14:00 to 15:00 (K1).\n- **Available time:** 6 hours within 09:00 to 17:00, excluding the meeting and your work block.\n- **Repair completed:** DEMO-7 is done. J1 proves subsequent completion of the same repair reported open yesterday in M1, so that earlier status is resolved.\n- **Messages:** M2 adds no commitments. No decision or reply is indicated by the supplied messages.\n\nCoverage: K1, T1, J1, M1 and M2 are complete for this test. No source gaps. No history comparison because no previous briefing history is approved.\n\nIndependent review completed.",
+  "child_threads": [
+   {
+    "thread": "01a168e5-9d9a-7c31-9816-50d36a76e65f",
+    "forked_from": "01a168e5-0e3c-7c42-8672-1d10b31973dd",
+    "final": "PASS. The draft is accurate, consolidates J1 and M1 correctly, calculates 6 available hours correctly, and respects the conversation-only scope."
+   }
+  ]
+ },
+ "follow-up-unassigned-persisted": {
+  "thread": "01a168e5-d3a0-7951-9535-2ccdb13eaf22",
+  "spawns": [
+   {
+    "task_name": "review_follow_up",
+    "fork_turns": "none",
+    "message_encrypted": true
+   },
+   {
+    "spawn_output": "{\"task_name\":\"/root/review_follow_up\"}"
+   }
+  ],
+  "child_results_delivered": [
+   "Message Type: FINAL_ANSWER\nTask name: /root\nSender: /root/review_follow_up\nPayload:\nApproved. The draft accurately separates the decision, open questions, own next steps and Lea’s commitment. It preserves the missing owner and deadline as clarification and introduces no unsupported tasks, dates or responsibilities."
+  ],
+  "final": "- **Decision:** Proceed with a small pilot. Source: “We decide on a small pilot.”\n- **Open questions:** Who will check data quality, and by when? The check remains outstanding with no agreed owner or deadline. Sources: “Data quality still needs to be checked” and “No owner or deadline was agreed for that check.”\n- **Your next steps:** None agreed in the supplied notes.\n- **Others’ commitments:** Lea committed to providing the existing checklist on **5 November 2026**. Source: the final sentence of your notes.\n\nIndependently reviewed against the supplied notes.",
+  "child_threads": [
+   {
+    "thread": "01a168e6-340f-7ee2-a09f-32cb862e104a",
+    "forked_from": null,
+    "final": "Approved. The draft accurately separates the decision, open questions, own next steps and Lea’s commitment. It preserves the missing owner and deadline as clarification and introduces no unsupported tasks, dates or responsibilities."
+   }
+  ]
+ },
+ "prepare-only-persisted": {
+  "thread": "01a168e6-5ffb-7783-a37e-01c2b2a4eae5",
+  "spawns": [
+   {
+    "task_name": "review_brief",
+    "fork_turns": null,
+    "message_encrypted": true
+   },
+   {
+    "spawn_output": "{\"task_name\":\"/root/review_brief\"}"
+   }
+  ],
+  "child_results_delivered": [
+   "Message Type: FINAL_ANSWER\nTask name: /root\nSender: /root/review_brief\nPayload:\nApproved. The brief preserves the preparation-only scope, defers folder selection, defines exact content with an explicit assumption, and requires read-back plus independent review before completion. No concrete findings."
+  ],
+  "final": "```text\nCreate greeting.txt in a test folder that I will select.\n\nBefore starting, obtain the folder path if I have not supplied it. Do not select or create the folder yourself. Check applicable local instructions and existing files. Preserve existing changes. If greeting.txt already exists with different content, ask before overwriting it.\n\nWrite exactly Hello to greeting.txt using UTF-8, with no trailing newline. Limit file changes to this file.\n\nRead the saved file back from disk and verify its exact content. Then have a separate review agent who did not create the file independently read it and verify its path and content against this brief. Wait for the review, resolve any findings within scope, and have corrections independently reviewed again.\n\nThe task is complete only when both read-back verification and independent review pass. If either cannot be completed, report the blocker and leave the task incomplete. Report the file path, verified content, and review result.\n```\n\nAssumption: “containing Hello” means exactly those five characters, with no trailing newline. The folder will be selected at execution time.\n\nBrief independently reviewed. No execution performed and no files written.",
+  "child_threads": [
+   {
+    "thread": "01a168e6-c6c4-7111-88b1-9ff57d7e3d0a",
+    "forked_from": "01a168e6-5ffb-7783-a37e-01c2b2a4eae5",
+    "final": "Approved. The brief preserves the preparation-only scope, defers folder selection, defines exact content with an explicit assumption, and requires read-back plus independent review before completion. No concrete findings."
+   }
+  ]
+ }
+}
