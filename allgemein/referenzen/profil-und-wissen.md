@@ -4,7 +4,7 @@ Diese Referenz wird bei Einrichtung, Profilpflege, Wissensaufnahme oder Profiltr
 
 ## Einrichtung
 
-1. Vorhandene bestätigte Angaben verwenden. Noch fehlende Angaben zu Name, Rolle, Sprache, Zeitzone, Arbeitszeiten, Arbeitsweise und Prioritäten gezielt klären. Nichts aus dem Benutzernamen oder anderen privaten Dateien ableiten.
+1. Vorhandene bestätigte Angaben verwenden. Noch fehlende Angaben zu Name, Rolle, Sprache, Zeitzone, Arbeitszeiten, Arbeitsweise und Prioritäten gezielt klären. Nichts aus dem Benutzernamen oder anderen privaten Dateien ableiten. Das Feld Sprache bestimmt die Ausgabesprache, bei mehreren Angaben die zuerst genannte. Bei mehreren Sprachen nach der bevorzugten fragen und sie zuerst eintragen.
 2. Vorschau der zu speichernden Angaben zeigen. Unbeantwortetes als offen kennzeichnen. Erst nach Bestätigung `profil.md` im gewählten Profilordner anlegen. Vorhandene Dateien nicht still überschreiben.
 3. Coding- und Kundenprojektwurzeln je Mac abfragen. Die Registrierung konkreter Projekte ist eine eigene Zuordnung, kein Auftrag, alle Unterordner zu durchsuchen. Im privaten `projekte.md` eindeutige Kürzel und bestätigte Ordner führen.
 4. `wissen/INDEX.md` und kurze Themennotizen nur bei tatsächlicher Wissensaufnahme nutzen. Technische Zustandsdaten unter `zustand/` halten. Diese privaten Unterordner werden weder aus dem Paket aktualisiert noch bei dessen Deinstallation entfernt.

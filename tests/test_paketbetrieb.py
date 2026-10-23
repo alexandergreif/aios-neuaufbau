@@ -2,6 +2,7 @@
 from contextlib import ExitStack, redirect_stdout, redirect_stderr
 import io
 import json
+from urllib.parse import quote
 import os
 from pathlib import Path
 import subprocess
@@ -105,7 +106,9 @@ class PackageOperationTests(unittest.TestCase):
             self.assertEqual(bestand.read_snapshot(self.state_dir / "bestand.json")[0], before_manifest)
             betrieb.execute(planned, self.config_path, self.home)
             self.assertEqual(einrichtungsstatus.inspect(self.config_path, self.home)["status"], "vorhanden")
-            self.assertTrue((self.home / "custom-codex/AGENTS.md").is_file())
+            updated_rule = (self.home / "custom-codex/AGENTS.md").read_text(encoding="utf-8")
+            self.assertIn("# Changed synthetic core", updated_rule)
+            self.assertIn(f"Profil: [profil.md](<{quote(str(self.profile / 'profil.md'), safe='/')}>)", updated_rule)
             self.assertTrue((self.home / ".agents/skills/beta").is_symlink())
             self.assertEqual(len(list((self.state_dir / "sicherungen").glob("*/*.md"))), 2)
             self.run_operation("uninstall")

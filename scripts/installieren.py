@@ -199,7 +199,8 @@ def rule_content(core, runtime, config_path):
         return "]" + local_link(target)
     text = re.sub(r"\]\(\.\./referenzen/([^\)]+)\)", replace_reference, text)
     header = (f"<!-- Generiert aus allgemein/regeln/kern.md. SHA256: {digest} -->\n\n"
-              f"Lokale Konfiguration: [pfade.json]{local_link(config_path)}\n\n")
+              f"Lokale Konfiguration: [pfade.json]{local_link(config_path)}\n\n"
+              f"Profil: [profil.md]{local_link(Path(config_path).parent / 'profil.md')}\n\n")
     return (header + text).encode("utf-8")
 
 

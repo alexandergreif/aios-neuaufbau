@@ -82,10 +82,12 @@ class FirstInstallationTests(unittest.TestCase):
             self.assertEqual(entry["sha256"], hashlib.sha256((runtime / entry["path"]).read_bytes()).hexdigest())
         expected_ref = quote(str(runtime / "allgemein/referenzen/externes-schreiben.md"), safe="/")
         expected_config = quote(str(self.config_path), safe="/")
+        expected_profile = quote(str(self.profile / "profil.md"), safe="/")
         for rule in (self.home / ".claude/CLAUDE.md", self.home / ".codex/AGENTS.md"):
             text = rule.read_text(encoding="utf-8")
             self.assertIn(expected_ref, text)
             self.assertIn(expected_config, text)
+            self.assertIn(f"Profil: [profil.md](<{expected_profile}>)", text)
             self.assertNotIn("(../referenzen/", text)
         skill_names = {p.name for p in (runtime / "allgemein/skills").iterdir() if (p / "SKILL.md").is_file()}
         for name in skill_names:

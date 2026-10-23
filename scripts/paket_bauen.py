@@ -18,7 +18,7 @@ from paketregeln import SCRIPT_NAMES, allowed_directory, allowed_file
 
 
 PACKAGE = Path(__file__).resolve().parent.parent
-VERSION = "0.1.6-dev"
+VERSION = "0.1.7-dev"
 
 
 class BuildError(Exception):
