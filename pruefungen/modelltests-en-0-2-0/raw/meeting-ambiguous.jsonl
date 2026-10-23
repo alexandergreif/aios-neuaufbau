@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"01a1687e-68ca-7e81-8716-d04768a439d8"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"I’m using the meeting-prep skill and the synthetic calendar data you provided.\n"}}
+{"type":"item.completed","item":{"id":"item_1","type":"agent_message","text":"Which Demo meeting should I prepare?\n\n- **K1:** Tomorrow at **10:00** with **Team A**\n- **K2:** Tomorrow at **15:00** with **Team B**"}}
+{"type":"turn.completed","usage":{"input_tokens":18795,"cached_input_tokens":12288,"cache_write_input_tokens":0,"output_tokens":225,"reasoning_output_tokens":155}}

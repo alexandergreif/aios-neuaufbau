@@ -1,0 +1,31 @@
+{
+  "source_commit": "4504e8f4954f77cbcaa8eec30e177f738433cdf6",
+  "archive_sha256": "e341b86c1137e594c7b57adf46ea53775e2d6af210a188362f7b3cf3b0f9d5a3",
+  "guide_sha256": "4cef78c9430a811a466ef3f25a77f7c4a54dddec5277bf608a933ff97bc473e5",
+  "archive_files": 306,
+  "install_exit": 0,
+  "repeat_exit": 1,
+  "private_test_profile_unchanged_after_repeat": true,
+  "status_exit": 0,
+  "status_report": {
+    "status": "present",
+    "language": "en",
+    "file_integration": "checked",
+    "functional_check": "unchecked",
+    "clients": [
+      {
+        "client": "codex",
+        "status": "present",
+        "skills": 21,
+        "integrity": "checked",
+        "models_services": "unchecked"
+      }
+    ],
+    "problems": []
+  },
+  "runtime_manifest_files": 73,
+  "runtime_integrity": true,
+  "skill_links": 21,
+  "provider_calls": 0,
+  "published": false
+}

@@ -1,0 +1,33 @@
+{
+  "id": "meeting-ambiguous",
+  "started_at": "2026-10-23T11:21:17.203597+00:00",
+  "finished_at": "2026-10-23T11:21:27.162938+00:00",
+  "exit_code": 0,
+  "timed_out": false,
+  "command": [
+    "/Users/alexandergreif/.npm-global/bin/codex",
+    "exec",
+    "--ignore-user-config",
+    "--ignore-rules",
+    "--ephemeral",
+    "--skip-git-repo-check",
+    "--sandbox",
+    "read-only",
+    "--json",
+    "--model",
+    "gpt-6.1-sol",
+    "-c",
+    "model_reasoning_effort=\"high\"",
+    "-c",
+    "features.multi_agent=true",
+    "-c",
+    "agents.max_threads=2",
+    "-c",
+    "agents.max_depth=1",
+    "-C",
+    "/private/var/folders/sn/5sn7ljxd2yq0xg6msfpsvpkh0000gn/T/aios-en-modeltests-yd0gjidj/workspaces/meeting-ambiguous",
+    "$meeting-prep Prepare tomorrow's Demo meeting. Synthetic calendar data: K1 is called Demo and is tomorrow at 10:00 with Team A. K2 is also called Demo and is tomorrow at 15:00 with Team B. I have not specified which one. Do not retrieve other sources or write files."
+  ],
+  "workspace_files": [],
+  "active_integration_unchanged": true
+}

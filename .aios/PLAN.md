@@ -44,6 +44,18 @@ Englische Fassung am 23.10.2026 als 0.2.0-dev auf derselben Branch umgesetzt (En
 
 Auf dem zweiten Mac (privater Laptop) keine Dienstanbindungen. Dort ist die normale Einrichtung mit `beide` noch offen und kann jederzeit interaktiv nachgeholt werden.
 
-## Grenzen
+## Laufender Auftrag vom 23.10.2026: englische Verhaltenstests
+
+Ziel: Die englischen Regeln und ausgewählte Skills von 0.2.0-dev mit echten Modellantworten prüfen, einschließlich des Nachweises unabhängiger Prüfung. Grundlage ist Commit `4504e8f`. Sechs bestehende synthetische Fälle werden auf Englisch übernommen und um eine Gegenprobe bei nicht verfügbarem Prüfagenten ergänzt.
+
+Stand: Nutzerfreigabe am 23.10.2026 ausschließlich für Codex umgesetzt. Neun abgeschlossene native Modellläufe mit Codex 0.163.0 und `gpt-6.1-sol` bei `high`: sieben Hauptfälle und zwei Prüfkontrollen. Fachliche Kriterien der sieben Hauptfälle erfüllt. Unbelegte abgeschlossene unabhängige Prüfung in zwei Läufen reproduziert. Die acht flüchtigen Läufe zeigen außerdem bei vier Prüfstartversuchen `no rollout found`. Vergleich mit gespeicherter Sitzung belegt ebenfalls keinen erfolgreichen Prüfstart. Positiver nativer Prüfpfad und technische Ursache bleiben offen. [Bericht und Rohbelege](../pruefungen/modelltests-en-0-2-0/README.md). Unabhängige Berichtsprüfung durch unbeteiligten Codex-Agenten abgeschlossen, ohne Befund im geprüften Umfang. Keine Anthropic-Aufrufe, keine Dienstanbindungen oder Änderungen an aktiver Installation und Regelquellen. Kein Merge und Push.
+
+Nächster Schritt: Unbelegte Prüfbehauptung gezielt diagnostizieren und die Diagnose vor einer Änderung bestehender Regeln von Alexander bestätigen lassen. Kein positives Gesamturteil über die unabhängige englische Prüfungsfunktion.
+
+## Geplante Kollegenübergabe am Nachmittag des 23.10.2026
+
+Ziel nach Präzisierung durch Alexander: dem Kollegen das vollständige englische AIOS zum Testen geben. Die Einschränkung auf einen Codex-Pilot entfällt. Neues vollständiges ZIP aus Commit `4504e8f` mit allen 21 Skills, beiden Clienteinbindungen, gebündelten Werkzeugen und englischer Testanleitung erstellt. Frühere Pilotfassung bleibt erhalten. Installation aus dem neuen ZIP für beide Clients erfolgreich, je 21 Links und Integrität aller 73 Runtime-Dateien belegt. Wiederholungsfehler, Update auf denselben Versionsstand und Deinstallation mit erhaltenem Profil und fremder Datei geprüft, ohne Anbieteraufrufe. Bekannte Prüfbehauptungen und offene Funktionsabnahmen ausdrücklich mitgegeben. [Vollpaket und Prüfstand](../pruefungen/englische-testuebergabe-0-2-0/README.md). Unabhängige Schlussprüfung von Archiv, Manifest, 21 Skills, Anleitung und dokumentierten Dateiproben abgeschlossen, ohne Befund im geprüften Umfang. Vollpaket lokal für Alexander bereitgestellt. Kein Commit, Push oder externer Versand ausgeführt.
+
+## Fortgeltende Grenzen
 
 Alexander hat am 22.10.2026 entschieden, das AIOS auf dem Haupt-MacBook neu zu installieren und den Altbestand zu sichern. Inventur dort ist rein lesend. Verschieben, Installieren und Anmeldungen erst nach gezeigter Liste und Freigabe im jeweiligen Schritt. Nichts löschen, Backup bleibt lokal. MCP-Server, Plugins, Anmeldungen und fremde Clientkonfiguration nicht verändern. Keine Kundendaten lesen oder migrieren. Profilinhalte nur mit Alexanders Bestätigung übernehmen. Zugangsdaten nie in Chat, Repository oder Prüfberichte. Externe Schreibaktionen in Diensten nur mit konkretem Testauftrag. Push nur nach `alexandergreif/aios-neuaufbau` und nur auf Auftrag. Auf dem zweiten Mac keine Dienstanbindungen.

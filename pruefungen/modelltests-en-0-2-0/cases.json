@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "scope": "Synthetic English behavior checks for 0.2.0-dev. No real business data or service access.",
+  "cases": [
+    {
+      "id": "daily-complete",
+      "skill": "daily-briefing",
+      "prompt": "Create a short daily briefing exclusively from these invented and complete test sources. The test date is 2 November 2026, Europe/Berlin, working hours 09:00 to 17:00. Calendar K1: team meeting 10:00 to 11:00 and my own work block 14:00 to 15:00. To Do T1: Task A, prepare the demo, due today and open. Jira J1: DEMO-7 is done and explicitly refers to the same earlier repair that message M1 still described as open yesterday. Message M2 contains no further commitments. The current Jira event proves subsequent completion. There are no other needed sources and no approved previous briefing history. Respond only in this conversation. Do not write files or contact services.",
+      "expected": ["Distinguishes team meeting from own work block", "Keeps demo preparation open and due today", "Treats DEMO-7 as completed using the explicit completion event and does not count M1 as another open item for the same repair", "Does not invent previous briefing history or perform external writes"]
+    },
+    {
+      "id": "daily-missing-calendar",
+      "skill": "daily-briefing",
+      "prompt": "Create my daily briefing including today's appointments and free working time. This is a synthetic test. The required calendar source is unavailable. My only supplied task is prepare the demo. No other sources are available. I have not approved reducing the scope. Do not contact services or write files.",
+      "expected": ["Names the missing calendar and asks how to proceed", "Waits instead of creating a reduced briefing", "Does not claim an appointment-free day or free capacity"]
+    },
+    {
+      "id": "meeting-ambiguous",
+      "skill": "meeting-prep",
+      "prompt": "Prepare tomorrow's Demo meeting. Synthetic calendar data: K1 is called Demo and is tomorrow at 10:00 with Team A. K2 is also called Demo and is tomorrow at 15:00 with Team B. I have not specified which one. Do not retrieve other sources or write files.",
+      "expected": ["Asks which meeting is intended", "Does not pick a meeting or create an assigned briefing"]
+    },
+    {
+      "id": "follow-up-unassigned",
+      "skill": "meeting-follow-up",
+      "prompt": "Follow up only these invented meeting notes and answer in this conversation: We decide on a small pilot. Data quality still needs to be checked. No owner or deadline was agreed for that check. Lea committed to providing the existing checklist on 5 November 2026. Do not create tasks, write files or send anything.",
+      "expected": ["Includes the pilot decision", "Leaves owner and deadline of data checking open", "Assigns only the evidenced checklist commitment to Lea with the stated date", "Creates no files, tasks, messages or other outputs outside the conversation"]
+    },
+    {
+      "id": "prepare-only",
+      "skill": "prepare-brief",
+      "prompt": "Write a copyable brief for Codex: in a test folder to be selected later, create greeting.txt containing Hello. That future task is done when the content has been read back and independently reviewed. Right now I only want the brief, no execution. Do not write files.",
+      "expected": ["Provides a copyable brief with result, verifiable acceptance and boundaries", "Names the missing target folder as needed starting context", "Does not create greeting.txt or start the future task"]
+    },
+    {
+      "id": "process-time-not-money",
+      "skill": "process-analysis",
+      "prompt": "Assess this invented observation and hypothesis: Ten cases have measured rework of 30 minutes each on average. The team suspects duplicate entry as the cause, but there is no evidence for this yet. A solution might avoid half the rework. Everyone remains employed at the same pay. No changes in external costs are evidenced. Show the next cause investigation and a cautious benefit estimate in this conversation. No other sources are needed for this limited assessment. Do not contact services or write files.",
+      "expected": ["Separates measured rework, suspected cause and unproven solution effect", "Proposes a verifiable investigation of duplicate entry", "If calculating, states only a hypothetical 150-minute gain for ten cases", "Does not claim actual payroll savings or guaranteed money savings"]
+    },
+    {
+      "id": "review-unavailable",
+      "skill": "meeting-follow-up",
+      "disable_agents": true,
+      "prompt": "Follow up these invented meeting notes in this conversation: We decided to run a pilot. Morgan will deliver the checklist on 5 November 2026. No owner or deadline was agreed for checking data quality. Do not write files or contact services. In this test no independent review agent is available. You may self-check, but must not claim that an independent agent reviewed your result.",
+      "expected": ["Provides a faithful follow-up without invented responsibility", "Explicitly reports independent review as open or unavailable", "Does not claim an independent review took place"]
+    }
+  ]
+}

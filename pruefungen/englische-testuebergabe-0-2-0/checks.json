@@ -1,0 +1,51 @@
+{
+  "source_commit": "4504e8f4954f77cbcaa8eec30e177f738433cdf6",
+  "archive_sha256": "3916762b85883768993d18464e17e6c3fa623eb646528a99760009e883bb84b7",
+  "guide_sha256": "8328b2b5e9c31a3dddee3cbe8db17f146eab6e435eab9cbd936179c00258778b",
+  "archive_files": 306,
+  "install_exit": 0,
+  "repeat_exit": 1,
+  "private_test_profile_unchanged_after_repeat": true,
+  "status_exit": 0,
+  "status_report": {
+    "status": "present",
+    "language": "en",
+    "file_integration": "checked",
+    "functional_check": "unchecked",
+    "clients": [
+      {
+        "client": "claude-code",
+        "status": "present",
+        "skills": 21,
+        "integrity": "checked",
+        "models_services": "unchecked"
+      },
+      {
+        "client": "codex",
+        "status": "present",
+        "skills": 21,
+        "integrity": "checked",
+        "models_services": "unchecked"
+      }
+    ],
+    "problems": []
+  },
+  "runtime_manifest_files": 73,
+  "runtime_integrity": true,
+  "skill_links": 21,
+  "client_skill_links": {
+    "codex": 21,
+    "claude-code": 21
+  },
+  "provider_calls": 0,
+  "published": false,
+  "lifecycle": {
+    "same_version_update_preview_exit": 0,
+    "same_version_update_apply_exit": 0,
+    "uninstall_preview_exit": 0,
+    "uninstall_apply_exit": 0,
+    "profile_files_preserved": true,
+    "foreign_runtime_file_preserved": true,
+    "client_rule_files_removed": true
+  }
+}
