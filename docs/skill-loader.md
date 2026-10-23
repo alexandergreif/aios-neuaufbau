@@ -3,7 +3,7 @@
 Stand: 19.10.2026. Die fünf ersten Skills wurden in beiden lokal vorhandenen Clients bis zum fertig zusammengestellten API-Request geprüft. Es gab keine Anbieteraufrufe oder Modellantworten.
 
 ```sh
-python3 scripts/pruefe_skill_loader.py
+python3 scripts/check_skill_loader.py
 ```
 
 Optional wählen `--codex` und `--claude` die konkreten ausführbaren Dateien. `--evidence-dir /absoluter/neuer/ordner` speichert die technischen Ergebnisse samt Quellhashes und vollständigen Vorher-/Nachher-Listen der aktiven Skill-Verknüpfungen. Das Werkzeug ist für die lokale macOS-Entwicklung gedacht, nicht Teil der späteren Einrichtung auf jedem Rechner.

@@ -1,353 +1,68 @@
 # AIOS
 
-Ein gemeinsames persönliches Assistenzsystem für Claude Code und Codex. Enthalten sind 21 Skillquellen, gemeinsame Regeln, Profilvorlagen sowie Einrichtung, Update und gezielte Deinstallation.
+A personal assistant setup for Claude Code and Codex: shared core rules, 21 skills, profile templates and a guarded installer with update and targeted uninstall. The package exists in two languages. An installation uses exactly one of them.
 
-**Start auf Mac 2: [Kurze Installationsanleitung](docs/installation-kurz.md).** Für den ersten Durchlauf nur Claude Code wählen und die isolierte Testinstallation nutzen.
-
-- [Aufbau als Excalidraw und Bild](docs/architektur-bilder/README.md)
-- [Vollständige Abnahme](docs/abnahme-zweiter-mac.md)
-- [Aktueller Arbeitsstand](.aios/PLAN.md)
-
-Der Quellstand ist für den Test auf dem zweiten Mac vorbereitet. Vorhandene Dateien, synthetische Tests und native Ladeproben ersetzen keine echte Betriebs- oder Modellabnahme. Dienstanbindungen und weitere technische Abhängigkeiten sind teilweise offen. Persönliche Daten und Zugangsdaten bleiben außerhalb des Repositorys.
-
-## Entscheidungsprotokoll
-
-Historischer Protokollstand: 20.10.2026. Der Veröffentlichungsauftrag für das private Repository `alexandergreif/aios-neuaufbau` folgte am 21.10.2026. Die folgenden Entscheidungen und früheren Prüfstände bleiben als Entwicklungshistorie erhalten.
-
-Die Auswahlrunde ist mit Entscheidung 115 abgeschlossen. Umsetzungsentscheidungen folgen anschließend. Dieses README erhält das chronologische Entscheidungsprotokoll. Spätere Entscheidungen präzisieren oder ersetzen frühere Vorschläge. Der aktuelle Paketumfang steht in [paketumfang-und-umsetzung.md](paketumfang-und-umsetzung.md), die Quellenzuordnung in [uebernahmeliste.md](uebernahmeliste.md). Arbeitsstand: [.aios/PLAN.md](.aios/PLAN.md).
-
-## Vereinbarter Ablauf
-
-Die vorhandenen Features und Bestandteile wurden gemeinsam ausgewählt. Alexander hat je Bestandteil entschieden, ob er übernommen, vereinfacht, später ergänzt oder weggelassen wird. Die bestätigten Entscheidungen sind konsolidiert und unabhängig geprüft. Mit dem Folgeauftrag zur selbstständigen Weiterarbeit wurde die lokale gemeinsame Grundlage begonnen. [Umsetzungsstand und Prüfungen](docs/grundlage.md). Das neue GitHub-Repository entsteht erst nach der gemeinsamen Zusammenstellung und mit konkretem Veröffentlichungsauftrag.
-
-Die vorhandene private AIOS-Installation bleibt Arbeitsgrundlage. Die beiden bisherigen Paket-Repositories wurden lokal in den Papierkorb verschoben. Alexander übernimmt ihre Löschung auf GitHub selbst. Alte Installer und Paketstrukturen werden nicht automatisch übernommen.
-
-## Bisher umgesetzte Fähigkeiten
-
-Die folgenden 21 Skills sind als lokale Paketquellen vorhanden und unabhängig mit synthetischen Fällen geprüft. Im damaligen isolierten Prüfstand erkannten beide Clients die Skills und luden ihren Inhalt bei explizitem Aufruf über die globale Installation. Dieser [Ladebeleg](docs/installationsprobe.md) entstand vor den neuen Betriebsabläufen. Echte Modellantworten in den Zielclients und Dienstzugänge sind noch nicht abgenommen. Die aktive Installation bleibt unverändert.
-
-| Fähigkeit | Beispielauftrag | Benötigte Grundlage | Claude Code | Codex |
-| --- | --- | --- | --- | --- |
-| Auftrag vorbereiten | „Formuliere einen prüfbaren Auftrag aus dieser Idee.“ | Idee, Ergebniswunsch und Grenzen | `/auftrag-vorbereiten` | `$auftrag-vorbereiten` |
-| Prompt-Berater | „Warum liefert dieser Prompt trotz Vorgabe so lange Antworten?“ | Prompt, gewünschtes Ergebnis, konkrete Fehlausgabe | `/prompt-berater` | `$prompt-berater` |
-| Tagesstart | „Erstelle meinen Tagesstart.“ | Freigegebene Kalender, To Do, passende Jira-Punkte und Nachrichten | `/tagesstart` | `$tagesstart` |
-| Terminvorbereitung | „Bereite den eindeutig benannten Termin vor.“ | Termin und benötigte freigegebene Projektquellen | `/terminvorbereitung` | `$terminvorbereitung` |
-| Terminnachbereitung | „Bereite diese Besprechungsnotizen nach.“ | Bereitgestellte Notizen oder ausgewähltes Transkript | `/terminnachbereitung` | `$terminnachbereitung` |
-| Aufgabenassistenz | „Priorisiere meine offenen Aufgaben und schlage nächste Schritte vor.“ | Bestätigte Prioritäten, To Do und bei Bedarf Kalender oder Projektquellen | `/aufgabenassistenz` | `$aufgabenassistenz` |
-| Wochenplanung | „Schlage eine realistische Planung für nächste Woche vor.“ | Prioritäten, Aufgaben, Fristen, Arbeitszeiten und Kalender | `/wochenplanung` | `$wochenplanung` |
-| Wochenreview | „Gib mir belegtes Feedback zu meiner Arbeitswoche.“ | Ausgewählte Arbeitsspuren und eigene Beobachtungen | `/wochenreview` | `$wochenreview` |
-| System-Retro | „Prüfe, wo das AIOS diese Woche geholfen oder Aufwand verursacht hat.“ | Freigegebene Originalbelege und frühere bestätigte Entscheidungen | `/system-retro` | `$system-retro` |
-| Use-Case-Konzept | „Entwickle aus diesen Anforderungen ein prüfbares Pilotkonzept.“ | Originalanforderungen und freigegebene Quellen zur Machbarkeit | `/use-case-konzept` | `$use-case-konzept` |
-| Prozessanalyse | „Untersuche die möglichen Ursachen dieser langen Durchlaufzeit.“ | Beschriebener Istablauf, Beobachtungen und vorhandene Messwerte | `/prozessanalyse` | `$prozessanalyse` |
-| Recherche | „Recherchiere diese Frage und prüfe auch Gegenargumente.“ | Fragestellung und benötigte verfügbare Quellen | `/recherche` | `$recherche` |
-| Skill-Builder | „Erweitere diesen Skill um den vereinbarten Ablauf.“ | Quellordner, vorhandene Fähigkeiten und Abnahmekriterien | `/skill-builder` | `$skill-builder` |
-| AIOS-Audit | „Zeige mir den belegten Einrichtungsstand je Client.“ | Bestätigter Sollumfang, lokale Einbindungen und Prüfbelege | `/aios-audit` | `$aios-audit` |
-| Fremde PRs prüfen | „Prüfe diese Pull Request nach den Repository-Regeln.“ | Diff, Codekontext und Standards des Zielrepositories | `/pr-review` | `$pr-review` |
-| Eigene Änderungen prüfen | „Prüfe meine Änderungen vor dem Commit.“ | Auftragsbezogener Diff, Repository-Regeln und Testergebnisse | `/precommit-review` | `$precommit-review` |
-| Review-Kommentare | „Ordne diese Review-Kommentare ein.“ | Ausgewählte Threads und aktueller Code | `/review-kommentare` | `$review-kommentare` |
-| Frontend-Gestaltung | „Gestalte diese Oberfläche nach unserem Designsystem.“ | Zielgruppe, Repository-Regeln und freigegebener Browserzugang für die Abnahme | `/frontend-gestaltung` | `$frontend-gestaltung` |
-| Unterlagen | „Erstelle ein Handout für diese Zielgruppe.“ | Freigegebene Inhalte, Lernziel und gewünschtes Format | `/unterlagen` | `$unterlagen` |
-| Zeiterfassung vorbereiten | „Bereite einen Zeitvorschlag für diese Woche vor.“ | Ausgewählte Projektordner und freigegebene Arbeitsspuren | `/zeiterfassung-vorbereiten` | `$zeiterfassung-vorbereiten` |
-| Planhat-Zeiterfassung | „Bereite den Wochenabschluss in Planhat vor.“ | Bestätigter Zeitraum, Zuordnung und geprüfter Planhat-MCP-Zugang | `/planhat-zeiterfassung` | `$planhat-zeiterfassung` |
-
-Die Aufrufe wurden bis zur nativen Verarbeitung des Skilltexts geprüft, ohne einen Anbieter aufzurufen. Der Auftragshelfer wird nur auf bewussten Aufruf geladen. [Erste Skillprüfung](pruefungen/erste-skills-review.md), [Arbeitsassistenzprüfung](pruefungen/arbeitsassistenz-review.md), [Fachmethodenprüfung](pruefungen/fachmethoden-review.md), [globaler Prüfweg](docs/installationsprobe.md). Diese Übersicht wächst mit der tatsächlichen Umsetzung der weiteren bestätigten Fähigkeiten.
-
-Der Installer ist ein lokaler Entwicklungsstand für die gemeinsame Abnahme auf dem zweiten Mac. Update und gezielte Deinstallation sind implementiert und synthetisch getestet, ihre echte Betriebsabnahme bleibt offen. Weitere ausgewählte Fähigkeiten und tatsächliche Dienstanbindungen fehlen noch. Der wiederholbare [Einrichtungsstatus](docs/einrichtungsstatus.md) prüft die lokalen Dateien und Einbindungen. Die weiteren Skillprüfungen stehen im [Coding-Review](pruefungen/coding-skills-review.md) und [Unterlagen-/Zeiterfassungsreview](pruefungen/unterlagen-und-zeiten-review.md).
-
-Der [geführte Einstieg](docs/setup.md) verbindet Profilanlage, Installationsvorschau und Statuscheck über `sh install.sh`. Die beiden Bestätigungen bleiben getrennt. Abbruch nach der Profilanlage erhält das Profil und zeigt einen Fortsetzungsaufruf. Die isolierte technische Prüfung einschließlich Strg+C und Fortsetzung ist [unabhängig abgeschlossen](pruefungen/setup-review.md). Die technischen [Renderer-Kopien](docs/renderer.md) sind ebenfalls übernommen und unabhängig geprüft. Ihre visuelle Abnahme bleibt offen.
-
-Die [gemeinsame Abnahme auf dem zweiten Mac](docs/abnahme-zweiter-mac.md) ist vorbereitet. Sie trennt die normale Einrichtung von Update- und Deinstallationsproben mit eigenem Test-Home und eigenen Clientordnern. Die neuen Betriebsabläufe wurden hier ausschließlich mit synthetischen Dateien geprüft. [145 Tests sind grün](pruefungen/paketbetrieb-testlauf.md), die [unabhängige Nachprüfung](pruefungen/paketbetrieb-review.md) hat keine offenen technischen Befunde im geprüften Umfang. Die frühere native Ladeprobe belegt den damaligen Installerstand, keine nachträglichen Änderungen am Paketbetrieb.
-
-## Ursprüngliche Gesprächsagenda
-
-Diese Liste dokumentiert den Ausgangspunkt des Gesprächs. Den aktuellen Beschlussstand enthalten die nummerierten Entscheidungen unten. Die konsolidierte Übersicht steht in `paketumfang-und-umsetzung.md`. Noch nicht ausgewählte Bestandteile gelten nicht automatisch als aufgenommen.
-
-| Bereich | Vorhandene Bestandteile und Themen |
-| --- | --- |
-| Arbeitsregeln | Sitzungsstart, Auftragsklärung, Stil, Befugnisse, Modellwahl, Delegation, Reviews und Prüfungen |
-| Projektarbeit und Ablage | Arbeitsdateien, Kontextladeplan, Projektzuordnung, Kundenregister, Trennung von Entwicklung, Betrieb und Ergebnissen |
-| Persönliches Profil | Rolle, Arbeitsweise, Prioritäten, Vorlagen und Einrichtung, private Angaben getrennt vom gemeinsamen Paket |
-| Alltagsassistenz | `auftrag`, `tagesstart`, `terminvorbereitung`, `aios-assistent` |
-| Wissen und Gedächtnis | Wissens-MCP, Suche, Quellenbelege, Speicherung, Import und Zuständigkeit der vorhandenen Gedächtnissysteme |
-| Verbindungen | Verfügbarkeit und Befugnisse je Client, Microsoft 365, Jira, Slack, Blockbrain und weitere tatsächlich benötigte Quellen |
-| Wochenroutinen | `aios-retro`, `aios-wochenreview`, Wochenplanung, Statusprüfungen und vorhandene Zeitpläne |
-| Konzepte und Dokumente | `use-case-konzept`, `aios-ishikawa-prozessanalyse`, `kundenunterlage`, `blockbrain-slides` |
-| Weitere Fähigkeiten | `lernvideo`, `agentic-workflow-bauen`, `zeiterfassung-vorbereiten`, `planhat-timetracking`, `planhat-wochenabschluss` |
-| AIOS weiterentwickeln | `aios-audit`, `aios-skill-builder`, `goal-vorbereiten`, `gpt-prompting` |
-| Zusatzwerkzeuge | Bereits installierte fremde Skills, Plugins und Hooks nach Bedarf inventarisieren und einzeln bewerten |
-| Installation und Betrieb | Clientauswahl, Voraussetzungen, Profiltrennung, Update, Entfernung, Wiederherstellung, Anleitung und Abnahme auf zweitem Mac |
-
-Die Skillnamen stammen aus dem lokalen AIOS-Bestand. Die Agenda ist noch keine vollständige technische Inventur aller externen Werkzeuge.
-
-## Entscheidungen
-
-1. **Sitzungsstart und Kontextladen, bestätigt:** Im jeweiligen Projekt den letzten Git-Stand, den Plan und die Kernnotizen lesen. Den Stand kurz nennen und am aktuellen Auftrag weiterarbeiten. Weitere Regeln und Fachinformationen nur bei Bedarf laden. Git-Prüfung nur in Git-Projekten, fehlende Arbeitsdateien nicht als vorhanden behandeln.
-
-2. **Auftragsklärung, bestätigt:** Klare Aufträge direkt ausführen. Fehlen wichtige Angaben zu Ergebnis, Abnahme, Grenzen oder Ausgangspunkt, gezielt danach fragen. Bei kleinen, umkehrbaren Aufgaben eine sinnvolle Annahme nennen und weiterarbeiten. Kein starres Bestätigen eines Dreizeilers vor jedem Ergebnisauftrag.
-
-3. **Befugnisse und Freigaben, bestätigt:** Innerhalb eines Auftrags selbstständig lesen, recherchieren, Entwürfe erstellen und umkehrbare lokale Änderungen vornehmen. Senden, Einladen, Veröffentlichen, kostenpflichtige Aktionen und destruktive Änderungen brauchen einen ausdrücklichen, konkreten Auftrag. Ist die konkrete Aktion bereits beauftragt, nicht erneut fragen.
-
-4. **Ergebnisprüfung, bestätigt:** Immer eine zusätzliche unabhängige Prüfung vorsehen. Sie ergänzt die zur Aufgabe passende Eigenprüfung. Nur belegte Ergebnisse als fertig melden, fehlende Zugänge und offene Prüfungen klar nennen. Wer unabhängig prüft und wie bei fehlender Prüfmöglichkeit vorzugehen ist, wird als Nächstes festgelegt.
-
-5. **Unabhängiger Prüfagent, bestätigt:** Ein separater Agent, der an der Erstellung nicht beteiligt war, erhält Auftrag, Ergebnis und nötige Quellen. Kleine Aufgaben prüft er kurz, komplexe gründlich. Befunde beheben und betroffene Stellen nachprüfen lassen. Ist kein Prüfagent verfügbar, bleibt die unabhängige Prüfung ausdrücklich offen.
-
-6. **Modellwahl, bestätigt:** Alexander wählt das Hauptmodell und den Reasoning-Aufwand zu Beginn jeder Sitzung selbst. Für Subagenten bestimmt der Hauptagent Modell und Denkaufwand passend zur Aufgabe. Die neuen Regeln enthalten keine festen Modellversionen. Vor Delegation die tatsächliche Verfügbarkeit im jeweiligen Client prüfen und einen nicht verfügbaren Modellwechsel nicht behaupten.
-
-Aktuelle Nutzerfreigabe vom 18.10.2026: Haiku 5.5 darf ab jetzt verwendet werden, sofern im jeweiligen Client verfügbar. Diese datierte Freigabe dokumentiert die Entscheidung und ist keine feste Versionsvorgabe für die neuen Regeln. Sie hebt den bisherigen Haiku-Ausschluss auf.
-
-7. **Delegation, bestätigt:** Unabhängige Teilaufgaben bei erkennbarem Nutzen automatisch an Subagenten vergeben, zusätzlich zum unabhängigen Prüfagenten. Jeder erhält einen klaren Auftrag, Zuständigkeit und Stoppkriterium. Schreibende Agenten bearbeiten getrennte Dateien und setzen Änderungen anderer nicht zurück. Der Hauptagent führt Ergebnisse zusammen und verantwortet Entscheidungen. Keine feste Anzahl in den Regeln. Technische Grenzen und vereinbarte Kostenlimits gelten.
-
-8. **Fehlerbehebung, bestätigt:** Bei bestehenden Bugs zuerst die belegte Diagnose und den kleinsten passenden Fix vorstellen. Jede Diagnose vor der Umsetzung von Alexander bestätigen lassen. Eine bereits bestätigte Diagnose nicht erneut abfragen. Nach Umsetzung passend testen und unabhängig prüfen lassen.
-
-9. **Schreibstil, bestätigt:** Standardmäßig Deutsch, klar und natürlich. Hauptaussage zuerst, kurze Absätze und nur nötige Details. Keine Floskeln, keine Gedankenstriche oder Semikolons als Satztrenner. Texte an andere Personen vor dem Versand zusätzlich mit dem Humanizer prüfen. Die nötige Versandfreigabe bleibt davon unabhängig.
-
-10. **Arbeitsdateien, bestätigt:** Für mehrstufige Projekte zwei kurze Dateien führen: `.aios/PLAN.md` für Ziel, Status und nächsten Schritt sowie `.aios/NOTIZEN.md` für bestätigte Entscheidungen, Befunde und bekannte Fehler. Bei wichtigen Übergängen aktualisieren, nicht den gesamten Chat protokollieren. Kleine Einzelaufgaben brauchen keine eigenen Arbeitsdateien.
-
-11. **Vier getrennte Ablagebereiche, bestätigt:** Versionierten AIOS-Quellcode, installierte Laufzeit, persönliches Profil und erzeugte Ergebnisse getrennt halten. Paketupdates überschreiben weder Profil noch Ergebnisse. Kunden- und Projektergebnisse gehören ins jeweilige Projekt, sonstige persönliche Ergebnisse in einen eigenen Ausgabeordner. Konkrete Pfade folgen separat. Bestehende Dateien jetzt nicht verschieben.
-
-12. **Ablageorte je Mac, bestätigt:** Bei der Einrichtung passende, änderbare Ordner vorschlagen. Bestätigte Pfade einmal lokal speichern und von allen Skills verwenden. Keine festen Benutzernamen oder Mac-Pfade in Skills. Vom Client vorgegebene Pluginordner berücksichtigen.
-
-13. **Privates Kunden- und Projektregister, bestätigt:** Kürzel, lokalen Ordner, optionales Repository, optionales Jira-Präfix und Status zuordnen. Bestätigte Einträge nutzen. Bei fehlender oder mehrdeutiger Zuordnung nachfragen, keinen Ablageort erraten. Das Installationspaket enthält nur eine leere Vorlage, keine echten Kundeneinträge.
-
-14. **Persönliches Profil einrichten, bestätigt:** Kurze geführte Einrichtung für Name, Rolle, Sprache, Zeitzone, Arbeitszeiten, Arbeitsweise und Prioritäten. Vor dem Speichern eine Zusammenfassung zeigen. Unbeantwortete Angaben ausdrücklich offenlassen und später ergänzbar halten. Persönliche Angaben bleiben außerhalb des gemeinsamen Pakets.
-
-15. **Profilpflege, bestätigt und ergänzt:** Neue dauerhafte Angaben oder Vorlieben grundsätzlich als konkrete Profiländerung vorschlagen und erst nach Bestätigung speichern. Ein ausdrückliches „Merk dir das“ gilt bereits als Auftrag, sofern Inhalt und Ziel klar sind. Ausnahme gemäß Entscheidung 18: Kleine, ausdrücklich genannte Vorlieben dürfen automatisch gespeichert werden. Vermutungen und wiederholte Aussagen werden nicht automatisch zu Regeln.
-
-16. **Profil auf mehreren Macs, bestätigt:** Erste Version mit bewusstem Export und Import samt Änderungsvorschau. Persönliche Angaben können übernommen werden. Lokale Ordner pro Mac zuordnen. Zugangsdaten nicht exportieren. Automatische Synchronisation mit Konfliktbehandlung bleibt ein späterer möglicher Ausbau.
-
-17. **Gedächtnisstruktur, bestätigt:** Zunächst normale Markdown-Dateien mit gezielter Suche und gemeinsamen Inhalten für Claude Code und Codex. Persönlicher Profilordner mit `profil.md` und `projekte.md`, je Projekt `.aios/PLAN.md` und `.aios/NOTIZEN.md`, getrennte Wissensablage mit `INDEX.md` und Themendateien samt Quelle und Datum. Lokale Pfade werden bei der Einrichtung zugeordnet. Lese- und Schreibregeln gehören ins AIOS. Bei widersprüchlichen Angaben nachfragen, bestätigte Änderungen nachvollziehbar halten. Suche in alten Chats als separate mögliche Fähigkeit prüfen, keine automatische Übernahme sämtlicher Gespräche. Zusätzliche Datenbank oder Memory-Plugin erst bei konkretem Bedarf.
-
-18. **Kleine Vorlieben automatisch merken, bestätigt:** Kleine, von Alexander ausdrücklich genannte Vorlieben wie Antwortlänge, Darstellung oder Ausgabeformate ohne Rückfrage speichern und kurz mitteilen. Korrektur und Löschung ermöglichen. Nur für den jeweiligen Auftrag geltende Wünsche bleiben auf diesen begrenzt. Vermutungen, sensible Angaben, Befugnisse, Zusagen und Änderungen bestehender Regeln brauchen weiterhin Bestätigung.
-
-19. **Fachwissen aufnehmen, bestätigt:** Bei wiederverwendbaren Erkenntnissen eine kurze Wissensnotiz mit Quelle, Datum und offenen Unsicherheiten vorschlagen. Erst nach Bestätigung dauerhaft ablegen. Ein ausdrücklicher Speicherauftrag genügt bereits. Ergebnisse bleiben sonst beim jeweiligen Auftrag. Ganze Dokumente und Chats nicht automatisch importieren.
-
-20. **Gezielte Chatsuche, bestätigt als gewünschte Fähigkeit:** Frühere Chats auf ausdrücklichen Suchauftrag durchsuchen. Nur freigegebene Verläufe nutzen und Fundstellen nennen. Historische Aussagen werden nicht automatisch zu aktuellen Regeln oder Wissen. Verfügbarkeit und Zugriffsgrenzen in Claude Code und Codex vor Aufnahme ins Paket prüfen. Die Auswahl ist noch keine Freigabe zum Lesen konkreter Verläufe und kein Nachweis einer funktionierenden Integration.
-
-21. **Externe Verbindungen einrichten, bestätigt:** Geführte Auswahl der tatsächlich benötigten Dienste. Vorhandene Zugänge je Client prüfen, verfügbare Lese- und Schreibmöglichkeiten zeigen und nur ausgewählte Verbindungen einrichten. Zugangsdaten bleiben außerhalb des Pakets. Fehlende Quellen als fehlend melden. Die konkreten Dienste einzeln auswählen. Diese Entscheidung erlaubt noch keine Einrichtung oder Datenabfrage eines bestimmten Dienstes.
-
-22. **Outlook Calendar, bestätigt als gewünschte Anbindung:** Für die erste Version vorsehen. Tagesstart und Terminvorbereitung dürfen innerhalb des jeweiligen Auftrags Termine aus ausgewählten Kalendern lesen. Anlegen, Verschieben und Absagen nur auf konkreten Auftrag. Kalender, Zeitraum, Zeitzone und tatsächlich verfügbare Rechte berücksichtigen. Technischen Zugang und Funktion später in beiden Clients prüfen. Noch keine konkrete Verbindung eingerichtet oder Datenabfrage beauftragt.
-
-23. **Microsoft To Do, bestätigt als gewünschte Anbindung:** Führende Ablage für persönliche Aufgaben. Offene und fällige Aufgaben für Tagesstart und Planung lesen. Anlegen, Ändern, Erledigen und Löschen auf konkreten Auftrag. Neue Aufgaben aus Besprechungen oder Nachrichten zunächst vorschlagen. Projektnotizen dürfen persönliche Aufgaben referenzieren, führen aber keine zweite unabhängige Liste dieser Aufgaben. Technischen Zugang und Funktion vor Aufnahme prüfen. Noch keine konkrete Verbindung eingerichtet oder Datenabfrage beauftragt.
-
-24. **Outlook Mail, bestätigt als gewünschte Anbindung:** Im jeweiligen Auftrag gezielt relevante Nachrichten suchen und lesen sowie Antwortentwürfe erstellen. Senden, Weiterleiten, Löschen und Änderungen am Postfach brauchen einen konkreten Auftrag. Keine dauerhafte Postfachüberwachung und keine automatische Übernahme von Mailinhalten ins Gedächtnis. Technischen Zugang und Funktion vor Aufnahme prüfen. Noch keine konkrete Verbindung eingerichtet oder Datenabfrage beauftragt.
-
-25. **Jira, bestätigt als gewünschte Anbindung:** Tickets und Projektstände im jeweiligen Auftrag gezielt lesen. Tickets anlegen, ändern, kommentieren und ihren Status wechseln nur auf konkreten Auftrag. Jira bleibt die führende Quelle für Projekttickets. Persönliche nächste Schritte in To Do dürfen auf ein Ticket verweisen, ohne dessen gesamten Inhalt zu duplizieren. Technischen Zugang und Funktion vor Aufnahme prüfen. Noch keine konkrete Verbindung eingerichtet oder Datenabfrage beauftragt.
-
-26. **Slack, bestätigt als gewünschte Anbindung:** Im jeweiligen Auftrag relevante Nachrichten und Threads gezielt suchen und lesen sowie Antworten vorbereiten. Senden, Reagieren, Bearbeiten und Löschen nur auf konkreten Auftrag. Keine dauerhafte Überwachung und keine automatische Übernahme ins Gedächtnis. Technischen Zugang und Funktion vor Aufnahme prüfen. Noch keine konkrete Verbindung eingerichtet oder Datenabfrage beauftragt.
-
-27. **Microsoft Teams, bestätigt als gewünschte Anbindung:** Relevante Chats und Kanalbeiträge im jeweiligen Auftrag gezielt suchen und lesen sowie Antworten vorbereiten, soweit die Anbindung das unterstützt. Senden, Reagieren, Bearbeiten und Löschen brauchen einen konkreten Auftrag. Keine dauerhafte Überwachung und keine automatische Übernahme ins Gedächtnis. Technischen Zugang und Funktion vor Aufnahme prüfen. Noch keine konkrete Verbindung eingerichtet oder Datenabfrage beauftragt.
-
-28. **Confluence, bestätigt als gewünschte Anbindung:** Im jeweiligen Auftrag relevante Seiten gezielt suchen und lesen und Quellen mit Seitenlink nennen. Neue Seiten und Änderungen als Entwurf vorbereiten. Veröffentlichen, Bearbeiten bestehender Seiten und Löschen nur auf konkreten Auftrag. Übernahme in die lokale Wissensablage weiterhin erst nach Bestätigung. Technischen Zugang und Funktion vor Aufnahme prüfen. Noch keine konkrete Verbindung eingerichtet oder Datenabfrage beauftragt.
-
-29. **SharePoint und OneDrive getrennt entscheiden:** Keine gemeinsame Aufnahme bestätigt. Alexander wählt „Dienste einzeln auswählen oder vorerst weglassen“. Ob und mit welchem Umfang die einzelnen Dienste dazugehören, bleibt offen.
-
-29a. **SharePoint, bestätigt zurückgestellt:** Für die erste Version nicht aufnehmen. Bei späterem konkretem Bedarf erneut besprechen.
-
-29b. **OneDrive, bestätigt zurückgestellt:** Für die erste Version nicht aufnehmen. Bei späterem konkretem Bedarf erneut besprechen.
-
-30. **Blockbrain-Zugang, Prüfung und bedingte Aufnahme bestätigt:** Vorhandenen technischen Zugang als Kandidaten vorsehen, um bei Bedarf freigegebene Blockbrain-Agenten oder Workflows aus dem lokalen AIOS aufzurufen. Vor Aufnahme Nutzen, Rechte und Funktion in beiden Clients prüfen. Jeder Aufruf bleibt an einen konkreten Auftrag gebunden. Kein Pluginimport in Atrio. Die Auswahl belegt noch keine funktionierende Integration und beauftragt keinen konkreten externen Aufruf.
-
-31. **Tagesstart, bestätigt für die erste Version:** Auf Alexanders Aufruf ein Briefing mit heutigen Terminen, offenen und fälligen To-Dos, relevanten Jira-Punkten und gezielt ausgewählten wichtigen Nachrichten erstellen. Wichtigste nächste Schritte vorschlagen. Freie Zeit nur bei ausreichend vollständigen Kalenderdaten ausweisen. Fehlende Quellen nennen. Nichts verschicken und keine Termine oder Aufgaben ändern. Umsetzung und Quellenanbindung bleiben zu prüfen.
-
-32. **Terminvorbereitung, bestätigt für die erste Version:** Briefing für einen von Alexander benannten Termin mit Ziel, Teilnehmenden, relevantem Projektstand, offenen Zusagen, Fragen und vorgeschlagener Agenda. Gezielt benötigte freigegebene Quellen nutzen und Belege sowie Lücken nennen. Bei uneindeutigem Termin nachfragen. Nichts versenden und keine Termine oder Aufgaben verändern. Umsetzung und Quellenanbindung bleiben zu prüfen.
-
-33. **Terminnachbereitung, bestätigt für die erste Version:** Auf Auftrag aus bereitgestellten Notizen oder einem ausdrücklich ausgewählten Transkript eine Zusammenfassung mit Entscheidungen, offenen Fragen und vorgeschlagenen Aufgaben erstellen. Zuständigkeiten und Fristen nur bei Beleg übernehmen. Aufgaben anlegen, Follow-ups versenden und dauerhafte Wissensnotizen speichern nach den vereinbarten Freigaberegeln. Keine automatische Aufnahme von Besprechungen. Umsetzung bleibt zu prüfen.
-
-34. **Aufgabenassistenz und Arbeitsplanung, bestätigt für die erste Version:** Auf Auftrag Aufgaben priorisieren, in nächste Schritte zerlegen und passende Arbeitsblöcke vorschlagen. Grundlage sind bestätigte Prioritäten, To Do und verfügbare Kalenderdaten. Konkrete Änderungen an Aufgaben oder Kalender nur im beauftragten Umfang umsetzen und anschließend den Zustand prüfen. Den Tag nicht ungefragt verplanen. Umsetzung und Quellenanbindung bleiben zu prüfen.
-
-35. **Persönlicher Wochenreview mit Coaching, bestätigt:** Auf Alexanders Aufruf Erreichtes, offene Zusagen, Hindernisse und die persönliche Arbeitsweise reflektieren. Gezielt freigegebene Aufgaben, Kalenderdaten und bei Bedarf Sitzungsverläufe nutzen. Ausdrücklich konstruktives Feedback dazu geben, wie Alexander sich geschlagen hat, was gut lief und wie die Arbeitsweise verbessert werden kann. Bewertungen an konkreten Beispielen festmachen, Beobachtungen und Interpretation unterscheiden und Quellenlücken nennen. Mehrere Verbesserungsvorschläge anbieten, gemeinsam höchstens einen Schwerpunkt für die nächste Woche wählen. Keine automatischen Änderungen an Aufgaben oder Profil. Umsetzung und Quellenanbindung bleiben zu prüfen.
-
-36. **Getrennte System-Retro, bestätigt:** Zusätzlich zum persönlichen Wochenreview einen eigenen Rückblick auf das AIOS anbieten. Auf Alexanders Aufruf anhand freigegebener Arbeitsspuren prüfen, welche Skills und Verbindungen geholfen haben und wo Fehler, unnötiger Aufwand oder Regelverstöße auftraten. Konkrete Verbesserungen mit Belegen vorschlagen. Regeln, Skills und Installationen erst nach entsprechendem Auftrag ändern. Umsetzung und Quellenzugriff bleiben zu prüfen.
-
-37. **Wochenplanung, bestätigt:** Auf Alexanders Aufruf aus Prioritäten, offenen Aufgaben, Fristen und vorhandenen Terminen einen realistischen Wochenvorschlag erstellen. Schwerpunkte, freie Kapazität, nötige Puffer und Konflikte zeigen. Fehlende Angaben benennen. Aufgaben und Kalender erst auf konkreten Auftrag ändern. Ergebnisse des persönlichen Wochenreviews können einfließen, die Wochenplanung bleibt separat aufrufbar. Umsetzung und Quellenanbindung bleiben zu prüfen.
-
-38. **Zeitpläne, bestätigt zurückgestellt:** Tagesstart, Wochenreview, System-Retro und Wochenplanung in der ersten Version manuell aufrufen. Zeitgesteuerte Ausführung später gezielt ergänzen, sobald Quellenzugriff, Kosten, Ergebnisablage und Fehlerbehandlung geprüft sind. Bestehende Zeitpläne nicht automatisch verändern oder übernehmen.
-
-39. **Skill „Auftrag schärfen“, bestätigt:** Eigenständig aufrufbaren Helfer vorsehen, der aus einer groben Idee einen kopierbaren Arbeitsauftrag mit Ergebnis, Abnahmekriterien, Grenzen und nötigem Kontext formuliert. Nur wesentliche Lücken nachfragen. Den formulierten Auftrag noch nicht ausführen. Ergänzt die allgemeine Auftragsklärung aus Entscheidung 2. Umsetzung bleibt zu prüfen.
-
-40. **Vorbereitung längerer autonomer Aufgaben, bestätigt:** Zusätzliche Fähigkeit vorsehen, die gemeinsam mit Alexander Ziel, überprüfbares Ergebnis, erlaubte Aktionen, Grenzen, Zwischenstände und Abbruchbedingungen festlegt. Bei Bedarf Zeit- oder Kostenbudgets vereinbaren. Ergebnis ist ein ausführbarer Auftrag für den gewählten Client. Die Vorbereitung startet noch keinen autonomen Lauf. Umsetzung und tatsächliche Clientfähigkeiten bleiben zu prüfen.
-
-41. **Prompting-Skills, Vergleich abgeschlossen:** `auftrag`, `goal-vorbereiten`, `gpt-prompting` und `fable-prompting` einschließlich relevanter Referenzen gelesen und unabhängig gegengeprüft. Unterschiede, Überschneidungen und Konflikte mit neuen Entscheidungen stehen in [prompting-vergleich.md](prompting-vergleich.md). Die anschließende Strukturentscheidung steht in 41a. Keine aktiven Skills verändert.
-
-41a. **Gemeinsamer Prompt-Berater, bestätigt:** Optionalen gemeinsamen Berater für Claude und GPT vorsehen, der konkrete Promptprobleme untersucht und gezielte Verbesserungen vorschlägt. Brauchbare Teile von `gpt-prompting` und `fable-prompting` später dafür überarbeiten. Keine festen Modellversionen oder doppelten allgemeinen Arbeitsregeln. Aktuelle offizielle Anbieter- und Clienthinweise bei Bedarf prüfen. Hauptmodell und Reasoning-Aufwand bleiben Alexanders Wahl. `auftrag` und die Vorbereitung autonomer Aufgaben bleiben eigene Fähigkeiten. Umsetzung und Abnahme stehen noch aus.
-
-42. **Use-Case-Konzepte, bestätigt:** Vorhandenen Konzept-Skill für das neue Paket vorsehen. Auf Auftrag aus einer Idee oder Anforderung ein Konzept mit Problem, Zielgruppe, gewünschtem Ablauf, Nutzen, benötigten Daten und Verbindungen, Risiken sowie prüfbaren Erfolgskriterien entwickeln. Belege, Annahmen und offene Fragen getrennt halten. Ergebnis ist ein Konzept, keine Umsetzung oder Zusage an andere. Überarbeitung und Abnahme bleiben offen.
-
-43. **Prozess- und Ursachenanalyse, bestätigt:** Vorhandenen Ishikawa-Skill als eigene Fähigkeit vorsehen. Bei unklaren Ursachen eines Geschäftsprozessproblems gemeinsam Ablauf, konkretes Problem und mögliche Ursachen erfassen. Vermutungen bis zum Vorliegen von Belegen als Hypothesen behandeln. Ergebnis sind priorisierte Ursachenhypothesen und ein Prüfplan. Ein Lösungskonzept kann anschließend folgen. Überarbeitung und Abnahme bleiben offen.
-
-44. **Kundenunterlagen und Schulungsmaterialien, bestätigt:** Vorhandenen Unterlagen-Skill vorsehen. Auf Auftrag aus freigegebenen Quellen verständliche Unterlagen für die vereinbarte Zielgruppe erstellen, etwa Schulungen, Handouts und Präsentationsinhalte. Aussagen belegen, fehlende Informationen benennen und Kundenvorgaben berücksichtigen. Ergebnisse ins jeweilige Projekt ablegen. Versand und Veröffentlichung nur auf konkreten Auftrag. Überarbeitung und Abnahme bleiben offen.
-
-45. **HTML-Präsentationen im Blockbrain-Design, bestätigt:** `blockbrain-slides` als eigene Fähigkeit für selbsttragende HTML-Präsentationen vorsehen. Abgestimmte Inhalte gestalten, Lesbarkeit und Darstellung prüfen und bei Bedarf mit dem Unterlagen-Skill zusammenarbeiten. Abweichende Kundenvorgaben ausdrücklich klären. PowerPoint bleibt ein separat zu prüfender Ausgabeweg. Überarbeitung und Abnahme bleiben offen.
-
-46. **Lern- und Erklärvideos, Aufnahme und Verbesserung gewünscht:** Alexander möchte den vorhandenen Video-Skill im neuen AIOS behalten und ausdrücklich verbessern. Nutzerfeedback: Eine kürzlich gehaltene Präsentation zusammen mit einem Video kam gut an. Verbesserungsziele werden gemeinsam konkretisiert. Die vorgeschlagene optionale Installation und die genaue technische Ausgestaltung sind damit noch nicht entschieden. Keine Produktion oder kostenpflichtigen Aufrufe beauftragt. Überarbeitung und Abnahme bleiben offen.
-
-46a. **Video-Skill zunächst im aktuellen Funktionsumfang übernehmen, bestätigt:** Verbesserungsbedarf und Weiterentwicklung auf später verschieben. Bei der Paketvorbereitung den vorhandenen Skill übernehmen und nur nötige Anpassungen für Installation, Ablage und geltende Regeln prüfen. Keine inhaltliche Neugestaltung im Rahmen dieser Auswahl. Die technische Übernahme und Abnahme stehen noch aus.
-
-47. **Blockbrain-Workflows bauen, bestätigt zurückgestellt:** `agentic-workflow-bauen` für später vormerken, nicht in die erste Version aufnehmen. Entscheidung 30 zur Prüfung und bedingten Aufnahme des Zugangs für das Aufrufen vorhandener freigegebener Agenten und Workflows bleibt bestehen.
-
-48. **Zeiterfassung vorbereiten, bestätigt:** Vorhandenen Vorbereitungsskill aufnehmen. Für einen von Alexander gewählten Zeitraum freigegebene Arbeitsspuren sammeln und einen prüfbaren Vorschlag mit Tätigkeiten, Projektzuordnung, Belegen und Zeitansätzen erstellen. Unsichere Dauer als Schätzung markieren und Überschneidungen prüfen. Noch nichts buchen. Überarbeitung und Abnahme bleiben offen.
-
-49. **Planhat-Zeiterfassung, bestätigt:** Vorhandene Planhat-Fähigkeit vorsehen. Vor der Buchung konkrete Einträge mit Datum, Dauer, Tätigkeit und Zuordnung zeigen. Erst auf Buchungsauftrag die bestätigten Einträge übertragen, vorhandene Buchungen auf mögliche Dubletten prüfen und das Ergebnis nachlesen. Unklare Zuordnungen oder ungewisse Übertragungen klären, nicht blind erneut buchen. Technischen Zugang, Überarbeitung und Abnahme noch prüfen. Noch keine konkrete Verbindung eingerichtet oder Buchung beauftragt.
-
-50. **Planhat-Wochenabschluss und Monatsabgleich, bestätigt:** Gemeinsamen Ablauf für Vorbereitung, Vorschau, Buchung und Prüfung vorsehen. Zwei Aufrufe anbieten: kurzer Wochenabschluss und vollständiger Monatsabgleich. Bereits gebuchte Zeiten berücksichtigen, um Doppelbuchungen zu vermeiden. Beide starten zunächst manuell. Vorhandene Skills `planhat-wochenabschluss` und `planhat-timetracking` bei der Umsetzung darauf abgleichen. Überarbeitung und Abnahme bleiben offen.
-
-51. **AIOS-Skill-Builder, bestätigt:** Vorhandenen Skill-Builder aufnehmen. Auf konkreten Auftrag Zweck, Auslöser, benötigten Kontext, Befugnisse und Abnahmekriterien klären. Überschneidungen mit vorhandenen Skills prüfen, Skill erstellen oder überarbeiten, unabhängig prüfen lassen und in den vorgesehenen Clients testen. Allgemeine Regeln zentral referenzieren. Installation und Veröffentlichung nur im beauftragten Umfang. Überarbeitung und Abnahme bleiben offen.
-
-52. **AIOS-Standortbestimmung, bestätigt:** Vorhandenen Audit-Skill als eigene Fähigkeit vorsehen. Auf Alexanders Aufruf prüfen, welche ausgewählten Fähigkeiten, Regeln, Kontextdateien und Verbindungen tatsächlich eingerichtet und nachweisbar nutzbar sind. Vorhanden, geprüft, eingeschränkt und fehlend unterscheiden und nächste Verbesserungen empfehlen. Eine Datei oder Installation allein ist kein Funktionsnachweis. Gegenüber der System-Retro den Gesamtstand statt vergangener Arbeitssitzungen betrachten. Überarbeitung und Abnahme bleiben offen.
-
-53. **Fremde Skills und Plugins, Inventur und Einzelauswahl bestätigt:** Vorhandenen Bestand zunächst lesend nach Zweck, Überschneidungen und tatsächlichem Nutzen durchgehen. Nur gemeinsam ausgewählte Werkzeuge kommen ins neue Setup. Notwendige Abhängigkeiten kenntlich machen und prüfen. Bestehende Installationen dabei weder deaktivieren noch löschen. Installation allein belegt weder Nutzung noch Funktionsfähigkeit.
-
-Die erste lesende Inventur zu Entscheidung 53 liegt in [inventar/uebersicht.md](inventar/uebersicht.md), mit getrennten Clientberichten. Claude Code meldet 24 Registrierungen für 18 unterschiedliche Plugin-IDs, Codex 29 installierte Plugins einschließlich bereitgestellter Laufzeitwerkzeuge. Im gemeinsamen Skillordner wurden außerhalb der 19 eigenen AIOS-Skills 36 weitere Skilldateien gefunden. Diese Zahlen sind wegen Überschneidungen nicht addierbar. Nutzung und Funktion wurden noch nicht geprüft. Bestehende Installationen unverändert.
-
-54. **HyperFrames, benötigte Bestandteile bestätigt:** Die vom ausgewählten Video-Skill benötigten HyperFrames-Skills und Programme als technische Grundlage für Komposition, Rendering, Animation, Ton und Untertitel vorsehen. Vor Einrichtung Installationsweg, Versionen und Funktion prüfen. Zusätzliche Video-Workflows nicht automatisch auswählen. Noch keine Installation beauftragt oder durchgeführt.
-
-55. **PDF-Unterstützung, bestätigt:** Lesen, gezielte Auswertung und Erstellung vorsehen. Neben Text relevante Tabellen, Grafiken und Seitenlayout berücksichtigen. Erzeugte PDFs visuell prüfen. Pro Client einen geeigneten vorhandenen Werkzeugweg auswählen, keine ungeprüfte Mehrfachinstallation gleichartiger PDF-Skills. Werkzeugauswahl und Abnahme bleiben offen.
-
-56. **Word-Dokumente, bestätigt:** DOCX-Dateien lesen, erstellen und gezielt überarbeiten, etwa für Konzepte, Handouts und Berichte. Vorlagen, Überschriften, Tabellen und vorhandene Formatierung berücksichtigen. Änderungen an bestehenden Dateien nachvollziehbar halten. Fertige Dokumente auf Inhalt und Darstellung prüfen. Pro Client einen passenden Werkzeugweg wählen. Werkzeugauswahl und Abnahme bleiben offen.
-
-57. **Excel-Dateien, bestätigt:** XLSX-Dateien lesen, auswerten, erstellen und gezielt bearbeiten. Formeln, Tabellenstruktur und Formatierung berücksichtigen. Berechnungen prüfen, Schätzungen und fehlende Werte kennzeichnen. Makros und externe Datenverbindungen nicht ungefragt ausführen oder einrichten. Pro Client einen passenden Werkzeugweg wählen. Werkzeugauswahl und Abnahme bleiben offen.
-
-58. **PowerPoint, bestätigt:** Zusätzlich zu HTML-Präsentationen PPTX-Dateien lesen, erstellen und gezielt bearbeiten. Vorhandene Vorlagen, Folienmaster und Gestaltungsvorgaben soweit technisch möglich berücksichtigen. Fertige Folien visuell auf Lesbarkeit und Layoutfehler prüfen. Keine automatische verlustfreie Umwandlung zwischen HTML und PowerPoint voraussetzen. Werkzeugauswahl und Abnahme bleiben offen.
-
-59. **Vertiefte Recherche, bestätigt:** Bewusst aufrufbare Recherchefähigkeit vorsehen. Für komplexe Fragen gemeinsam Umfang und gewünschtes Ergebnis festlegen, mehrere geeignete Quellen auswerten, Widersprüche prüfen und ein belegtes Ergebnis mit offenen Fragen liefern. Bei Bedarf Zeit- oder Kostenbudget vereinbaren. Einfache Nachschlagefragen bleiben normale Recherche. Vorhandenen `deepresearch`-Skill vor Übernahme prüfen. Überarbeitung und Abnahme bleiben offen.
-
-60. **Browsersteuerung über eigenen Chrome und Chrome DevTools MCP, bestätigt:** Browserarbeit im neuen Setup immer über eine eigene Chrome-Sitzung des Agenten und den Chrome DevTools MCP-Server durchführen. Ziel ist die Beobachtung von Konsole, Netzwerkverkehr und Fehlern während der Arbeit. Keine anderen Browserwerkzeuge als gleichwertigen Ersatz ungefragt einsetzen. Einrichtung, verfügbare Diagnosefunktionen und Kompatibilität in Claude Code und Codex vor Umsetzung prüfen. Die vereinbarten Befugnisse bleiben bestehen. Jetzt keinen Browser starten und keine Verbindung einrichten.
-
-61. **GitHub-Anbindung, bestätigt:** Repositories, Issues, Pull Requests und Prüfergebnisse im jeweiligen Auftrag lesen. Commits, Pushes, neue Issues oder PRs, Kommentare und Merges nur im ausdrücklich beauftragten Umfang. Pro Client einen geprüften Zugang über GitHub CLI oder MCP auswählen und unnötige Doppelungen vermeiden. Noch kein Repository anlegen oder Zugang einrichten. Technische Auswahl und Abnahme bleiben offen.
-
-62. **Fremde Pull Requests prüfen, bestätigt mit 62a:** Einen gemeinsamen Einstieg vorsehen, der zuerst die Standards des jeweiligen Repositories lädt. In Botticelli den versionierten `blockbrain-pr-review` nutzen (für PRs von Kollegen abgelöst durch den Nachtrag unten), in Eddy die dortigen PR-, Test- und QA-Vorgaben. Der allgemeine `external-pr-review` ergänzt den Ablauf, wo keine spezielle Regel besteht. Regeln bleiben in ihren Repositories, keine Kopien im AIOS pflegen. Konkrete Befunde mit Datei, Zeile, Auswirkung und nachvollziehbarem Fehlerszenario belegen. Ergebnisse bleiben zunächst lokal. Kommentare, Freigaben und Änderungsanforderungen auf GitHub brauchen einen entsprechenden Auftrag. Die untersuchten Standards sind projektspezifisch, eine firmenweite Geltung ist nicht belegt. Eigene Änderungen prüfen und vorhandene Review-Kommentare abarbeiten bleiben getrennte Abläufe. Umsetzung und Abnahme bleiben offen. Nachtrag Entscheidung 120 vom 23.10.2026: In Botticelli gilt für PRs von Kollegen der lokale, unversionierte `botticelli-review` unter `.claude/skills/` als Hauptablauf mit Schwerpunkt Ticket, Epic und CI, auch in Codex. Fehlt er, gilt `blockbrain-pr-review` mit dem allgemeinen Ablauf. `blockbrain-pr-review` ergänzt die Prüfung des Hausstils.
-
-63. **Eigene Änderungen prüfen, bestätigt:** Den vorhandenen Precommit-Review als eigenen Ablauf vorsehen. Ein separater Prüfagent prüft die zum Auftrag gehörenden Änderungen mit Codekontext, Repository-Regeln und relevanten Testergebnissen. Befunde mit Datei, Zeile und Auswirkung belegen. Die Prüfung verändert keine Dateien und erstellt keinen Commit. Für Bugfixes gilt weiterhin die Diagnosefreigabe. Umsetzung und Abnahme bleiben offen.
-
-64. **Review-Kommentare abarbeiten, bestätigt:** Einen eigenen Ablauf für Kommentare auf eigenen Pull Requests vorsehen. Ausgewählte Threads lesen, jeden Befund gegen aktuellen Code und Repository-Regeln prüfen und bestätigte Probleme, offene Fragen sowie unbegründete Hinweise unterscheiden. Vor Bugfixes die Diagnose bestätigen lassen. Beauftragte Änderungen testen und unabhängig prüfen. Antworten, Pushes und das Auflösen von Threads nur im ausdrücklich beauftragten Umfang ausführen. Vorhandene Repo-Abläufe wie `review-pr` berücksichtigen. Umsetzung und Abnahme bleiben offen.
-
-65. **Superpowers gezielt prüfen, bestätigt:** Vor einer Übernahme zusätzlichen Nutzen, Überschneidungen und Regelkonflikte prüfen. Insbesondere die persönliche Modellwahl, Diagnosefreigabe und vereinbarte Arbeitsweise berücksichtigen. Erst nach der Prüfung über die Aufnahme entscheiden. Bestehende Installationen bleiben unverändert.
-
-65a. **Ausgewählte Superpowers-Methoden übernehmen, bestätigt:** Superpowers nicht als verpflichtendes Gesamtplugin im neuen Setup vorsehen. Ursachenanalyse, geeignete Regressionstests, belegte Fertigmeldungen und sichere Git-Arbeitsabläufe gezielt in die bereits ausgewählten Fähigkeiten integrieren. Persönliche Freigaben und unabhängige Nachprüfung bleiben maßgeblich. Die ausgewählten Methoden werden selbst gepflegt, ohne eine zusätzliche parallele Regelsammlung anzulegen. Bei Übernahme von Quelltexten Lizenz und Herkunft berücksichtigen. Grundlage: `superpowers-pruefung.md`. Bestehende Installation unverändert lassen. Umsetzung und Abnahme bleiben offen.
-
-66. **Context Mode prüfen, bestätigt:** Vor einer Übernahme Nutzen und Speicherung an typischen AIOS-Aufgaben prüfen. Kontext- und Aufwandsersparnis, Erhalt wichtiger Belege, lokale Speicherung, Löschwege und Funktion in beiden Clients untersuchen. Context Mode ersetzt nicht das vereinbarte Gedächtnis. Erst danach über die Aufnahme entscheiden. Bestehende Wissensbestände und Installationen unverändert lassen, Verhaltenstests mit synthetischen Daten durchführen.
-
-66a. **Context Mode später evaluieren, bestätigt:** Das Plugin auf die Liste der noch zu evaluierenden Bestandteile nehmen. Die Entscheidung über eine Aufnahme bleibt ausdrücklich offen und wird später getroffen. Grundlage für die spätere Evaluierung ist `context-mode-pruefung.md`, insbesondere automatische Sitzungsspeicherung, Löschumfang und isolierte Tests beider Clients. Jetzt keine weitere Evaluierung oder Änderung der bestehenden Installation.
-
-67a. **Claude-Mem optional und später begrenzt testen, bestätigt:** Das AIOS-Grundpaket ohne Pflichtabhängigkeit von Claude-Mem aufbauen. Das Plugin als optionalen Kandidaten für einen späteren begrenzten Testbetrieb behalten: ausgewählte Projekte, ein geeignetes günstiges Beobachtermodell und wenig automatisch eingeblendeter Kontext. Zuerst die unterschiedlichen installierten Versionen und sämtliche Erfassungswege prüfen. Erst belegter Zusatznutzen entscheidet über die Aufnahme. Bestehende Installation und Erinnerungen bleiben jetzt unverändert. Die historische Kontext-Bestandsaufnahme im Flugpaket vom 16.10.2026 als Prüfgrundlage berücksichtigen, ohne deren damalige Nutzungszahlen als aktuellen Laufzeitnachweis zu behandeln.
-
-68. **Context7 später evaluieren, bestätigt:** Die Anbindung auf die spätere Evaluierungsliste setzen. Aufnahmeentscheidung offenlassen. Vor einer möglichen Übernahme Quellenqualität, Versionsbezug, Zusatznutzen gegenüber direkter offizieller Dokumentationsrecherche sowie Einrichtung und Funktion in beiden Clients prüfen. Jetzt keine Installation oder Konfigurationsänderung.
-
-69. **Sentry für Lesen und Diagnose vorsehen, bestätigt:** Die Integration für die erste Version vorsehen, um auf konkreten Auftrag relevante Fehlermeldungen und Diagnoseinformationen gezielt zu lesen und Ursachen zu untersuchen. Projektregeln und vorhandene Diagnoseabläufe berücksichtigen. Benötigte Rechte, technischen Zugang und Funktion in beiden Clients vor Übernahme prüfen. Vor Bugfixes gilt weiterhin die Diagnosefreigabe. Diese Auswahl beauftragt keine Änderungen an Sentry, keine automatische Überwachung und keine Installation. Bestehende Installationen bleiben unverändert. Umsetzung und Abnahme bleiben offen.
-
-70. **Datadog für Lesen und Diagnose vorsehen, bestätigt:** Die Integration für die erste Version vorsehen, um auf konkreten Auftrag relevante Logs, Metriken und Traces für Betriebs- und Leistungsdiagnosen gezielt zu lesen, soweit die Anbindung das unterstützt. Konkrete Anwendungsfälle, verfügbare Zugänge, benötigte Rechte und Funktion in beiden Clients prüfen. Änderungen an Monitoren oder anderer Datadog-Konfiguration sind nicht umfasst. Vor Bugfixes gilt weiterhin die Diagnosefreigabe. Keine automatische Überwachung oder Installation durch diese Auswahl. Bestehende Installationen bleiben unverändert. Umsetzung und Abnahme bleiben offen.
-
-71. **Frontend-Gestaltung aufnehmen, bestätigt:** Den vorhandenen `frontend-design`-Skill für ausdrücklich beauftragte Webseiten und Benutzeroberflächen vorsehen. Vorhandene Designsysteme und Repository-Regeln beachten. Gestaltung, Bedienbarkeit, responsive Darstellung und Barrierefreiheit berücksichtigen. Ergebnisse im laufenden System visuell und funktional sowie unabhängig prüfen. Die Fähigkeit ergänzt den Präsentations-Skill. Den vorhandenen Skill vor Übernahme auf diese Anforderungen prüfen. Umsetzung und Abnahme bleiben offen.
-
-72a. **Native Regelprüfung nutzen und AIOS-Audit ergänzen, bestätigt:** Keine zusätzliche eigenständige Regelpflege-Fähigkeit bauen. In Claude Code den vorhandenen `/doctor prompt-audit` nutzen. Der bereits ausgewählte AIOS-Audit ergänzt die Prüfung kanonischer Quellen, erzeugter Spiegel und der Einbindung in beide Clients. Änderungen bleiben an den Nutzerauftrag gebunden. Den passenden Prüfweg in Codex bei der Umsetzung verifizieren. Diese Entscheidung ersetzt den Vorschlag aus Frage 72. Umsetzung und Abnahme bleiben offen.
-
-73. **Übrige Sammelplugins nur bei konkreter Lücke prüfen, bestätigt:** `productivity`, `engineering`, `enterprise-search` und `cowork-plugin-management` nicht pauschal ins neue Paket übernehmen. Später nur einzelne Bestandteile prüfen, für die nach Umsetzung der ausgewählten Fähigkeiten noch ein konkreter Bedarf besteht. Bestehende Installationen bleiben unverändert.
-
-74. **Alle bestätigten Fähigkeiten immer installieren, bestätigt:** Die Installation umfasst immer sämtliche für die Aufnahme bestätigten Fähigkeiten. Keine Auswahl einzelner Funktionsbereiche und keine persönliche Modulauswahl als Installationsvoraussetzung vorsehen. Später zu evaluierende oder ausdrücklich zurückgestellte Bestandteile bleiben ausgenommen. Benötigte Abhängigkeiten berücksichtigen und deren Einrichtung prüfen. Die geführte Einrichtung von Diensten, Zugangsdaten und tatsächlich verfügbaren Rechten bleibt bestehen. Installierte Fähigkeiten ohne nutzbaren Zugang oder abgeschlossene Abnahme nicht als funktionsfähig ausweisen. Diese Entscheidung ersetzt den Vorschlag einer auswählbaren Zusammenstellung aus Frage 74. Umsetzung und Abnahme bleiben offen.
-
-75. **Zielclients je Mac auswählbar, bestätigt:** Bei der Einrichtung Claude Code, Codex oder beide auswählen lassen. Alle bestätigten Fähigkeiten für die gewählten Clients einrichten. Gemeinsame Regeln und Inhalte einmal pflegen, Einbindung und Funktionsprüfung je Client durchführen. Fehlende Clients melden. Ihre Neuinstallation erfolgt nur auf ausdrücklichen Auftrag. Umsetzung und Abnahme bleiben offen.
-
-76. **Begrenzten Vorabcheck einbauen, bestätigt:** Vor der Installation die gewählten Clients, vorgesehenen Installationsordner, vorhandenen Skill-Einbindungen, relevanten Regeldateien, Verbindungskonfigurationen und benötigten Programme gezielt prüfen. Keine Kundenprojekte, Chats oder persönlichen Dokumente durchsuchen. Technische Überschneidungen und Konflikte benennen, keine zuverlässige automatische Erkennung inhaltlicher Regelwidersprüche behaupten. Geplante Änderungen vor dem Schreiben anzeigen. Konkret betroffene Konfigurationsdateien vor Änderungen sichern. Bestehende Inhalte nur nach konkreter Entscheidung ersetzen oder zusammenführen, Zugangsdaten nicht anzeigen. Eigene Einträge erkennen und bei erneutem Ausführen keine Duplikate erzeugen. Anschließend die Einbindung prüfen. Umsetzung und Abnahme bleiben offen.
-
-77. **Updates auf Aufruf mit Vorschau, bestätigt:** Neue AIOS-Versionen zunächst nur auf Nutzeraufruf einspielen. Version und Änderungen anzeigen, Voraussetzungen und Konflikte prüfen. Nur zum Paket gehörende Dateien und Einbindungen aktualisieren. Persönliches Profil, Ergebnisse und fremde Konfiguration erhalten. Lokal veränderte Paketdateien vor einem Überschreiben melden. Nach dem Update die Funktion prüfen. Umsetzung und Abnahme bleiben offen.
-
-78. **Wiederherstellung vorerst weglassen, bestätigt:** Für die erste Version keine automatische oder gesondert aufrufbare Rückkehr zu einer vorherigen Paketversion bauen. Die in Entscheidung 76 vereinbarte Sicherung betroffener Konfigurationsdateien bleibt bestehen, ist aber keine geprüfte Wiederherstellungsfunktion. Fehlgeschlagene Updates mit tatsächlichem Zustand und offenen Schritten melden, nicht als erfolgreich ausweisen.
-
-79. **Gezielte Deinstallation mit Vorschau, bestätigt:** Einen bewusst aufrufbaren Deinstallationsablauf für die erste Version vorsehen. Zunächst die zu entfernenden Paketdateien und vom Installer angelegten Einbindungen anzeigen. Nach Bestätigung diese gezielt entfernen. Persönliches Profil, Ergebnisse, Projektdateien und gemeinsam genutzte Programme erhalten. Nachträglich veränderte Einträge als Konflikt melden und nicht ungeprüft entfernen. Umsetzung und Abnahme bleiben offen.
-
-80. **Einrichtungsstatus mit erneutem Prüfaufruf, bestätigt:** Am Ende der Installation je gewähltem Client ausweisen, welche Fähigkeiten installiert, erfolgreich geprüft oder noch nicht nutzbar sind. Fehlende Anmeldungen, Programme und offene Tests mit dem jeweils nächsten Schritt nennen. Möglichst synthetische Daten verwenden und keine externen Schreibaktionen ausführen. Denselben Statuscheck später erneut aufrufen können. Ergebnisse als Grundlage für den bereits gewählten AIOS-Audit nutzen. Installation allein ist kein Funktionsnachweis. Umsetzung und Abnahme bleiben offen.
-
-81. **Getestete Schritt-für-Schritt-Anleitung aufnehmen, bestätigt:** Eine kurze Anleitung für einen frischen Mac ins Paket aufnehmen: Voraussetzungen prüfen, Paket beziehen, Installer starten, Client und Ablageorte wählen, Profil einrichten oder importieren, gewünschte Dienste anmelden und Einrichtungsstatus prüfen. Konkrete Hilfe für typische Fehler sowie Aufrufe für Update und Deinstallation ergänzen. Befehle und erwartete Ergebnisse vor Veröffentlichung testen. Umsetzung und Abnahme bleiben offen.
-
-82. **Nutzungshilfe im README, bestätigt:** Im README des neuen Pakets eine kompakte Übersicht aller enthaltenen Fähigkeiten mit Zweck, Beispielauftrag, benötigten Verbindungen und geprüftem Aufruf je Client vorsehen. Auf die Skilldateien verweisen, ihre vollständigen Anweisungen nicht duplizieren. Das README bündelt Überblick, Installation, Nutzung, Wartung und Hilfe bei Problemen. Längere Detailanleitungen bei Bedarf unter `docs/` ablegen und verlinken. Für die erste Version keinen externen Guide und keine separate Dokumentationsplattform vorsehen. Umsetzung und Abnahme bleiben offen.
-
-83. **Vorhandene Anmeldewege und lokale .env, bestätigt:** Vorhandene Anmeldewege der Clients und Dienste nutzen. Für benötigte API-Schlüssel und verbindungsspezifische Zugangsdaten bei der Installation eine lokale `.env` vorbereiten, insbesondere zur direkten Eingabe des Blockbrain-API-Schlüssels. Die Datei außerhalb des versionierten Pakets ablegen, nur für den lokalen Nutzer les- und schreibbar anlegen und von Repository, Profilexport und normalen Diagnoseausgaben ausschließen. Vorhandene `.env`-Werte nicht überschreiben. Eingabe ohne Anzeige des Geheimnisses ermöglichen, keine Zugangsdaten im Chat oder README erfassen. Bestehende Browser-/OAuth-Anmeldungen weiterverwenden, deren Passwörter nicht zusätzlich kopieren. Pro Anbindung prüfen, wie die benötigten Variablen tatsächlich geladen werden. Eine angelegte `.env` allein belegt keine funktionierende Verbindung. Umsetzung und Abnahme bleiben offen.
-
-84. **Zugangsdaten überspringbar und später ergänzbar, bestätigt:** Die Eingabe von API-Schlüsseln während der Installation überspringen können. In der lokalen `.env` die benötigten leeren Felder mit kurzen Hinweisen vorbereiten. Alle bestätigten Fähigkeiten installieren, betroffene Verbindungen jedoch ausdrücklich als noch nicht eingerichtet kennzeichnen. Schlüssel später ergänzen und den Verbindungscheck erneut aufrufen können. Vorhandene Werte weiterhin erhalten. Umsetzung und Abnahme bleiben offen.
-
-85. **Bei jeder fehlenden Quelle zuerst nachfragen, bestätigt:** Ist eine für den aktuellen Auftrag benötigte Quelle nicht verfügbar oder noch nicht eingerichtet, zuerst nachfragen und die fehlende Quelle sowie die konkrete Einschränkung nennen. Erst nach Nutzerentscheidung mit eingeschränkter Quellenbasis weiterarbeiten, eine Alternative nutzen oder den betroffenen Schritt zurückstellen. Keine stillen Ersatzannahmen und keine endlosen Wiederholungsversuche. Die Installation kann gemäß Entscheidung 84 weiterhin ohne alle Zugangsdaten abgeschlossen werden. Diese Entscheidung ersetzt den Vorschlag automatischer Teilergebnisse aus Frage 85. Umsetzung und Abnahme bleiben offen.
-
-86. **Widersprüchliche Quellen erst prüfen, dann gegebenenfalls nachfragen, bestätigt:** Prüfen, ob abweichende Angaben dieselbe Sache betreffen und ob eine belegte spätere Änderung vorliegt. Datum, Kontext und die für den jeweiligen Inhalt festgelegte führende Quelle berücksichtigen. Neuer allein genügt nicht als Beweis. Nachweisbar überholte Angaben als früheren Stand einordnen. Bleibt unklar, welche Angabe gilt, beide Angaben mit Belegen zeigen und nachfragen. Quellen dabei nicht verändern. Die Rückfragepflicht bei fehlenden benötigten Quellen aus Entscheidung 85 bleibt bestehen. Umsetzung und Abnahme bleiben offen.
-
-87. **Arbeitsstand pflegen und wichtige Fassungen erhalten, bestätigt:** Bei Berichten, Präsentationen und anderen erzeugten Dokumenten einen aktuellen Arbeitsstand pflegen. Kleine beauftragte Korrekturen direkt darin umsetzen. Vor umfangreichen Überarbeitungen oder dem Ersetzen einer bereits freigegebenen Fassung die vorherige Version erhalten. Neue Versionen eindeutig benennen, nicht bei jeder kleinen Änderung zusätzliche Kopien anlegen. Projektcode folgt weiterhin den jeweiligen Git- und Repository-Regeln. Umsetzung und Abnahme bleiben offen.
-
-88. **Zusätzliche KI-Dienste im konkreten Umfang freigeben, bestätigt:** Vor der ersten Nutzung eines zusätzlichen KI-Dienstes für einen Auftrag Anbieter, übermittelte Inhalte und mögliche Kosten nennen und die Freigabe einholen. Eine bereits erteilte Freigabe innerhalb ihres vereinbarten Umfangs weiterverwenden, nicht erneut abfragen. Ein hinterlegter API-Schlüssel allein gilt nicht als Nutzungsauftrag. Die reguläre Arbeit im gewählten Hauptclient bleibt unberührt. Umsetzung und Abnahme bleiben offen.
-
-89. **Kurzes lokales Prüfprotokoll aufnehmen, bestätigt:** Für Installation, Updates und Statuschecks ein kurzes lokales Prüfprotokoll speichern. Zeitpunkt, Paket- und Clientversionen, ausgeführte Prüfschritte und konkrete Fehler aufnehmen. Keine Zugangsdaten, Gesprächsinhalte oder abgerufenen Mail- und Dokumentinhalte protokollieren. Nichts automatisch versenden. Das Protokoll soll insbesondere die Fehlersuche auf dem zweiten Mac unterstützen. Umsetzung und Abnahme bleiben offen.
-
-90. **Änderbare Ablagevorschläge und abgefragte Projektpfade, bestätigt:** Bei der Einrichtung `~/aios-runtime/` für das installierte Paket, `~/aios-profile/` für persönliches Profil und lokale `.env` sowie `~/aios-output/` für persönliche Ergebnisse vorschlagen. Quellcode getrennt im Entwicklungsordner halten, aktuell `AIOS-Neuaufbau`. Vom Client vorgegebene Installationsorte zusätzlich berücksichtigen. Zu Beginn der Einrichtung die bevorzugten Basisordner für Programmier- und Kundenprojekte abfragen und die bestätigten Pfade lokal je Mac speichern. Konkrete bestätigte Projektzuordnungen im privaten Register führen und vorrangig nutzen. Bei einem neuen oder nicht eindeutig zugeordneten Projekt den Zielordner abfragen beziehungsweise einen Vorschlag bestätigen lassen, bevor Dateien angelegt werden. Kunden- und Projektergebnisse im jeweiligen Projekt ablegen. Bestehende Ordner gemäß Vorabcheck prüfen, jetzt nichts verschieben. Umsetzung und Abnahme bleiben offen.
-
-90a. **Frische Pfadabfrage auf jedem Mac, klargestellt und bestätigt:** Bei der frischen Installation auf dem zweiten Mac alle lokalen Ablageorte neu abfragen und die vereinbarten Vorschläge anbieten. Auch bei einem Profilimport keine Pfade des ersten Macs automatisch übernehmen. Die dort bestätigten Basisordner und konkreten Projektzuordnungen lokal speichern.
-
-91a. **Regelkern neu schreiben und Altbestand gezielt abgleichen, bestätigt:** Aus den bestätigten Entscheidungen einen neuen knappen Regelkern vorbereiten. Den Altbestand anschließend als Prüfliste abgleichen. Alte Regeln begründet übernehmen, in passende Skills oder Projektkontexte verlagern oder im neuen Paket weglassen. Die Zuordnung gesammelt zur Prüfung vorlegen. Nicht alle Paketentscheidungen in den Startkontext aufnehmen. Verhalten anschließend in beiden Clients prüfen. Aktive Regeln unverändert lassen. Dieser Beschluss ersetzt den Vorschlag aus Frage 91. Die konkrete Übernahmeliste steht in `uebernahmeliste.md`.
-
-92b. **Separaten Ladeplan weglassen, bestätigt:** Im neuen Paket keinen separaten Ladeplan und keine zusätzliche zentrale Quellenzuordnung pflegen. Den bisherigen `aios/context/ladeplan.md` einmal beim Abgleich relevanter Abhängigkeiten nutzen. Skillbeschreibungen benennen den Einsatzbereich, die Skills selbst die für ihren Auftrag benötigten Quellen. Gemeinsame Regeln bleiben zentral, lokale Pfade in der Konfiguration. Die Fähigkeitenübersicht für den Nutzer steht im README. Diese Entscheidung ersetzt die Vorschläge aus 92 und 92a. Bestehenden Ladeplan der aktiven Installation unverändert lassen.
-
-93. **Vorlagen und Anleitung für Arbeitsdateien vereinfachen, bestätigt:** Die bestehenden Vorlagen für PLAN und NOTIZEN schlank übernehmen. PLAN enthält Ziel, aktuellen Stand, nächsten Schritt und Grenzen. NOTIZEN enthält gültige Entscheidungen, Befunde, bekannte Fehler und nur nötigen Verlauf. Starre Zeilenlimits, exakte Formatpflichten und automatische Commit-Vorgaben entfallen. Git-Aktionen bleiben an den Nutzerauftrag gebunden. Den Verweis auf den entfallenden Ladeplan entfernen. Umsetzung und Prüfung bleiben offen.
-
-94a. **Auftrag schärfen: Kern behalten und starre Vorgaben vereinfachen, bestätigt:** Vorhandenen Kern und Prüffälle als Vorlage nutzen. Ergebnis, prüfbare Abnahme, Grenzen und gegebenenfalls bekannten Startpunkt klären. Nur den Prompt liefern, nicht automatisch ausführen und keine Befugnisse erweitern. Vorgaben wie genau eine Frage und keine Varianten lockern, wenn die Klärung mehr braucht. Namen, historischen Coaching-Kontext und clientspezifische Werkzeugvorgaben bereinigen. Prüfanforderungen folgen den bestätigten Regeln. Umsetzung und Prüfung bleiben offen.
-
-95b. **Auftrag schärfen und autonome Vorbereitung zusammenlegen, bestätigt:** Einen gemeinsamen Skill „Auftrag vorbereiten“ vorsehen. Er klärt Ergebnis, Abnahme, Kontext und Grenzen. Für gewünschte autonome Aufgaben ergänzt er Blockaden, Zwischenstände, gegebenenfalls Budgets und die passende Client-Eingabe. Beide Funktionen bleiben erhalten, ohne zwei getrennte Skills zu pflegen. Vereinfachungen aus 94a übernehmen, feste persönliche Pfade und den alten Ladeplan entfernen. Kein automatischer Start und keine Erweiterung von Befugnissen. Rückfrage- und Diagnosefreigaben bleiben maßgeblich. Der Prompt-Berater für konkrete Promptprobleme bleibt getrennt. Dieser Beschluss ersetzt die eigenständige Aufteilung aus 39, 40 und dem Strukturteil von 41a sowie die getrennten Übernahmevorschläge 94 und 95. Umsetzung und Prüfung bleiben offen.
-
-96a. **Kleinen Prompt-Diagnose-Skill aus ausgewählten Bausteinen bauen, bestätigt:** Aus `gpt-prompting` und `fable-prompting` nur gezielt Methoden übernehmen: Bedeutung beim Kürzen erhalten, widersprüchliche Vorgaben erkennen, tatsächliche Clientfähigkeiten beachten und Verbesserungen anhand konkreter Beispiele prüfen. Einen kleinen separaten Prompt-Berater aufbauen. Die alten Skills sind keine fertigen Diagnoseabläufe. Auftragsstruktur, Delegation und allgemeine Prüfregeln nicht erneut pflegen. Alte Modellvorgaben entfernen, aktuelle offizielle Anbieterhinweise nur bei Bedarf prüfen. Umsetzung und Prüfung bleiben offen.
-
-97. **Tagesstart: nützliche Struktur übernehmen, feste Vorgaben bereinigen, bestätigt:** Unterscheidung von Terminen mit anderen Personen und eigenen Arbeitsblöcken, Bündelung doppelter Meldungen sowie Belege für erledigte Punkte aus der bestehenden Vorlage übernehmen. Feste Arbeitszeiten, persönliche Pfade, starre Warnschwellen und automatische Regeländerungen nicht unverändert übernehmen. To Do wie beschlossen einbinden. Bei fehlenden benötigten Quellen zuerst nachfragen. Über den gespeicherten Briefingverlauf separat entscheiden. Umsetzung und Prüfung bleiben offen.
-
-98. **Kurzen Ergebnisverlauf für Tagesstart-Vergleiche behalten, bestätigt:** Neue Tagesstart-Briefings als kurze Ergebnisse im persönlichen Ausgabeordner speichern und beim nächsten Tagesstart für Vergleiche heranziehen. Frühere Angaben anhand aktueller Quellen prüfen. Aufgaben bleiben in To Do beziehungsweise Jira. Der Verlauf ist keine zweite Aufgabenliste und keine automatische Wissensablage. Keine ganzen Nachrichten speichern. Alte Briefings jetzt nicht übernehmen. Umsetzung und Prüfung bleiben offen.
-
-99. **Terminvorbereitung: belegte Rückschau behalten und Vorlage anpassen, bestätigt:** Belegte Rückschau, Änderungen seit dem letzten Termin und offene Zusagen aus der vorhandenen Vorlage übernehmen. Ziel, Fragen und vorgeschlagene Agenda ergänzen. Bei nicht eindeutigem Termin nachfragen. Feste Kundenannahmen, Toolnamen, Ablagepfade und Zeilenlimits bereinigen. Ergebnisse im zugeordneten Projekt, sonst im persönlichen Ausgabeordner ablegen. Frühere Vorbereitungen sind kein Beleg tatsächlicher Meetingbeschlüsse. Umsetzung und Prüfung bleiben offen.
-
-100. **Nachbereitungsablauf gezielt übernehmen, bestätigt:** Den Abschnitt zur Meetingnachbereitung aus dem bisherigen Assistenz-Skill als Vorlage nutzen. Entscheidungen, eigene nächste Schritte und Zusagen anderer trennen. Zuständigkeiten und Fristen belegen. Bereitgestellte Notizen oder ausdrücklich ausgewähltes Transkript als Grundlage verwenden. An die neue Projektablage anpassen. Aufgabenanlage und Follow-up-Versand bleiben gesondert beauftragte Aktionen. Den zusätzlich enthaltenen Tagesabschluss nicht automatisch übernehmen. Umsetzung und Prüfung bleiben offen.
-
-101. **Aufgabenablauf gezielt übernehmen, bestätigt:** Eigene nächste Schritte, Zusagen anderer und reine Informationen unterscheiden. Quellenbelege, Dublettenprüfung und Kontrolle nach beauftragten Änderungen in Microsoft To Do übernehmen. Feste Kundenregeln und pauschale Jira-Ticketpflicht ab einem bestimmten Aufwand entfallen. Aus Nachrichten erkannte Aufgaben zunächst vorschlagen. Bei fehlenden benötigten Quellen zuerst nachfragen. Umsetzung und Prüfung bleiben offen.
-
-102a. **Planungsprüfungen behalten, Vorgaben und Befugnisse anpassen, bestätigt:** Freie Zeit korrekt berechnen, passende bestehende Arbeitsblöcke wiederverwenden, vor Änderungen erneut auf Konflikte prüfen und das gespeicherte Ergebnis kontrollieren. Name, Arbeitszeiten und Zeitzone aus dem Profil verwenden. Feste 75-Prozent-Grenze entfernen. „Plane meinen Tag“ liefert zunächst einen Vorschlag. Konkrete Änderungsaufträge wie „Blocke morgen eine Stunde für die Präsentation“ erlauben die entsprechende Kalenderänderung ohne erneute Freigabe. Bei fehlenden benötigten Quellen zuerst fragen. Umsetzung und Prüfung bleiben offen.
-
-103. **Coaching-Kern übernehmen und Vorlage bereinigen, bestätigt:** Erfolge, Stärken, Schwierigkeiten und Verbesserungen besprechen. Ein konkretes Wochenexperiment vorschlagen und später nach seiner tatsächlichen Wirkung fragen. Starre Mengen- und Formatvorgaben lockern. Nur für den Auftrag freigegebene Quellen auswerten. Feste persönliche Pfade, alte pauschale Zugriffsfreigaben und automatische Zeitpläne nicht übernehmen. Der enthaltene monatliche Modellcheck gehört nicht automatisch zum Coaching. Umsetzung und Prüfung bleiben offen.
-
-104. **Belegte Systemprüfung übernehmen und Vorlage bereinigen, bestätigt:** Fehler und unnötigen Aufwand anhand von Originalbelegen prüfen, belegte Ursachen von Vermutungen trennen und frühere Entscheidungen zu Verbesserungsvorschlägen berücksichtigen. Prüfung der Ablageregeln übernehmen. Alte pauschale Zugriffsfreigaben, feste Modellbewertungen, persönliche Pfade und automatischen Freitagsjob nicht übernehmen. Retro nur auf Aufruf. Aufgaben nur auf Auftrag anlegen, persönliche Aufgaben bleiben in To Do. Regeln und Skills nicht automatisch ändern. Umsetzung und Prüfung bleiben offen.
-
-105. **Konzept-Kern übernehmen und Vorgaben vereinfachen, bestätigt:** Originalanforderungen mit Quellen verbinden, technische Machbarkeit prüfen und einen konkreten Ablauf samt Pilot und Abnahmekriterien beschreiben. Kurz- und Langfassung nur passend zum Auftrag erstellen. Feste Kundenbeispiele, persönliche Pfade und alte Ladeplanverweise entfernen. Bei fehlenden benötigten Quellen zuerst fragen. Dauerhafte Wissensübernahmen nach den vereinbarten Bestätigungsregeln behandeln. Vorhandenen Dokumentrenderer vor einer Übernahme separat prüfen. Umsetzung und Prüfung bleiben offen.
-
-106. **Analysekern übernehmen, Vertiefung nach Auftrag, bestätigt:** Tatsächlichen Prozessablauf erfassen, Messwerte, berichtete Beobachtungen und Ursachenhypothesen trennen und Ursachen mit Kategorien und vertiefenden Warum-Fragen untersuchen. Maßnahmenvergleich, KI-Potenziale und Wirtschaftlichkeitsrechnung nur bei passendem Auftrag ergänzen. Eingesparte Arbeitszeit und tatsächliche Geldersparnis getrennt ausweisen. Alte Kontextpfade und Ladeplanverweise entfernen. Bei fehlenden benötigten Quellen zuerst fragen. Umsetzung und Prüfung bleiben offen.
-
-107. **Unterlagen-Kern übernehmen und Vorlage bereinigen, bestätigt:** Vorhandenes Material prüfen, Inhalte an Zielgruppe und Lernziel ausrichten, Inhalt von Gestaltung und Trainerinformationen von Teilnehmerunterlagen trennen. Visuelle Qualitätsprüfung übernehmen. Präsentation, Handout und Beispiele nur im vereinbarten Umfang erstellen. Feste Kundenbeispiele, alte Archivpfade und konkrete Toolnamen bereinigen. Ergebnisse ins zugeordnete Projekt legen. Bei fehlenden benötigten Quellen zuerst fragen. Renderer und Vorlagen vor Übernahme separat prüfen. Umsetzung und Prüfung bleiben offen.
-
-108. **Präsentationsdesign und technische Grundlage übernehmen, bestätigt:** Festes Blockbrain-Design mit Logo, Folienlayouts, Navigation und HTML-Prüfskript als Ausgangspunkt übernehmen. Einzelne offline nutzbare HTML-Datei und visuelle Prüfung aller Folien erhalten. Mit synthetischen Inhalten testen, keine Inhalte aus der Referenzpräsentation übernehmen. Beschlossene Regeln zu Ablage, Quellen und Chrome DevTools anwenden. Umsetzung und Prüfung bleiben offen.
-
-109. **Sammelskript mit begrenzter Quellenauswahl übernehmen, bestätigt:** Bestehendes Sammelskript für Arbeitsspuren als Ausgangspunkt behalten. Nur ausdrücklich ausgewählte Projektordner und freigegebene Sitzungsquellen verwenden und diese Auswahl lokal speichern. Zeitfenster als Tätigkeitshinweise behandeln, nicht als automatisch abrechenbare Dauer. Erkennung importierter Protokolle mit Testdaten prüfen, bevor sie Ereignisse ausschließt. Umsetzung und Prüfung bleiben offen.
-
-110a. **Planhat per MCP eintragen, endgültig manuell einreichen, bestätigt:** Bestätigte Zeiten auf Buchungsauftrag über den Planhat-MCP-Server als Entwurf übertragen und anschließend prüfen. Entwurfsstatus ausdrücklich melden. Endgültiges Einreichen erfolgt manuell in Planhat. Die vom Nutzer genannte bestehende MCP-Verbindung in Blockbrain ist Ausgangspunkt, kein Funktionsnachweis für Claude Code oder Codex. Zugang und Funktion in beiden Clients separat prüfen. Umsetzung und Prüfung bleiben offen.
-
-111. **Recherchemethodik behalten, starre Vorgaben entfernen, bestätigt:** Umfang und Quellenzahl nach Fragestellung wählen. Bei klarem Auftrag direkt recherchieren, wesentliche Unklarheiten vorher klären. Iterative Suche, Gegenargumente, Quellenbewertung und belegte Schlussfolgerungen erhalten. Keine pauschale Planfreigabe, feste Teilfragenzahl oder Quellenquote. Berichtslänge und Ausgabeformat nach Auftrag. Umsetzung und Prüfung bleiben offen.
-
-112. **Eigenständiger Skill-Builder, Hilfsplugins optional, bestätigt:** AIOS-Skill-Builder ohne verpflichtendes zusätzliches Skill-Creator-Plugin übernehmen. Nötige Prüfungen gehören zum AIOS. Vorhandene allgemeine Hilfswerkzeuge nach Prüfung optional für Formatprüfung und Verhaltenstests nutzen. Alte Installationsbefehle und Regelverweise an das neue Paket anpassen. Umsetzung und Prüfung bleiben offen.
-
-113. **Audit: Status mit Belegen statt Punktesystem, bestätigt:** Alte 20-Punkte-Logik ersetzen. Je Fähigkeit und Client vorhanden, geprüft, eingeschränkt oder fehlend mit Beleg und nächstem Schritt ausweisen. Vergleich zum letzten Audit zeigt tatsächliche Änderungen. Dateilänge oder bloße regelmäßige Nutzung nicht als Funktionsfortschritt bewerten. Umsetzung und Prüfung bleiben offen.
-
-114. **Geprüfte Dokumentwerkzeuge und Abhängigkeiten festhalten, bestätigt:** Für PDF, Word, Excel und PowerPoint pro Client einen geeigneten Werkzeugweg prüfen und den getesteten Versionsstand dokumentieren. Nutzbare mitgelieferte Clientwerkzeuge direkt verwenden. Zusätzlich benötigte Fremd-Skills oder Programme aus Originalquellen einrichten. Lizenz, Installation und Funktion vor Auswahl prüfen. Vom AIOS verwaltete Abhängigkeiten mit geprüftem AIOS-Update ändern. Mitgelieferte Clientwerkzeuge können außerhalb des AIOS aktualisiert werden, ihr dokumentierter Teststand ist keine Versionssperre. Umsetzung und Prüfung bleiben offen.
-
-115. **Minimales Aktionsjournal übernehmen, bestätigt:** Lokal Dienst, Ziel, Aktionskennung, Zeitpunkt, Status und nötige Objektkennungen für externe Schreibaktionen festhalten. Bei Timeout oder Abbruch zuerst im Zielsystem prüfen, ob die Aktion erfolgreich war. Bei unklarem Ausgang nicht erneut schreiben. Keine Zugangsdaten, vollständigen Nachrichten oder Transkripte speichern. Das Journal erweitert keine Befugnisse und ist keine zweite Aufgabenliste. Umsetzung und Prüfung bleiben offen.
-
-116a. **Angemeldete Modelltests auf dem zweiten Mac, bestätigt am 20.10.2026:** Keine getrennten Testanmeldungen auf diesem Mac einrichten. Hier weiter lokal Installer, Dateiintegrität, native Ladung und Fehlerfälle ohne Anbieteraufruf prüfen. Tatsächliche Modellantworten mit erfundenen Daten erst auf dem zweiten Mac testen. Vorbereitete Fälle und deren Erwartungen liegen in `tests/verhalten/`. Installation und Ladung bleiben ausdrücklich von der fachlichen Funktionsabnahme getrennt.
-
-117. **Renderer-Korrekturen in neuen Paketkopien, bestätigt am 20.10.2026:** Die erläuterten Fehler beim HTML-Ressourcencheck, beim Schutz bestehender Ausgabeordner und bei doppelten JSON-Schlüsseln beheben und mit synthetischen Tests absichern. Den persönlichen Standardpfad für die Farbpalette durch eine ausdrücklich gewählte Eingabe ersetzen. Bestehende aktive Skripte bleiben unverändert. Umsetzung und unabhängige Prüfung werden im neuen Paket dokumentiert.
-
-118. **Betriebsabnahme gemeinsam auf dem zweiten Mac, bestätigt am 20.10.2026:** Entwicklung ohne weitere Nutzerbeteiligung fortsetzen, soweit die bestätigten Entscheidungen ausreichen. Tatsächliche Installation, Update, Deinstallation und angemeldete Modelltests auf dem zweiten Mac gemeinsam prüfen. Hier ausschließlich synthetische Dateitests in isolierten Ordnern. Die aktive Runtime, Profile, Clientregeln und Skillverknüpfungen bleiben unverändert. Keine weiteren nativen Clientaufrufe auf diesem Mac im Rahmen dieser Vorbereitung.
-
-119. **Manuelle Regelprüfung nach Einrichtung, bestätigt:** Die inhaltliche Verantwortung für eigene Regeln bleibt beim Nutzer. Die Einrichtungsanleitung empfiehlt in Claude Code `/doctor prompt-audit`, sofern verfügbar. Für Codex enthält sie einen kopierbaren Auftrag zur Prüfung der geltenden AGENTS.md-Dateien, eingebundenen Regeln und AIOS-Skills auf Widersprüche, Dopplungen, veraltete Vorgaben und tote Verweise. Befunde mit Fundstellen und Vorschlägen liefern, Dateien erst auf konkreten Änderungsauftrag bearbeiten. Die vorgesehene AIOS-Audit-Fähigkeit kann diesen Prüfauftrag anbieten. Kein zusätzliches Plugin und kein automatischer inhaltlicher Konfliktprüfer im Installer. Technische Eigentums-, Vorschau- und Dateischutzprüfungen bleiben erforderlich. Die vorgeschlagene Ergänzung bestehender Regeldateien über einen verwalteten AIOS-Abschnitt ist noch nicht implementiert. Quellenstand: [Claude-Regelprüfung](https://code.claude.com/docs/en/memory#audit-your-instruction-files), [Codex-Befehlsübersicht](https://developers.openai.com/codex/cli/slash-commands).
-
-## Später evaluieren
-
-| Bestandteil | Status | Grundlage und offene Prüfung |
+| Folder | Language | Installed under |
 | --- | --- | --- |
-| Context Mode | Aufnahmeentscheidung vertagt, Entscheidung 66a | `context-mode-pruefung.md`. Speicherung, Löschumfang und beide Clients isoliert prüfen. |
-| Claude-Mem | Optionaler Kandidat, begrenzter Test später, Entscheidung 67a | Versionen und Erfassungswege prüfen. Zusatznutzen, Ressourcenaufwand und Qualität gegenüber der Basis ohne Plugin vergleichen. |
-| Context7 | Aufnahmeentscheidung vertagt, Entscheidung 68 | Quellenqualität, Versionsbezug, Zusatznutzen und Funktion in beiden Clients prüfen. |
-| Übrige Sammelplugins | Nur bei konkreter Lücke prüfen, Entscheidung 73 | Einzelne Bestandteile von productivity, engineering, enterprise-search und cowork-plugin-management bei nachgewiesenem Bedarf bewerten. |
+| `en/` | English | `<runtime>/general/` |
+| `de/` | German, the authoritative source | `<runtime>/allgemein/` |
 
-Konsolidierung am 19.10.2026 abgeschlossen: Auswahl und Übernahmeentscheidungen 1 bis 115 sind in Umfang, Quellenzuordnung und Umsetzungsreihenfolge zusammengeführt. Unabhängige Endprüfung und gezielte Nachprüfung der Korrekturen abgeschlossen, keine offenen Befunde im Dokumentvergleich. [Prüfbericht](pruefungen/konsolidierung.md). Inzwischen ist die erste lokale Grundlage mit Regelkern, leeren Vorlagen und Pfadprüfer umgesetzt. Stand und offene Abnahmen in [docs/grundlage.md](docs/grundlage.md), nächster Schritt in `.aios/PLAN.md`. Keine Änderung der aktiven Installation. Ausdrückliche aktuelle Nutzerfreigaben gelten unabhängig davon im Gespräch.
+The scripts in `scripts/` are shared and speak English. Personal data and credentials never go into this repository. Installed files, synthetic tests and loader checks do not prove that services, models or skills work in practice.
 
-## Grenzen
+## Requirements
 
-Keine Kundendaten lesen oder übernehmen. Keine bestehenden privaten Inhalte verschieben. Kein Browserbetrieb und kein Atrio-Ausbau. Installer nur im neuen Paket entwickeln und in isolierten Testordnern prüfen. Kein neues GitHub-Repository oder aktive Plugininstallation. Keine automatische Deinstallation bestehender Laufzeitpakete oder Änderung der echten globalen Skill-Verknüpfungen. Angemeldete Modelltests erst auf dem zweiten Mac.
+macOS with Git, Python 3 and Claude Code and/or Codex in the terminal.
+
+## Install
+
+```sh
+git clone https://github.com/alexandergreif/aios-neuaufbau.git "$HOME/aios-neuaufbau"
+cd "$HOME/aios-neuaufbau"
+sh install.sh
+```
+
+The setup asks in English for:
+
+1. Language for rules and skills (`en` or `de`, default `en`). You can also pass `--language en` or `--language de`.
+2. Clients (`claude`, `codex` or `both`, default `both`).
+3. Folders for source code, runtime, profile and output. Source code defaults to this checkout and must stay there. The other defaults are `~/aios-runtime`, `~/aios-profile` and `~/aios-output`.
+4. Optional coding roots and customer roots, one path per line, an empty line ends the list. Keep customer roots next to coding roots, not inside them.
+5. Profile details. Unanswered fields stay `open`. If you list several languages, the first one is your output language.
+
+After you confirm the profile, the setup asks whether you want to enter an optional Blockbrain key (default `no`). Two previews are shown, one for the profile and one for the installation. Confirm each by typing `yes`. A read-only status check runs at the end and should report `present`.
+
+The profile folder of an English installation contains `paths.json`, `profile.md`, `projects.md`, `knowledge/`, `state/` and `.env`. A German installation uses `pfade.json`, `profil.md`, `projekte.md`, `wissen/` and `zustand/`.
+
+### Try It in an Isolated Folder First
+
+```sh
+AIOS_TEST_HOME="$(mktemp -d "$HOME/aios-test.XXXXXX")"
+sh install.sh --home "$AIOS_TEST_HOME" --claude-config-dir "$AIOS_TEST_HOME/.claude"
+CLAUDE_CONFIG_DIR="$AIOS_TEST_HOME/.claude" claude --setting-sources user,project
+```
+
+Choose `claude`, keep the suggested folders and use test profile details only. Inside Claude Code, `/prepare-brief Plan a one-hour learning block for Python.` is a good first check.
+
+## Status, Update and Uninstall
+
+Use the configuration file of your installation (`paths.json` for English, `pfade.json` for German). Without `--apply`, update and uninstall only show a preview. The status check only reads.
+
+```sh
+python3 scripts/setup_status.py --config ~/aios-profile/paths.json --home ~
+python3 scripts/update.py --config ~/aios-profile/paths.json --home ~ --apply
+python3 scripts/uninstall.py --config ~/aios-profile/paths.json --home ~ --apply
+```
+
+An update keeps the language of the installation. Switching languages means uninstalling and then running the setup again with a new profile folder and a runtime folder that does not exist yet. Update and uninstall only touch files the installer recorded as its own. Profile data, output and foreign files stay unchanged. Only the installation records in the state folder are updated, and an update keeps a backup of each replaced client rule file there.
+
+## Tests
+
+```sh
+python3 -B -m unittest discover -s tests
+```
+
+## Further Reading
+
+- [Name tables and glossary for the English version](docs/englische-fassung.md) (German)
+- [Decision log and history](README.de.md) (German)
+- [Current project state](.aios/PLAN.md) (German)

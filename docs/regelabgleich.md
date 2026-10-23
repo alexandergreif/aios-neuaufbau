@@ -1,6 +1,6 @@
 # Abgleich der bisherigen Arbeitsregeln
 
-Stand: 19.10.2026. Vergleichsquellen sind ausschließlich die fünf genannten Dateien unter `~/.agent-rules/`. Zeilenangaben beziehen sich auf deren heutigen Stand. „Behalten“ bedeutet Aufnahme als Prinzip in `allgemein/regeln/kern.md`, nicht Aktivierung der neuen Regeln. „Verlagern“ bezeichnet eine spätere Fachreferenz, einen Skill, ein Projekt oder einen noch zu verifizierenden Clientadapter. Die geltenden höheren Clientregeln bleiben unberührt. Maßgeblich sind die bestätigten Entscheidungen in `README.md`, der konsolidierte Umfang und die Übernahmeliste.
+Stand: 19.10.2026. Vergleichsquellen sind ausschließlich die fünf genannten Dateien unter `~/.agent-rules/`. Zeilenangaben beziehen sich auf deren heutigen Stand. „Behalten“ bedeutet Aufnahme als Prinzip in `de/regeln/kern.md`, nicht Aktivierung der neuen Regeln. „Verlagern“ bezeichnet eine spätere Fachreferenz, einen Skill, ein Projekt oder einen noch zu verifizierenden Clientadapter. Die geltenden höheren Clientregeln bleiben unberührt. Maßgeblich sind die bestätigten Entscheidungen in `README.de.md`, der konsolidierte Umfang und die Übernahmeliste.
 
 | Alte Regel und Quelle | Zuordnung | Begründung und Ziel |
 | --- | --- | --- |

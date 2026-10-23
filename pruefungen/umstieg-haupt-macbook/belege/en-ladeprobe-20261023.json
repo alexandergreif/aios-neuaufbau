@@ -1,0 +1,1008 @@
+{
+  "checked_at": "2026-10-23T09:50:54.608002+00:00",
+  "passed": true,
+  "language": "en",
+  "scope": "Synthetic first installation and native global loading. No model answer or service acceptance.",
+  "installation": {
+    "exit_code": 0,
+    "log": "New runtime: /private/var/folders/sn/5sn7ljxd2yq0xg6msfpsvpkh0000gn/T/aios-installed-loader-6e1qcucw/home/runtime\nLanguage of rules and skills: en\nOutput: /private/var/folders/sn/5sn7ljxd2yq0xg6msfpsvpkh0000gn/T/aios-installed-loader-6e1qcucw/home/output (existing content is kept)\nProfile is kept: /private/var/folders/sn/5sn7ljxd2yq0xg6msfpsvpkh0000gn/T/aios-installed-loader-6e1qcucw/home/profile\nRule files: 2, skill links: 42\nDevelopment state with the skills currently present. Client and service function unchecked.\nRun the first installation? Type exactly 'yes': Development state with the skills currently present installed. Client and service function unchecked.\n",
+    "status": "installed",
+    "created_objects": 118,
+    "private_fixture_unchanged": true,
+    "repeat_blocked": true,
+    "repeat_log": "Installation not started: Package inventory or package operation already exists\n",
+    "installed_status_exit_code": 0,
+    "installed_status": {
+      "status": "present",
+      "language": "en",
+      "file_integration": "checked",
+      "functional_check": "unchecked",
+      "clients": [
+        {
+          "client": "claude-code",
+          "status": "present",
+          "skills": 21,
+          "integrity": "checked",
+          "models_services": "unchecked"
+        },
+        {
+          "client": "codex",
+          "status": "present",
+          "skills": 21,
+          "integrity": "checked",
+          "models_services": "unchecked"
+        }
+      ],
+      "problems": []
+    }
+  },
+  "manifest_valid": true,
+  "proof_sources_sha256": {
+    "install.py": "100a9a9833900077625152f5a77da646658ced25a05b3a5c37b48758f4533ea1",
+    "install_plan.py": "2559879e8f71c61088e4b7a9a3e2b9ca47534480cdbdc0e9d54c5c457eb6a6f4",
+    "build_package.py": "cf07b4db3487f38745251561a7350e8dbfcee2783b41b6e68ddcb1c2934023b0",
+    "safe_files.py": "97650cd76865da81f7480988dc6ead88b17d78c1909d285b3ebfc377b7517cc7",
+    "languages.py": "d0b331b0f19cae3b4311a5ee25df47224724b8f681968cd3679c9aa658f7b910",
+    "setup_profile.py": "f4abbe0848b63b6f18054853f73a6d261c423c69667792d6c9bff53492508757",
+    "check_config.py": "e798bd18bf8a2b9fcebe547defc48d9c01e62d6de24ac59b5f0c40fc9ee8d3d0",
+    "setup_status.py": "a699a073b3038c9497e756cee2342904186e1147fe025455cc6786dbc2f0e955",
+    "package_rules.py": "e8bf3d2cea571a76da4c238898e23253e018b95cad5b404b39a91fb0b7d8cb7a",
+    "package_inventory.py": "0ed4916b11c2e04a05a327475255e822b303f44fb2b532bfe1c13a18ff7c2b46",
+    "prepare_client.py": "4239e3712322db1734f24b3a160858b728d664c55485790c03ef36da1f6c8442",
+    "check_client_loader.py": "10e30aefacc581b0078848a307748be8cf549f1f9d16b3d09e9751dc5366f30b",
+    "check_local_installation.py": "33991edd67b7dd315c5cfb393e999d2dcc91050573cb076671fe72b6da624fb9"
+  },
+  "proof_sources_unchanged": true,
+  "package_manifest": {
+    "schema_version": 1,
+    "version": "0.2.0-dev",
+    "language": "en",
+    "files": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "cd8664db877fdd8c1a7cdee6aa7638d3dd702b800d331c7bd955aa1ce95f393d"
+      },
+      {
+        "path": "CLAUDE.md",
+        "sha256": "cd8664db877fdd8c1a7cdee6aa7638d3dd702b800d331c7bd955aa1ce95f393d"
+      },
+      {
+        "path": "general/configuration/.env.example",
+        "sha256": "f735253d8eae6a0a207132275ac99e505ab7d72d8ab463859cde2f1760a2aa62"
+      },
+      {
+        "path": "general/configuration/paths.template.json",
+        "sha256": "a9f3db793ee6acd5c53d0ae96f59032d1d538977746deba3a04ece84dead5220"
+      },
+      {
+        "path": "general/references/connections.md",
+        "sha256": "237db5d4262ad1e6343a403024720d6589e3a284b1fccecf8fbffb4e79b80d0e"
+      },
+      {
+        "path": "general/references/external-writes.md",
+        "sha256": "4defc17d6267f973fc2f5e9482d5743044dce2981908fd4b91082f92e2ac8bdd"
+      },
+      {
+        "path": "general/references/profile-and-knowledge.md",
+        "sha256": "8e801aa7719c7d38321a3896d1ed7989fa0bab96091a7e00526c1d53b7187ca7"
+      },
+      {
+        "path": "general/references/storage.md",
+        "sha256": "86df8502a0b04afdb4da6efee6ed4ff32359e512712c655dfdd2cb14856aea86"
+      },
+      {
+        "path": "general/rules/core.md",
+        "sha256": "ca95e61fcb120e7909cb9f1161148ab7ebe84dba40f391eb0844fae8d5c90d5d"
+      },
+      {
+        "path": "general/skills/aios-audit/SKILL.md",
+        "sha256": "29b169b07256f2fbb9b4542c649980e4ee987f0fecb4c3b3bfba91d4acfe1a44"
+      },
+      {
+        "path": "general/skills/aios-audit/references/test-cases.md",
+        "sha256": "9a892f04c2d1d54ef54e0b85f237dcec600fc2011b51a5fd49888ed3a4bf15ce"
+      },
+      {
+        "path": "general/skills/daily-briefing/SKILL.md",
+        "sha256": "0e23e2a3e556f27900d62769a6896c11d22eb98f3168c3b44fbd478acec00e03"
+      },
+      {
+        "path": "general/skills/daily-briefing/references/test-cases.md",
+        "sha256": "d94f5ad3ed1a7991fa8164628fa7b877c0f4339189bc6e0fb8423abc5bdbfab5"
+      },
+      {
+        "path": "general/skills/meeting-follow-up/SKILL.md",
+        "sha256": "51c1b4d512aea6d8f0f0b9337cb9d8dcbc9bb7f373b68e064293cbb6c1d87604"
+      },
+      {
+        "path": "general/skills/meeting-follow-up/references/test-cases.md",
+        "sha256": "c9509825bc0c16cbfedd62d021a25d941d4f778d868c113233183106cdd193fb"
+      },
+      {
+        "path": "general/skills/meeting-prep/SKILL.md",
+        "sha256": "cac7878ddb10fe3c6aa594a95b7f8f54b880403b9f3a898c99b0d5c5ecadc126"
+      },
+      {
+        "path": "general/skills/meeting-prep/references/test-cases.md",
+        "sha256": "bbecde5e10cc3e22722c7d3fd586ed04e23f41ae568abc12ed11bfd3f11cdf97"
+      },
+      {
+        "path": "general/skills/planhat-time-tracking/SKILL.md",
+        "sha256": "fd904a1a94f5672da08bd1c3eb7374dd29838b850a632c112e2b9dd702f743ef"
+      },
+      {
+        "path": "general/skills/planhat-time-tracking/references/test-cases.md",
+        "sha256": "5986f5360b448b549aa44570432baae53889dd54f16a782e4d5b2651fd9e1a2f"
+      },
+      {
+        "path": "general/skills/pr-review/SKILL.md",
+        "sha256": "849fa6af264204e866b95cff3d39ae0b48c6c4e149472d5c05321da844f37612"
+      },
+      {
+        "path": "general/skills/pr-review/references/general-pr-review.md",
+        "sha256": "c0e340cd9cad2c327403666ba65c26a434772e0d3f11ff82280ef30224f409de"
+      },
+      {
+        "path": "general/skills/pr-review/references/test-cases.md",
+        "sha256": "4df9b91baf70895a6045717f8328c923d33815a848f6528a6b21b1f69b6ca988"
+      },
+      {
+        "path": "general/skills/precommit-review/SKILL.md",
+        "sha256": "b6b1e12f46b96edb15f0e4ed155fe9451829143c001345323e3f5b36bb159011"
+      },
+      {
+        "path": "general/skills/precommit-review/references/test-cases.md",
+        "sha256": "2cf0465d37fc99fb25561d75afe5fe72c45efd9c1e927ea26fe56e33dc2d0245"
+      },
+      {
+        "path": "general/skills/prepare-brief/SKILL.md",
+        "sha256": "26b6b09c1a9b2b7fb72acef451b2ab78373deed82f3cd7da34d406c2ac66d846"
+      },
+      {
+        "path": "general/skills/prepare-brief/agents/openai.yaml",
+        "sha256": "a1499d95abd8447558c535fe5554adcc3c9b988a0a39264a6283d430effe1e94"
+      },
+      {
+        "path": "general/skills/prepare-brief/references/test-cases.md",
+        "sha256": "e2287305a16c45f3511aa74d7e8dcbfcbca0bce800d094b35d7e0fb46ebec745"
+      },
+      {
+        "path": "general/skills/prepare-time-entries/SKILL.md",
+        "sha256": "5d9e672e3335fd3bf335c1ee1ea1ab485652a8128d0d2c6c6bea55096f01a84a"
+      },
+      {
+        "path": "general/skills/prepare-time-entries/references/test-cases.md",
+        "sha256": "806da36df57854a78ffe98a1dc8dc8450279838786d70890ec82d5a3559cd180"
+      },
+      {
+        "path": "general/skills/presentation-materials/SKILL.md",
+        "sha256": "83577fefd65d4a56e02e6405000b4d13e307d75fdd2e29368386d9d1aefd7d99"
+      },
+      {
+        "path": "general/skills/presentation-materials/references/test-cases.md",
+        "sha256": "9c93b57447d7c6323462e9d48fd00160b3838101099accfe3cd8d78c56eb48f9"
+      },
+      {
+        "path": "general/skills/process-analysis/SKILL.md",
+        "sha256": "948fc946f2f0fdc1af6be60c0328a532c9828164691bb28d75c45b7c20d429c9"
+      },
+      {
+        "path": "general/skills/process-analysis/references/test-cases.md",
+        "sha256": "c3489756280d1a716487b5fbff230a37f114ea63aaf3396845f4f90e0e954017"
+      },
+      {
+        "path": "general/skills/prompt-advisor/SKILL.md",
+        "sha256": "a30a9316fd6b2ea68993aea0128fa88de0eac9d6620230603b100bb560653f81"
+      },
+      {
+        "path": "general/skills/prompt-advisor/references/test-cases.md",
+        "sha256": "0c0285782861aac8be0acae7b4e64ef90bd121b8f775cbc70f27b131f205d10d"
+      },
+      {
+        "path": "general/skills/research/SKILL.md",
+        "sha256": "d5250bf06b49dc903bc94ebbb98f5b167689720cc4c6942e7ab3dc0b3029d2f4"
+      },
+      {
+        "path": "general/skills/research/references/test-cases.md",
+        "sha256": "961f9c748dacc6fe0644e294d5b067db401ac43f7b86d6651a36f78cfe9c38e8"
+      },
+      {
+        "path": "general/skills/review-comments/SKILL.md",
+        "sha256": "075f89f5408a8f3268909ced4971880e82f06652efd512b08485866a2c09ed1c"
+      },
+      {
+        "path": "general/skills/review-comments/references/test-cases.md",
+        "sha256": "f9dab66b4af5cc2a9c9c2d764285bbaf8ca4135f868df0116d96509920fe169f"
+      },
+      {
+        "path": "general/skills/skill-builder/SKILL.md",
+        "sha256": "17d07bfc58fe989924edf2278d37dd08f28bcf0b446f59f0160b8cfeef6b32ea"
+      },
+      {
+        "path": "general/skills/skill-builder/references/test-cases.md",
+        "sha256": "01a9d497c21cfd5b709c8d4e51d2169b3ffbc84f05c6db77c440124100236679"
+      },
+      {
+        "path": "general/skills/system-retro/SKILL.md",
+        "sha256": "0f500f0f7d0140ee2122fb1279f61b661eacc858431019ee7866a2239c2c6ed8"
+      },
+      {
+        "path": "general/skills/system-retro/references/test-cases.md",
+        "sha256": "296b4df6262494f2ec1541460bd0a193cd1874e8b0ae6b551dd6f7a6126d781a"
+      },
+      {
+        "path": "general/skills/task-assistant/SKILL.md",
+        "sha256": "e638f9c9a064aecbe362e8cac3f80cd4776cdcef465fcddf48bf6f80e4eb47b6"
+      },
+      {
+        "path": "general/skills/task-assistant/references/test-cases.md",
+        "sha256": "5d30b29620b3c5f164df48227e2dbadef8ac7e4fe8406d0f27e9977fcd98708e"
+      },
+      {
+        "path": "general/skills/ui-design/SKILL.md",
+        "sha256": "adbc70a7415fc6d2f4a6cad53cd4d3ac605ef2322a3ffba50c2b9599a14249e1"
+      },
+      {
+        "path": "general/skills/ui-design/references/test-cases.md",
+        "sha256": "5de6b9d8e5adf2b8ff5164e2ec1f9454c52e98e31283c9889a0da40eb36e1cf3"
+      },
+      {
+        "path": "general/skills/use-case-concept/SKILL.md",
+        "sha256": "2f566e1a8bcab1777bb29a369137db64a6888cd982e3dcd63295cd5ff5e923de"
+      },
+      {
+        "path": "general/skills/use-case-concept/references/test-cases.md",
+        "sha256": "00db000c5e38c434b97c59a063eb050aded05a81416ce65999d71e299f354299"
+      },
+      {
+        "path": "general/skills/weekly-planning/SKILL.md",
+        "sha256": "fdce6d4ffd0767770a5a090ccc8bb7ca33378ca9c8d7b4f61f4359a623e0e784"
+      },
+      {
+        "path": "general/skills/weekly-planning/references/test-cases.md",
+        "sha256": "1a6e7d51f5b44939417850388c716d7c5976576e4e6889a08a548bb024f336af"
+      },
+      {
+        "path": "general/skills/weekly-review/SKILL.md",
+        "sha256": "b216d7e307fbd08c9cb222eb0bbe03ef6dc07c7a89d17c405f610650092b1551"
+      },
+      {
+        "path": "general/skills/weekly-review/references/test-cases.md",
+        "sha256": "31c812d8474e74d8cf2296d280b6be1659ebb8033c75744ef0661099563ba6d4"
+      },
+      {
+        "path": "general/templates/knowledge/INDEX.md",
+        "sha256": "3a4a0fb67262bbe7731995a898ee9a855c939f850613ff3bfc722462f6f635ab"
+      },
+      {
+        "path": "general/templates/knowledge/note.md",
+        "sha256": "3d33d13bf7cfd4086b49a9606b72569717c59ec9fc61d6faecffcf3972fb3b3d"
+      },
+      {
+        "path": "general/templates/profile.md",
+        "sha256": "0933615766a649acef85e4a43409693d15f97eeaf503acd7a8d8b517cb730c0d"
+      },
+      {
+        "path": "general/templates/project/NOTES.md",
+        "sha256": "dfd3d902b2395cb31ba528e5c3aca0073b42c15790dc6fac448496446f9428e9"
+      },
+      {
+        "path": "general/templates/project/PLAN.md",
+        "sha256": "09d827de2ca5449d0f781441d9411dfe7da58a32979f1ac7b473dbe96f6e19d4"
+      },
+      {
+        "path": "general/templates/projects.md",
+        "sha256": "9249ae3c8b67dd3392711c0ceab0998d6ea23fce35e2cb14d394cab08269fe39"
+      },
+      {
+        "path": "general/tools/materials/assets/interaction.js",
+        "sha256": "b8c085d27ea1dbfbf9eb0413b22eeda7a129244ed424fe1303edea4e8262b791"
+      },
+      {
+        "path": "general/tools/materials/assets/layout.html",
+        "sha256": "10b39f6840fa2ce56cd3a6ac9f888f6b8a615b14f241638b0354483ffb5b51cb"
+      },
+      {
+        "path": "general/tools/materials/assets/profiles/house-style.css",
+        "sha256": "9d3a87dc1d17825bde228c4701364f60224780539218ab910e8304fa8222d081"
+      },
+      {
+        "path": "general/tools/materials/render.py",
+        "sha256": "97dcecc850775f7d95f196d4fd9c2ad3c011b78b19e8a1fc38aab1e48a26ebc3"
+      },
+      {
+        "path": "general/tools/presentations/check_html.py",
+        "sha256": "afcffa8445056f78bbdd4289fa864c4b915ef3521999dcd113daed619cfe24fe"
+      },
+      {
+        "path": "scripts/check_config.py",
+        "sha256": "e798bd18bf8a2b9fcebe547defc48d9c01e62d6de24ac59b5f0c40fc9ee8d3d0"
+      },
+      {
+        "path": "scripts/check_register.py",
+        "sha256": "ec736e9504258a1c4fc5ac3c6f9b47cba46fa716b397332d603f8daeb5790178"
+      },
+      {
+        "path": "scripts/languages.py",
+        "sha256": "d0b331b0f19cae3b4311a5ee25df47224724b8f681968cd3679c9aa658f7b910"
+      },
+      {
+        "path": "scripts/package_inventory.py",
+        "sha256": "0ed4916b11c2e04a05a327475255e822b303f44fb2b532bfe1c13a18ff7c2b46"
+      },
+      {
+        "path": "scripts/package_rules.py",
+        "sha256": "e8bf3d2cea571a76da4c238898e23253e018b95cad5b404b39a91fb0b7d8cb7a"
+      },
+      {
+        "path": "scripts/profile_transfer.py",
+        "sha256": "1e13e153fc9afb12d23d439b2033375e195e53e868331141bd11fd5c16d1eb5d"
+      },
+      {
+        "path": "scripts/safe_files.py",
+        "sha256": "97650cd76865da81f7480988dc6ead88b17d78c1909d285b3ebfc377b7517cc7"
+      },
+      {
+        "path": "scripts/setup_profile.py",
+        "sha256": "f4abbe0848b63b6f18054853f73a6d261c423c69667792d6c9bff53492508757"
+      },
+      {
+        "path": "scripts/setup_status.py",
+        "sha256": "a699a073b3038c9497e756cee2342904186e1147fe025455cc6786dbc2f0e955"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "client": "codex",
+      "executable": "/Users/alexandergreif/.npm-global/bin/codex",
+      "version": "codex-cli 0.163.0",
+      "global_core_sha256": "025203955bd8edf843eb97adf805cb650c3dd579f195f0d22e05d6271ab0e9d6",
+      "discovery": {
+        "client": "codex",
+        "exit_code": 0,
+        "core_loaded": true,
+        "prompt_json": true,
+        "text_checks": {
+          "aios-audit": true,
+          "daily-briefing": true,
+          "meeting-follow-up": true,
+          "meeting-prep": true,
+          "planhat-time-tracking": true,
+          "pr-review": true,
+          "precommit-review": true,
+          "prepare-brief": false,
+          "prepare-time-entries": true,
+          "presentation-materials": true,
+          "process-analysis": true,
+          "prompt-advisor": true,
+          "research": true,
+          "review-comments": true,
+          "skill-builder": true,
+          "system-retro": true,
+          "task-assistant": true,
+          "ui-design": true,
+          "use-case-concept": true,
+          "weekly-planning": true,
+          "weekly-review": true
+        },
+        "error_excerpt": "",
+        "method": "debug prompt-input, OS network blocked, no model call"
+      },
+      "explicit_skills": {
+        "aios-audit": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "daily-briefing": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "meeting-follow-up": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "meeting-prep": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "planhat-time-tracking": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "pr-review": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "precommit-review": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "prepare-brief": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "prepare-time-entries": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "presentation-materials": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "process-analysis": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "prompt-advisor": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "research": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "review-comments": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "skill-builder": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "system-retro": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "task-assistant": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "ui-design": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "use-case-concept": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "weekly-planning": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        },
+        "weekly-review": {
+          "client": "codex",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_requests": 1,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "codex exec up to a local Responses test server, HTTP 400 stop, no model call"
+        }
+      },
+      "negative_control": {
+        "client": "codex",
+        "exit_code": 0,
+        "core_loaded": false,
+        "prompt_json": true,
+        "text_checks": {},
+        "error_excerpt": "",
+        "method": "debug prompt-input, OS network blocked, no model call"
+      },
+      "negative_control_passed": true
+    },
+    {
+      "client": "claude-code",
+      "executable": "/Users/alexandergreif/.local/bin/claude",
+      "version": "2.1.308 (Claude Code)",
+      "global_core_sha256": "025203955bd8edf843eb97adf805cb650c3dd579f195f0d22e05d6271ab0e9d6",
+      "discovery": {
+        "client": "claude-code",
+        "exit_code": 1,
+        "core_loaded": true,
+        "captured_message_requests": 2,
+        "text_checks": {
+          "aios-audit": true,
+          "daily-briefing": true,
+          "meeting-follow-up": true,
+          "meeting-prep": true,
+          "planhat-time-tracking": true,
+          "pr-review": true,
+          "precommit-review": true,
+          "prepare-brief": false,
+          "prepare-time-entries": true,
+          "presentation-materials": true,
+          "process-analysis": true,
+          "prompt-advisor": true,
+          "research": true,
+          "review-comments": true,
+          "skill-builder": true,
+          "system-retro": true,
+          "task-assistant": true,
+          "ui-design": true,
+          "use-case-concept": true,
+          "weekly-planning": true,
+          "weekly-review": true
+        },
+        "core_paragraphs_loaded": 18,
+        "core_paragraphs_total": 18,
+        "synthetic_error_observed": true,
+        "error_excerpt": "",
+        "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+      },
+      "explicit_skills": {
+        "aios-audit": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "daily-briefing": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "meeting-follow-up": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "meeting-prep": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "planhat-time-tracking": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "pr-review": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "precommit-review": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "prepare-brief": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "prepare-time-entries": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "presentation-materials": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "process-analysis": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "prompt-advisor": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "research": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "review-comments": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "skill-builder": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "system-retro": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "task-assistant": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "ui-design": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "use-case-concept": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "weekly-planning": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        },
+        "weekly-review": {
+          "client": "claude-code",
+          "exit_code": 1,
+          "core_loaded": true,
+          "captured_message_requests": 2,
+          "text_checks": {
+            "full_skill_body": true
+          },
+          "core_paragraphs_loaded": 18,
+          "core_paragraphs_total": 18,
+          "synthetic_error_observed": true,
+          "error_excerpt": "",
+          "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+        }
+      },
+      "negative_control": {
+        "client": "claude-code",
+        "exit_code": 1,
+        "core_loaded": false,
+        "captured_message_requests": 1,
+        "text_checks": {},
+        "core_paragraphs_loaded": 0,
+        "core_paragraphs_total": 18,
+        "synthetic_error_observed": true,
+        "error_excerpt": "",
+        "method": "Native CLAUDE.md loading up to a local HTTP test server, deliberate HTTP 400 stop, no model call"
+      },
+      "negative_control_passed": true
+    }
+  ],
+  "skill_links_unchanged": true
+}

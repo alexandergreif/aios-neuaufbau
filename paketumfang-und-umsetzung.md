@@ -1,6 +1,6 @@
 # AIOS: konsolidierter Paketumfang und Umsetzung
 
-Stand: 19.10.2026. Grundlage sind die bestätigten Entscheidungen 1 bis 115 in [README.md](README.md), einschließlich ihrer Buchstabenergänzungen. Dies ist der Umsetzungsplan, kein Funktionsnachweis.
+Stand: 19.10.2026. Grundlage sind die bestätigten Entscheidungen 1 bis 115 in [README.de.md](README.de.md), einschließlich ihrer Buchstabenergänzungen. Dies ist der Umsetzungsplan, kein Funktionsnachweis.
 
 ## Ziel und Stand
 

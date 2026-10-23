@@ -50,12 +50,12 @@ Die vorhandene [Abnahmeanleitung](../abnahme-zweiter-mac.md) enthält die konkre
 | Aussage | Lokale Quelle |
 | --- | --- |
 | Maßgeblicher Umsetzungs- und Prüfstand | [Projektplan](../../.aios/PLAN.md), [Paketbetrieb-Testlauf](../../pruefungen/paketbetrieb-testlauf.md) |
-| Gewählte Fähigkeiten und offene Abhängigkeiten | [Paketumfang](../../paketumfang-und-umsetzung.md), [Skillquellen](../../allgemein/skills/) |
-| Zielpfade und getrenntes Profil | [Entscheidungsprotokoll, insbesondere 90](../../README.md), [Pfadkonfiguration](../pfadkonfiguration.md) |
-| Paketinhalt und erzeugte Dateien | [Paketbau](../paketbau.md), [Builder](../../scripts/paket_bauen.py), [Paketregeln](../../scripts/paketregeln.py) |
-| Globale Regeln und Skilllinks | [Erstinstallation](../erstinstallation.md), [Installationsplan](../../scripts/installationsplan.py) |
+| Gewählte Fähigkeiten und offene Abhängigkeiten | [Paketumfang](../../paketumfang-und-umsetzung.md), [Skillquellen](../../de/skills/) |
+| Zielpfade und getrenntes Profil | [Entscheidungsprotokoll, insbesondere 90](../../README.de.md), [Pfadkonfiguration](../pfadkonfiguration.md) |
+| Paketinhalt und erzeugte Dateien | [Paketbau](../paketbau.md), [Builder](../../scripts/build_package.py), [Paketregeln](../../scripts/package_rules.py) |
+| Globale Regeln und Skilllinks | [Erstinstallation](../erstinstallation.md), [Installationsplan](../../scripts/install_plan.py) |
 | Update, Eigentum und Deinstallation | [Paketbetrieb](../paketbetrieb.md) |
-| Profil, Wissen und Transfergrenzen | [Profilreferenz](../../allgemein/referenzen/profil-und-wissen.md) |
+| Profil, Wissen und Transfergrenzen | [Profilreferenz](../../de/referenzen/profil-und-wissen.md) |
 | Testfolge auf Mac 2 | [Abnahmeanleitung](../abnahme-zweiter-mac.md), [Modellfälle](../../tests/verhalten/faelle.json) |
 | Neue Quellstruktur | Vorschlag aus dem Gespräch, noch keine umgesetzte Migration |
 

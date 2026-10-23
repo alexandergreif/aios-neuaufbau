@@ -3,7 +3,7 @@
 Stand: 19.10.2026. Beide lokal vorhandenen Clients laden den vollständigen gemeinsamen Kern in einem synthetischen Arbeitsordner. Dieser Nachweis umfasst den Loader, noch keine Modellantworten, Fachskills oder Dienstverbindungen.
 
 ```sh
-python3 scripts/pruefe_client_loader.py --client beide
+python3 scripts/check_client_loader.py --client both
 ```
 
 Das Skript benötigt macOS mit `sandbox-exec` und bereits installierte Clients. Es installiert nichts. `--codex` und `--claude` wählen bei mehreren Installationen die konkrete ausführbare Datei. Mit `--evidence-dir /absoluter/neuer/ordner` werden Ergebnis-JSON und die vollständigen `ls -l`-Ausgaben der vorhandenen Skillordner vor und nach dem Test gespeichert. Ein vorhandener Belegordner wird nicht überschrieben.

@@ -13,10 +13,10 @@ cd "$HOME/aios-neuaufbau"
 
 ```sh
 AIOS_TEST_HOME="$(mktemp -d "$HOME/aios-test.XXXXXX")"
-sh install.sh --home "$AIOS_TEST_HOME" --claude-config-dir "$AIOS_TEST_HOME/.claude"
+sh install.sh --language de --home "$AIOS_TEST_HOME" --claude-config-dir "$AIOS_TEST_HOME/.claude"
 ```
 
-Im Dialog **`claude`** wählen. Quellcode, Runtime, Profil und Ausgabe auf den vorgeschlagenen Werten lassen. Durch `--home` liegen die drei neuen Ablageorte im Testordner. Coding- und Kundenwurzeln leer lassen, nur Testprofilangaben verwenden und den Blockbrain-Schlüssel überspringen. Beide Vorschauen prüfen und jeweils mit `ja` bestätigen. Am Ende läuft der Dateistatuscheck.
+Der Dialog ist ab 0.2.0-dev englisch. `--language de` installiert die deutschen Regeln und Skills, ohne den Parameter fragt der Dialog die Sprache ab. Im Dialog **`claude`** wählen. Quellcode, Runtime, Profil und Ausgabe auf den vorgeschlagenen Werten lassen. Durch `--home` liegen die drei neuen Ablageorte im Testordner. Coding- und Kundenwurzeln leer lassen, nur Testprofilangaben verwenden und den Blockbrain-Schlüssel überspringen. Beide Vorschauen prüfen und jeweils mit `yes` bestätigen. Am Ende läuft der Dateistatuscheck.
 
 **3. Claude Code mit der Testkonfiguration öffnen**
 

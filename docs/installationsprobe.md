@@ -1,6 +1,6 @@
 # Isolierte Erstinstallation mit echten Clients
 
-`scripts/pruefe_installation_lokal.py` führt den lokalen Erstinstaller in einem erfundenen Benutzerordner aus. Danach startet es Claude Code und Codex in einem leeren Projekt außerhalb der Runtime. Im Projekt liegen weder Regeldateien noch Skillverknüpfungen. Damit prüft der Lauf die vom Installer erzeugte globale Einbindung.
+`scripts/check_local_installation.py` führt den lokalen Erstinstaller in einem erfundenen Benutzerordner aus. Danach startet es Claude Code und Codex in einem leeren Projekt außerhalb der Runtime. Im Projekt liegen weder Regeldateien noch Skillverknüpfungen. Damit prüft der Lauf die vom Installer erzeugte globale Einbindung.
 
 Die Probe verwendet ein erfundenes Profil und einen ungültigen Testschlüssel. Persönliche Anmeldungen werden weder gelesen noch kopiert. Die Clients laufen in der Betriebssystem-Sandbox aus [client-loader.md](client-loader.md). Nur der jeweilige lokale HTTP-Testserver ist erreichbar. Er antwortet absichtlich mit HTTP 400. Es entsteht keine Modellantwort.
 
@@ -21,7 +21,7 @@ Claude startet in dieser Probe mit `--setting-sources user,project`. Nur so werd
 Aus dem Quellordner mit ausdrücklich gewählten Clientprogrammen:
 
 ```sh
-python3 scripts/pruefe_installation_lokal.py \
+python3 scripts/check_local_installation.py \
   --codex /absoluter/pfad/zu/codex \
   --claude /absoluter/pfad/zu/claude \
   --evidence-dir /absoluter/neuer/belegordner

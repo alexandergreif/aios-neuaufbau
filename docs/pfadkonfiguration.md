@@ -1,13 +1,13 @@
 # Lokale Pfadkonfiguration
 
-Die Vorlage [`allgemein/konfiguration/pfade.vorlage.json`](../allgemein/konfiguration/pfade.vorlage.json) enthält nur änderbare Vorschläge. Sie ist absichtlich nicht eingerichtet. Auf jedem Mac werden Clientauswahl, Quellcodeort sowie die Basisordner für Coding- und Kundenprojekte neu abgefragt. Auch ein Profilimport bestätigt keine Pfade des anderen Macs.
+Die Vorlage [`de/konfiguration/pfade.vorlage.json`](../de/konfiguration/pfade.vorlage.json) (für die Sprache `en`: [`en/configuration/paths.template.json`](../en/configuration/paths.template.json)) enthält nur änderbare Vorschläge. Sie ist absichtlich nicht eingerichtet. Auf jedem Mac werden Clientauswahl, Quellcodeort sowie die Basisordner für Coding- und Kundenprojekte neu abgefragt. Auch ein Profilimport bestätigt keine Pfade des anderen Macs.
 
 Für eine spätere lokale Konfiguration wird die Vorlage außerhalb des versionierten Pakets kopiert. Dort werden `clients` mit mindestens einem Wert (`claude-code` oder `codex`) und `paths.source` ausgefüllt. Die Listen `paths.coding_roots` und `paths.customer_roots` werden auf diesem Mac abgefragt. Eine bestätigte leere Liste ist zulässig, wenn keine solche Projektwurzel gewählt wurde. Die Vorschläge für `runtime`, `profile` und `output` können geändert werden. Erst nach ausdrücklicher Bestätigung aller Einträge wird `confirmed` auf `true` gesetzt. Die Vorlage selbst bleibt unverändert. Eine aktive Konfiguration wird in dieser Etappe weder angelegt noch installiert.
 
 Prüfung einer bereits ausgefüllten lokalen Datei:
 
 ```sh
-python3 scripts/pruefe_konfiguration.py --config /absoluter/pfad/zur/lokalen/pfade.json
+python3 scripts/check_config.py --config /absoluter/pfad/zur/lokalen/pfade.json
 ```
 
 Für synthetische Tests oder einen anderen Mac kann `--home /absoluter/benutzerordner` den Benutzerordner für `~/` festlegen. Ohne diese Option gilt der Benutzerordner des laufenden Prozesses. Jeder Pfad muss absolut sein oder mit `~/` beginnen. Relative Pfade, Umgebungsvariablen, andere Benutzer-Tilden, doppelte führende Schrägstriche, `~//` und `..` sind nicht erlaubt. Systemwurzel und Benutzerordner selbst sind keine gültigen Ziele, auch bei abweichender Großschreibung oder Unicode-Normalform. Der Prüfer löst bestehende Symlinks auf und weist gleiche oder ineinander liegende Ablagebereiche und Projektwurzeln ab. Der Vergleich normalisiert Unicode und ignoriert Groß- und Kleinschreibung für jede Pfadkomponente, auch wenn Ordner noch nicht existieren. Diese konservative Regel kann zwei auf einem case-sensitiven Volume technisch getrennte Pfade ablehnen. Der Quellcode darf als eigener Unterordner einer Coding-Wurzel liegen, darf aber nicht mit dieser Wurzel identisch sein. Eine spätere Projektsuche muss den Quellcodeordner aussparen. Die Pfadprüfung erlaubt keine Inhaltsabfrage. Runtime, Profil und Ausgabe bleiben strikt von allen Projektwurzeln getrennt.
