@@ -1,6 +1,6 @@
 # Ergebnisse und Projektzuordnung
 
-Diese Referenz gilt, wenn ein Skill eine Ergebnisdatei braucht. Die bestätigte lokale `pfade.json` benennt Quellcode, Runtime, Profil, Ausgabe sowie Coding- und Kundenwurzeln. Verwende den bei der Einrichtung bekanntgegebenen Konfigurationspfad. Fehlt er, frage danach. Leite ihn nicht aus einem Benutzernamen, einem alten Skill oder einem vorgeschlagenen Standardpfad ab.
+Diese Referenz gilt, wenn ein Skill eine Ergebnisdatei braucht oder ein Projektordner zugeordnet werden muss. Die bestätigte lokale `pfade.json` benennt Quellcode, Runtime, Profil, Ausgabe sowie Coding- und Kundenwurzeln. Verwende den bei der Einrichtung bekanntgegebenen Konfigurationspfad. Fehlt er, frage danach. Leite ihn nicht aus einem Benutzernamen, einem alten Skill oder einem vorgeschlagenen Standardpfad ab.
 
 Prüfe die Konfiguration mit `scripts/pruefe_konfiguration.py --config <pfade.json>` aus dem Paket. Das Skript erzeugt keine Ordner. Ein Konfigurationswert ist keine Freigabe, die dort liegenden Inhalte zu durchsuchen.
 
